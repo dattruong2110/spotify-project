@@ -1,0 +1,135 @@
+$background-color-base: #121212;
+$bold-text-color: #fff;
+$base-text-color: #a7a7a7;
+$card-color: #242424;
+$border-radius-oval: 9999px;
+$font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+.sideBar {
+  display: grid;
+  gap: 8px;
+  height: 100%;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
+.sideBarHead {
+  background-color: $background-color-base;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.logo {
+  margin-top: 20px;
+}
+
+.logoLink {
+  padding: 0 24px;
+}
+
+.logoLink > svg {
+  fill: $bold-text-color;
+}
+
+.menuList {
+  list-style: none;
+  padding-left: 24px;
+}
+
+.menuItem {
+  margin: 20px 0;
+}
+
+.menuItem > a {
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: $font-family-base;
+  color: $base-text-color;
+  text-decoration: none;
+}
+
+.menuItem > a:hover {
+  color: $bold-text-color;
+}
+
+.menuItem a > i {
+  margin-right: 20px;
+  font-size: 1.4rem;
+}
+
+.sideBarBody {
+  background-color: $background-color-base;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.sideBarBodyLibraryHeader {
+  padding: 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: $font-family-base;
+  color: $base-text-color;
+}
+
+.yourLibrary {
+  cursor: pointer;
+}
+
+.yourLibrary > i {
+  margin-right: 20px;
+  font-size: 1.4rem;
+}
+
+.addBtn {
+  cursor: pointer;
+}
+
+.sideBarBodyLibraryBody {
+  padding: 0 8px 8px;
+}
+
+.cardLibrary {
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background-color: $card-color;
+}
+
+.cardBtn {
+  margin-top: 20px;
+}
+
+.cardBtn > Button {
+  padding: 5px 15px;
+  border-radius: $border-radius-oval;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.sideBarBodyFooter {
+  margin: 24px 0;
+  padding: 24px;
+}
+
+.sideBarBodyMenuFooter {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.sideBarBodyMenuFooter > li {
+  margin-right: 16px;
+  font-size: 0.7rem;
+  color: $base-text-color;
+  padding: 5px;
+}
+
+.translateBtn {
+  padding-top: 15px;
+}
+
+.translateBtn > Button {
+  border-radius: $border-radius-oval;
+}
