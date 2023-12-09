@@ -1,0 +1,32 @@
+$background-color-base: #121212;
+$base-color: #a7a7a7;
+$white-text-color: #fff;
+
+.signUpPage {
+  padding: 32px;
+}
+
+.signUpHeader > .logoLink {
+  padding: 0;
+}
+
+.containerForm {
+  width: 324px !important;
+}
+
+.signUpTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.signUpForm {
+  margin-top: 40px;
+}
+
+.alreadyAccount {
+  color: $base-color;
+}
+
+.loginLink {
+  color: $white-text-color;
+}
