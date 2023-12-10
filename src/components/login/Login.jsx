@@ -56,9 +56,9 @@ const Login = () => {
   // }, []);
 
   return (
-    <div className="loginPage">
-      <header className="loginHeader">
-        <Link className="logoLink" to={"/"}>
+    <div className="login-page">
+      <header className="login-header">
+        <Link className="logo-link" to={"/"}>
           <svg
             role="img"
             viewBox="0 0 78 24"
@@ -73,17 +73,17 @@ const Login = () => {
           </svg>
         </Link>
       </header>
-      <main className="loginMain">
-        <Container className="d-grid justify-content-center containerForm">
-          <h1 className="loginTitle">Login to Spotify</h1>
+      <main className="login-main">
+        <Container className="d-grid justify-content-center container-form">
+          <h1 className="login-title">Login to Spotify</h1>
           {value ? (
             navigate("/")
           ) : (
             <Button
-              className="btnExternalLink"
+              className="btn-external-link"
               onClick={handleSignInWithGoogle}
             >
-              <i className="fa-brands fa-google externalLinkIcon"></i>
+              <i className="fa-brands fa-google external-link-icon"></i>
               <span>Login with Google</span>
             </Button>
           )}
@@ -94,37 +94,37 @@ const Login = () => {
             onSubmit={handleSubmit}
           >
             {({ errors, handleSubmit }) => (
-              <Form className="loginForm" onSubmit={handleSubmit}>
+              <Form className="login-form" onSubmit={handleSubmit}>
                 <Form.Group
                   controlId="logInFormId"
-                  className={`customInput ${
-                    errors.email || errors.password ? "customInputError" : ""
+                  className={`custom-input ${
+                    errors.email || errors.password ? "custom-input-error" : ""
                   }`}
                 >
-                  <Form.Label className="float-start formLabel">
+                  <Form.Label className="float-start form-label">
                     Email address
                   </Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
                     placeholder="name@domain.com"
-                    className="inputForm"
+                    className="input-form"
                     onChange={handleChange}
                   />
                   <p className="error">{errors.email}</p>
-                  <Form.Label className="float-start formLabel">
+                  <Form.Label className="float-start form-label">
                     Password
                   </Form.Label>
                   <Form.Control
                     type="password"
                     name="password"
                     placeholder="*********"
-                    className="inputForm"
+                    className="input-form"
                     onChange={handleChange}
                   />
                   <p className="error">{errors.password}</p>
                 </Form.Group>
-                <Form className="formRememberMe">
+                <Form className="form-remember-me">
                   <Form.Check
                     type="switch"
                     id="custom-switch"
@@ -133,33 +133,33 @@ const Login = () => {
                     onChange={handleRememberMeChange}
                   />
                 </Form>
-                <Button type="submit" className="submitBtn">
+                <Button type="submit" className="submit-btn">
                   Log In
                 </Button>
               </Form>
             )}
           </Formik>
           <span className="text-center mb-3">
-            <Link to={"/reset-password"} className="forgotPassword">
+            <Link to={"/reset-password"} className="forgot-password">
               Forgot your password?
             </Link>
           </span>
           <hr />
-          <span className="text-center doNotHaveAccount">
+          <span className="text-center do-not-have-account">
             Don't have an account?{" "}
-            <Link to={"/signup"} className="signupLink">
+            <Link to={"/signup"} className="signup-link">
               Sign up for Spotify
             </Link>
           </span>
         </Container>
       </main>
-      <footer className="signUpsignInFooter position-fixed bottom-0">
+      <footer className="sign-up-sign-in-footer position-fixed bottom-0">
         <Container>
-          <p className="text-center footerText">
+          <p className="text-center footer-text">
             This site is protected by reCAPTCHA and the Google{" "}
             <Link
               to={"https://policies.google.com/privacy"}
-              className="policiesLink"
+              className="policies-link"
               target="_blank"
             >
               Privacy Policy
@@ -167,7 +167,7 @@ const Login = () => {
             and{" "}
             <Link
               to={"https://policies.google.com/terms"}
-              className="policiesLink"
+              className="policies-link"
               target="_blank"
             >
               Terms of Service

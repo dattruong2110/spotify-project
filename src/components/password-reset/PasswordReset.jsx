@@ -31,9 +31,9 @@ const PasswordReset = () => {
   };
 
   return (
-    <div className="resetPasswordPage">
-      <header className="resetPasswordHeader">
-        <Link className="logoLink" to={"/"}>
+    <div className="reset-password-page">
+      <header className="reset-password-header">
+        <Link className="logo-link" to={"/"}>
           <svg
             role="img"
             viewBox="0 0 78 24"
@@ -48,10 +48,10 @@ const PasswordReset = () => {
           </svg>
         </Link>
       </header>
-      <main className="resetPasswordMain">
-        <Container className="d-grid justify-content-center containerForm">
-          <h1 className="resetPasswordTitle">Password Reset</h1>
-          <span className="resetPasswordDescription">
+      <main className="reset-password-main">
+        <Container className="d-grid justify-content-center container-form">
+          <h1 className="reset-password-title">Password Reset</h1>
+          <span className="reset-password-description">
             Enter your Spotify username, or the email address that you used to
             register. We'll send you an email with your username and a link to
             reset your password.
@@ -62,34 +62,34 @@ const PasswordReset = () => {
             onSubmit={handleSubmit}
           >
             {({ errors, handleSubmit }) => (
-              <Form className="resetPasswordForm" onSubmit={handleSubmit}>
+              <Form className="reset-password-form" onSubmit={handleSubmit}>
                 <Form.Group
                   controlId="resetPasswordFormId"
-                  className={`customInput ${
-                    errors.email ? "customInputError" : ""
+                  className={`custom-input ${
+                    errors.email ? "custom-input-error" : ""
                   }`}
                 >
-                  <Form.Label className="float-start formLabel">
+                  <Form.Label className="float-start form-label">
                     Email address
                   </Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
                     placeholder="name@domain.com"
-                    className="inputForm"
+                    className="input-form"
                     onChange={handleChange}
                   />
                   <p className="error">{errors.email}</p>
-                  <Button type="submit" className="submitBtn">
+                  <Button type="submit" className="submit-btn">
                     Send
                   </Button>
                 </Form.Group>
               </Form>
             )}
           </Formik>
-          <span className="text-center needHelp">
+          <span className="text-center need-help">
             If you still need help, check out{" "}
-            <Link className="spotifySupportLink">Spotify Support</Link>
+            <Link className="spotify-support-link">Spotify Support</Link>
           </span>
         </Container>
       </main>

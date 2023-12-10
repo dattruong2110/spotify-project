@@ -15,26 +15,26 @@ body {
   width: 100%;
 }
 
-.logoLink > svg {
+.logo-link > svg {
   fill: $white-text-color;
 }
 
-.formLabel {
+.form-label {
   font-size: 0.875rem;
   font-weight: 700;
 }
 
-.inputForm {
+.input-form {
   background-color: $background-color-base !important;
   color: $white-text-color !important;
   margin: 10px 0;
 }
 
-.inputForm::placeholder {
+.input-form::placeholder {
   color: $base-color !important;
 }
 
-.submitBtn {
+.submit-btn {
   background-color: $green-btn-color !important;
   border: none !important;
   border-radius: $btn-border-radius !important;
@@ -45,19 +45,19 @@ body {
   font-weight: 700 !important;
 }
 
-.submitBtn:hover {
+.submit-btn:hover {
   background-color: #13eb5f !important;
 }
 
-.customInput {
+.custom-input {
   padding-bottom: 1%;
 }
 
-.customInputError label {
+.custom-input-error label {
   color: red;
 }
 
-.customInputError input {
+.custom-input-error input {
   border: 2px solid red;
   border-radius: 4px;
 }
@@ -67,33 +67,33 @@ body {
   margin: 0;
 }
 
-.btnExternalLink {
+.btn-external-link {
   background-color: $background-color-base !important;
   border-color: $base-color !important;
   border-radius: $btn-border-radius !important;
   margin: 20px 0;
 }
 
-.btnExternalLink:hover {
+.btn-external-link:hover {
   border-color: $white-text-color !important;
 }
 
-.externalLinkIcon {
+.external-link-icon {
   float: left;
   margin-top: 4px;
 }
 
-.signUpsignInFooter {
+.sign-up-sign-in-footer {
   left: 0;
   right: 0;
 }
 
-.footerText {
+.footer-text {
   color: $base-color;
   font-size: 0.6875rem;
   font-weight: 400;
 }
 
-.policiesLink {
+.policies-link {
   color: $base-color;
 }

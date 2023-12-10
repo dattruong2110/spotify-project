@@ -51,9 +51,9 @@ const SignUp = () => {
   // }, []);
 
   return (
-    <div className="signUpPage">
-      <header className="signUpHeader">
-        <Link className="logoLink" to={"/"}>
+    <div className="sign-up-page">
+      <header className="sign-up-header">
+        <Link className="logo-link" to={"/"}>
           <svg
             role="img"
             viewBox="0 0 78 24"
@@ -68,45 +68,45 @@ const SignUp = () => {
           </svg>
         </Link>
       </header>
-      <main className="signUpMain">
-        <Container className="d-grid justify-content-center containerForm">
-          <h1 className="signUpTitle">Sign up to start listening</h1>
+      <main className="sign-up-main">
+        <Container className="d-grid justify-content-center container-form">
+          <h1 className="sign-up-title">Sign up to start listening</h1>
           <Formik
             initialValues={form}
             validate={handleValidate}
             onSubmit={handleSubmit}
           >
             {({ errors, handleSubmit }) => (
-              <Form className="signUpForm" onSubmit={handleSubmit}>
+              <Form className="sign-up-form" onSubmit={handleSubmit}>
                 <Form.Group
                   controlId="signUpFormId"
-                  className={`customInput ${
-                    errors.email || errors.password ? "customInputError" : ""
+                  className={`custom-input ${
+                    errors.email || errors.password ? "custom-input-error" : ""
                   }`}
                 >
-                  <Form.Label className="float-start formLabel">
+                  <Form.Label className="float-start form-label">
                     Email address
                   </Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
                     placeholder="name@domain.com"
-                    className="inputForm"
+                    className="input-form"
                     onChange={handleChange}
                   />
                   <p className="error">{errors.email}</p>
-                  <Form.Label className="float-start formLabel">
+                  <Form.Label className="float-start form-label">
                     Password
                   </Form.Label>
                   <Form.Control
                     type="password"
                     name="password"
                     placeholder="*********"
-                    className="inputForm"
+                    className="input-form"
                     onChange={handleChange}
                   />
                   <p className="error">{errors.password}</p>
-                  <Button type="submit" className="submitBtn">
+                  <Button type="submit" className="submit-btn">
                     Submit
                   </Button>
                 </Form.Group>
@@ -118,29 +118,29 @@ const SignUp = () => {
             navigate("/")
           ) : (
             <Button
-              className="btnExternalLink"
+              className="btn-external-link"
               onClick={handleSignInWithGoogle}
             >
-              <i className="fa-brands fa-google externalLinkIcon"></i>
+              <i className="fa-brands fa-google external-link-icon"></i>
               <span>Sign up with Google</span>
             </Button>
           )}
           <hr />
-          <span className="text-center alreadyAccount">
+          <span className="text-center already-account">
             Already have an account?{" "}
-            <Link to={"/login"} className="loginLink">
+            <Link to={"/login"} className="login-link">
               Log in here
             </Link>
           </span>
         </Container>
       </main>
-      <footer className="signUpsignInFooter position-fixed bottom-0">
+      <footer className="sign-up-sign-in-footer position-fixed bottom-0">
         <Container>
-          <p className="text-center footerText">
+          <p className="text-center footer-text">
             This site is protected by reCAPTCHA and the Google <br />
             <Link
               to={"https://policies.google.com/privacy"}
-              className="policiesLink"
+              className="policies-link"
               target="_blank"
             >
               Privacy Policy
@@ -148,7 +148,7 @@ const SignUp = () => {
             and{" "}
             <Link
               to={"https://policies.google.com/terms"}
-              className="policiesLink"
+              className="policies-link"
               target="_blank"
             >
               Terms of Service
