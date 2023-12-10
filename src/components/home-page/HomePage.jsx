@@ -1,8 +1,4 @@
 import React from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import Footer from "../footer/Footer";
-import SideBar from "../side-bar/SideBar";
-import { Link } from "react-router-dom";
 import "./HomePage.scss";
 
 const HomePage = () => {
@@ -18,7 +14,6 @@ const HomePage = () => {
               />
             </a>
           </div>
-
           <div class="navigation">
             <ul>
               <li>
@@ -27,14 +22,12 @@ const HomePage = () => {
                   <span>Home</span>
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span class="fa fa-search"></span>
                   <span>Search</span>
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span class="fa fas fa-book"></span>
@@ -43,7 +36,6 @@ const HomePage = () => {
               </li>
             </ul>
           </div>
-
           <div class="navigation">
             <ul>
               <li>
@@ -52,7 +44,6 @@ const HomePage = () => {
                   <span>Create Playlist</span>
                 </a>
               </li>
-
               <li>
                 <a href="#">
                   <span class="fa fas fa-heart"></span>
@@ -61,7 +52,6 @@ const HomePage = () => {
               </li>
             </ul>
           </div>
-
           <div class="policies">
             <ul>
               <li>
@@ -73,14 +63,12 @@ const HomePage = () => {
             </ul>
           </div>
         </div>
-
         <div class="main-container">
           <div class="topbar">
             <div class="prev-next-buttons">
               <button type="button" class="fa fas fa-chevron-left"></button>
               <button type="button" class="fa fas fa-chevron-right"></button>
             </div>
-
             <div class="navbar">
               <ul>
                 <li>
@@ -100,7 +88,6 @@ const HomePage = () => {
               <button type="button">Log In</button>
             </div>
           </div>
-
           <div class="spotify-playlists">
             <h2>Playlist For You</h2>
             <div class="list">
