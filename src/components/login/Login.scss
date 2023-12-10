@@ -20,8 +20,8 @@ $green-btn-color: #1fdf64;
 }
 
 .form-remember-me .form-check-input:checked {
-  background-color: $green-btn-color !important;
-  border-color: $green-btn-color !important;
+  background-color: $green-btn-color;
+  border-color: $green-btn-color;
 }
 
 .forgot-password {

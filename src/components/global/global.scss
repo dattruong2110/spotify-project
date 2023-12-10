@@ -25,28 +25,29 @@ body {
 }
 
 .input-form {
-  background-color: $background-color-base !important;
-  color: $white-text-color !important;
+  background-color: $background-color-base;
+  color: $white-text-color;
   margin: 10px 0;
 }
 
 .input-form::placeholder {
-  color: $base-color !important;
+  color: $base-color;
 }
 
 .submit-btn {
-  background-color: $green-btn-color !important;
-  border: none !important;
-  border-radius: $btn-border-radius !important;
+  background-color: $green-btn-color;
+  border: none;
+  border-radius: $btn-border-radius;
   margin: 20px 0;
   width: 100%;
   height: 50px;
-  color: #000 !important;
-  font-weight: 700 !important;
+  color: #000;
+  font-weight: 700;
 }
 
 .submit-btn:hover {
-  background-color: #13eb5f !important;
+  background-color: #13eb5f;
+  color: #000;
 }
 
 .custom-input {
@@ -68,14 +69,15 @@ body {
 }
 
 .btn-external-link {
-  background-color: $background-color-base !important;
-  border-color: $base-color !important;
-  border-radius: $btn-border-radius !important;
+  background-color: $background-color-base;
+  border-color: $base-color;
+  border-radius: $btn-border-radius;
   margin: 20px 0;
 }
 
 .btn-external-link:hover {
-  border-color: $white-text-color !important;
+  border-color: $white-text-color;
+  background-color: $background-color-base;
 }
 
 .external-link-icon {

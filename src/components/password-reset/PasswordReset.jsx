@@ -4,6 +4,11 @@ import "./PasswordReset.scss";
 import { Button, Container, Form } from "react-bootstrap";
 import { Formik } from "formik";
 import { REGEX } from "../../constants/regex";
+import {
+  INVALID_EMAIL_ADDRESS,
+  REQUIRED,
+} from "../../constants/validateConstant";
+import { SENT_TO_YOUR_MAIL } from "../../constants/submitConstant";
 
 const PasswordReset = () => {
   const [form, setForm] = useState({});
@@ -18,16 +23,16 @@ const PasswordReset = () => {
   const handleValidate = () => {
     const errors = {};
     if (!form.email) {
-      errors.email = "Required";
+      errors.email = REQUIRED;
     } else if (!REGEX.email.test(form.email)) {
-      errors.email = "Invalid email address";
+      errors.email = INVALID_EMAIL_ADDRESS;
     }
 
     return errors;
   };
 
   const handleSubmit = () => {
-    alert("Sent to your mail!");
+    alert(SENT_TO_YOUR_MAIL);
   };
 
   return (

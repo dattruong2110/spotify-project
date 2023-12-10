@@ -6,6 +6,12 @@ import { auth, provider } from "../../configs/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { REGEX } from "../../constants/regex";
 import { Formik } from "formik";
+import {
+  INVALID_EMAIL_ADDRESS,
+  INVALID_PASSWORD,
+  REQUIRED,
+} from "../../constants/validateConstant";
+import { LOG_IN_SUCCESSFULLY } from "../../constants/submitConstant";
 
 const Login = () => {
   const [form, setForm] = useState({});
@@ -23,15 +29,16 @@ const Login = () => {
   const handleValidate = () => {
     const errors = {};
     if (!form.email) {
-      errors.email = "Required";
+      errors.email = REQUIRED;
     } else if (!REGEX.email.test(form.email)) {
-      errors.email = "Invalid email address";
+      errors.email = INVALID_EMAIL_ADDRESS;
     }
     if (!form.password) {
-      errors.password = "Required";
+      errors.password = REQUIRED;
     } else if (!REGEX.password.test(form.password)) {
-      errors.password = "Invalid password";
+      errors.password = INVALID_PASSWORD;
     }
+
     return errors;
   };
 
@@ -40,7 +47,7 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    alert("Login successfully!!!");
+    alert(LOG_IN_SUCCESSFULLY);
     navigate("/");
   };
 
@@ -50,10 +57,6 @@ const Login = () => {
       localStorage.setItem("email", data.user.email);
     });
   };
-
-  // useEffect(() => {
-  //   setValue(localStorage.getItem("email"));
-  // }, []);
 
   return (
     <div className="login-page">

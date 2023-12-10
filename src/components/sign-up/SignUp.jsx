@@ -6,6 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "../../configs/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { REGEX } from "../../constants/regex";
+import {
+  INVALID_EMAIL_ADDRESS,
+  INVALID_PASSWORD,
+  REQUIRED,
+} from "../../constants/validateConstant";
+import { SIGN_UP_SUCCESSFULLY } from "../../constants/submitConstant";
 
 const SignUp = () => {
   const [form, setForm] = useState({});
@@ -22,20 +28,21 @@ const SignUp = () => {
   const handleValidate = () => {
     const errors = {};
     if (!form.email) {
-      errors.email = "Required";
+      errors.email = REQUIRED;
     } else if (!REGEX.email.test(form.email)) {
-      errors.email = "Invalid email address";
+      errors.email = INVALID_EMAIL_ADDRESS;
     }
     if (!form.password) {
-      errors.password = "Required";
+      errors.password = REQUIRED;
     } else if (!REGEX.password.test(form.password)) {
-      errors.password = "Invalid password";
+      errors.password = INVALID_PASSWORD;
     }
+
     return errors;
   };
 
   const handleSubmit = () => {
-    alert("Sign up in successfully!!!");
+    alert(SIGN_UP_SUCCESSFULLY);
     navigate("/login");
   };
 
@@ -45,10 +52,6 @@ const SignUp = () => {
       localStorage.setItem("email", data.user.email);
     });
   };
-
-  // useEffect(() => {
-  //   setValue(localStorage.getItem("email"));
-  // }, []);
 
   return (
     <div className="sign-up-page">
