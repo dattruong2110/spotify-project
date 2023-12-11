@@ -54,6 +54,21 @@ header .container .header-menu-left-bar a:hover,
 header .container .header-menu-right-bar a:hover {
   color: #1ed760;
 }
+
+header .container .header-menu-right-bar button {
+  background-color: #d9dadc;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 30px;
+  border: 0px;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+header .container .header-menu-right-bar button:hover {
+  background-color: #f2f2f2;
+}
 header .container .header-menu-separator {
   margin-left: 17px;
   margin-right: 17px;
@@ -66,7 +81,7 @@ main {
   align-items: center;
   justify-content: center;
   min-height: 900px;
-  background-color: #2941ab;
+  background-color: #3122bb;
   background-image: url(https://www-growth.scdn.co/static/home/bursts.svg);
   background-size: 170%;
   background-position: 44% 7%;

@@ -27,7 +27,7 @@ const LandingPage = () => {
               <div class="header-menu-separator"></div>
               <div class="header-menu-right-bar">
                 <a href="#">Sign up</a>
-                <a href="#">Log in</a>
+                <button href="#">Log in</button>
               </div>
             </div>
           </div>

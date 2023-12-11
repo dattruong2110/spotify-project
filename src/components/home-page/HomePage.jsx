@@ -2,6 +2,8 @@ import React from "react";
 import "./HomePage.scss";
 import SideBar from "../side-bar/SideBar";
 import FooterPreview from "../footer/FooterPreview";
+import Header from "../header/Header";
+
 
 const HomePage = () => {
   return (
@@ -9,30 +11,7 @@ const HomePage = () => {
       <body>
         <SideBar />
         <div class="main-container">
-          <div class="topbar">
-            <div class="prev-next-buttons">
-              <button type="button" class="fa fas fa-chevron-left"></button>
-              <button type="button" class="fa fas fa-chevron-right"></button>
-            </div>
-            <div class="navbar">
-              <ul>
-                <li>
-                  <a href="#">Premium</a>
-                </li>
-                <li>
-                  <a href="#">Support</a>
-                </li>
-                <li>
-                  <a href="#">Download</a>
-                </li>
-                <li class="divider">|</li>
-                <li>
-                  <a href="#">Sign Up</a>
-                </li>
-              </ul>
-              <button type="button">Log In</button>
-            </div>
-          </div>
+          <Header />
           <div class="spotify-playlists">
             <h2>Playlist Hit</h2>
             <div class="list">
