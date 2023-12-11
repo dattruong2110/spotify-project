@@ -9,7 +9,7 @@ const HomePage = () => {
     <>
       <body>
         <SideBar />
-        <div class="main-container">
+        <div class="main-container-homepage">
           <Header />
           <div class="spotify-playlists">
             <h2>Playlist Hit</h2>

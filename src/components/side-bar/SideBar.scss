@@ -25,7 +25,7 @@ $font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 10px 0px;
 }
 .sidebar .navigation ul li a {
-  color: #b3b3b3;
+  color: $base-text-color;
   text-decoration: none;
   font-weight: bold;
   font-size: 13px;
