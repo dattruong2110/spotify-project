@@ -3,20 +3,8 @@ import "./HomePage.scss";
 import SideBar from "../side-bar/SideBar";
 import FooterPreview from "../footer/FooterPreview";
 import Header from "../header/Header";
-import { useNavigate } from "react-router";
-
 
 const HomePage = () => {
-  const navigate = useNavigate();
-
-  const handleNavigateSignUp = () => {
-    navigate("/signup");
-  };
-
-  const handleNavigateLogin = () => {
-    navigate("/login");
-  };
-
   return (
     <>
       <body>
