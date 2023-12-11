@@ -46,7 +46,7 @@ const LandingPage = () => {
 
           <p>Millions of songs and podcasts. No credit card needed.</p>
 
-          <a href="spotify-playlist.html">Get Spotify Free</a>
+          <a href="homepage">Get Spotify Free</a>
         </div>
       </main>
 
