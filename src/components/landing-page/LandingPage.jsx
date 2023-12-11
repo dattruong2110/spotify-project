@@ -1,5 +1,5 @@
 import React from "react";
-import "./LandingPage.css";
+import "./LandingPage.scss";
 
 const LandingPage = () => {
   return (
@@ -201,12 +201,12 @@ const LandingPage = () => {
                       fill="#8F8F8F"
                     ></path>
                   </svg>
-                  USA
+                  VIETNAM
                 </a>
               </div>
 
               <div class="footer-menu-bottom-bar-informations-bottom">
-                © 2022 Spotify AB
+                © 2023 Spotify Project
               </div>
             </div>
           </div>
