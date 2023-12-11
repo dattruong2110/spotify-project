@@ -1,5 +1,5 @@
 $background-color-base: #121212;
-$bold-text-color: #fff;
+$white-text-color: #fff;
 $base-text-color: #a7a7a7;
 $card-color: #242424;
 $border-radius-oval: 9999px;
@@ -24,12 +24,8 @@ $font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 20px;
 }
 
-.logoLink {
+.logo > .logoLink {
   padding: 0 24px;
-}
-
-.logoLink > svg {
-  fill: $bold-text-color;
 }
 
 .menuList {
@@ -50,7 +46,7 @@ $font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .menuItem > a:hover {
-  color: $bold-text-color;
+  color: $white-text-color;
 }
 
 .menuItem a > i {

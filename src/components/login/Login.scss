@@ -1,0 +1,39 @@
+$base-color: #a7a7a7;
+$white-text-color: #fff;
+$green-btn-color: #1fdf64;
+
+.login-header {
+  padding: 32px 0px 32px 51px;
+}
+
+.login-header > .logo-link {
+  padding: 0;
+}
+
+.login-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.login-form {
+  margin-top: 10px;
+}
+
+.form-remember-me .form-check-input:checked {
+  background-color: $green-btn-color;
+  border-color: $green-btn-color;
+}
+
+.forgot-password {
+  color: $white-text-color;
+}
+
+.do-not-have-account {
+  color: $base-color;
+  font-size: 0.9rem;
+}
+
+.signup-link {
+  color: $white-text-color;
+  font-size: 0.9rem;
+}

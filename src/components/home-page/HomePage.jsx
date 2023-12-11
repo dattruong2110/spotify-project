@@ -3,9 +3,19 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import Footer from "../footer/Footer";
 import SideBar from "../side-bar/SideBar";
 import "./HomePage.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleNavigateSignUp = () => {
+    navigate("/signup");
+  };
+
+  const handleNavigateLogin = () => {
+    navigate("/login");
+  };
+
   return (
     <Container fluid className="spotifyWebApp d-grid">
       <Row className="topRow">
@@ -35,10 +45,18 @@ const HomePage = () => {
                 </Button>
                 <div className="verticalLine"></div>
                 <div>
-                  <Button variant="btn outline-light btnHeaderDark">
+                  <Button
+                    variant="btn outline-light btnHeaderDark"
+                    onClick={handleNavigateSignUp}
+                  >
                     Sign up
                   </Button>
-                  <Button variant="btn btn-light btnLogin">Log in</Button>
+                  <Button
+                    variant="btn btn-light btnLogin"
+                    onClick={handleNavigateLogin}
+                  >
+                    Log in
+                  </Button>
                 </div>
               </div>
             </header>
