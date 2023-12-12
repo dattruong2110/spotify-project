@@ -1,7 +1,10 @@
 import React from "react";
 import "./header.scss";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <header>
@@ -23,10 +26,12 @@ const Header = () => {
               </li>
               <li class="divider">|</li>
               <li>
-                <a href="#">Sign Up</a>
+                <a href="/signup">Sign Up</a>
               </li>
             </ul>
-            <button type="button">Log In</button>
+            <button type="button" onClick={() => navigate("/login")}>
+              Log In
+            </button>
           </div>
         </div>
       </header>
