@@ -1,7 +1,10 @@
 import React from "react";
 import "./LandingPage.scss";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <body>
@@ -26,8 +29,8 @@ const LandingPage = () => {
               </div>
               <div class="header-menu-separator"></div>
               <div class="header-menu-right-bar">
-                <a href="#">Sign up</a>
-                <button href="#">Log in</button>
+                <a href="/signup">Sign up</a>
+                <button onClick={() => navigate("/login")}>Log in</button>
               </div>
             </div>
           </div>

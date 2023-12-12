@@ -71,7 +71,7 @@ const SignUp = () => {
           </svg>
         </Link>
       </header>
-      <main className="sign-up-main">
+      <div className="sign-up-main">
         <Container className="d-grid justify-content-center container-form">
           <h1 className="sign-up-title">Sign up to start listening</h1>
           <Formik
@@ -136,7 +136,7 @@ const SignUp = () => {
             </Link>
           </span>
         </Container>
-      </main>
+      </div>
       <footer className="sign-up-sign-in-footer position-fixed bottom-0">
         <Container>
           <p className="text-center footer-text">

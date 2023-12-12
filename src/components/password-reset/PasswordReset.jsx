@@ -53,7 +53,7 @@ const PasswordReset = () => {
           </svg>
         </Link>
       </header>
-      <main className="reset-password-main">
+      <div className="reset-password-main">
         <Container className="d-grid justify-content-center container-form">
           <h1 className="reset-password-title">Password Reset</h1>
           <span className="reset-password-description">
@@ -97,7 +97,7 @@ const PasswordReset = () => {
             <Link className="spotify-support-link">Spotify Support</Link>
           </span>
         </Container>
-      </main>
+      </div>
     </div>
   );
 };
