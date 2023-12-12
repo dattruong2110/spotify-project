@@ -93,7 +93,7 @@ main .container {
   flex-direction: column;
   gap: 45px;
 }
-main .container div h1 {
+main .container div .h1-landingpage {
   width: 800px;
   color: #1ed760;
   font-family: "Poppins", sans-serif;
@@ -103,11 +103,11 @@ main .container div h1 {
   letter-spacing: -5px;
   transform: translateX(156px);
 }
-main .container p {
+main .container .p-landingpage {
   color: #56d762;
   font-size: 18px;
 }
-main .container a {
+main .container .a-landingpage {
   padding: 17px 32px;
   position: relative;
   color: #1a3893;
@@ -121,7 +121,7 @@ main .container a {
   z-index: 10;
   transition: transform 0.15s ease-in-out;
 }
-main .container a:before {
+main .container .a-landingpage:before {
   content: "";
   position: absolute;
   top: -6px;
@@ -134,42 +134,42 @@ main .container a:before {
   opacity: 0;
   transition: all 0.25s ease-in-out;
 }
-main .container a:hover {
+main .container .a-landingpage:hover {
   transform: scale(1.03);
 }
-main .container a:active {
+main .container .a-landingpage:active {
   transform: scale(1);
 }
-main .container a:active:before {
+main .container .a-landingpage:active:before {
   opacity: 1;
 }
 
-footer {
+.footer-landingpage {
   background-color: #000000;
 }
-footer .container {
+.footer-landingpage .container {
   padding-top: 80px;
   padding-bottom: 60px;
 }
-footer .container .footer-menu-top-bar {
+.footer-landingpage .container .footer-menu-top-bar {
   display: flex;
   justify-content: space-between;
   margin-bottom: 125px;
 }
-footer .container .footer-menu-top-bar-logo {
+.footer-landingpage .container .footer-menu-top-bar-logo {
   width: 132px;
   height: 40px;
 }
-footer .container .footer-menu-top-bar-logo svg {
+.footer-landingpage .container .footer-menu-top-bar-logo svg {
   background-color: #ffffff;
 }
-footer .container .footer-menu-top-bar-links {
+.footer-landingpage .container .footer-menu-top-bar-links {
   display: flex;
   gap: 100px;
 }
-footer .container .footer-menu-top-bar-links-company div,
-footer .container .footer-menu-top-bar-links-communities div,
-footer .container .footer-menu-top-bar-links-useful-links div {
+.footer-landingpage .container .footer-menu-top-bar-links-company div,
+.footer-landingpage .container .footer-menu-top-bar-links-communities div,
+.footer-landingpage .container .footer-menu-top-bar-links-useful-links div {
   margin-top: 20px;
   margin-bottom: 28px;
   color: #919496;
@@ -178,39 +178,49 @@ footer .container .footer-menu-top-bar-links-useful-links div {
   text-transform: uppercase;
   letter-spacing: 1.28px;
 }
-footer .container .footer-menu-top-bar-links-company ul,
-footer .container .footer-menu-top-bar-links-communities ul,
-footer .container .footer-menu-top-bar-links-useful-links ul {
+.footer-landingpage .container .footer-menu-top-bar-links-company ul,
+.footer-landingpage .container .footer-menu-top-bar-links-communities ul,
+.footer-landingpage .container .footer-menu-top-bar-links-useful-links ul {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-footer .container .footer-menu-top-bar-links-company ul li,
-footer .container .footer-menu-top-bar-links-communities ul li,
-footer .container .footer-menu-top-bar-links-useful-links ul li {
+.footer-landingpage .container .footer-menu-top-bar-links-company ul li,
+.footer-landingpage .container .footer-menu-top-bar-links-communities ul li,
+.footer-landingpage .container .footer-menu-top-bar-links-useful-links ul li {
   list-style-type: none;
 }
-footer .container .footer-menu-top-bar-links-company ul li a,
-footer .container .footer-menu-top-bar-links-communities ul li a,
-footer .container .footer-menu-top-bar-links-useful-links ul li a {
+.footer-landingpage .container .footer-menu-top-bar-links-company ul li a,
+.footer-landingpage .container .footer-menu-top-bar-links-communities ul li a,
+.footer-landingpage .container .footer-menu-top-bar-links-useful-links ul li a {
   padding-top: 7px;
   padding-bottom: 7px;
   color: #ffffff;
   font-size: 15px;
   text-decoration: none;
 }
-footer .container .footer-menu-top-bar-links-company ul li a:hover,
-footer .container .footer-menu-top-bar-links-communities ul li a:hover,
-footer .container .footer-menu-top-bar-links-useful-links ul li a:hover {
+.footer-landingpage .container .footer-menu-top-bar-links-company ul li a:hover,
+.footer-landingpage
+  .container
+  .footer-menu-top-bar-links-communities
+  ul
+  li
+  a:hover,
+.footer-landingpage
+  .container
+  .footer-menu-top-bar-links-useful-links
+  ul
+  li
+  a:hover {
   color: #1ed760;
 }
-footer .container .footer-menu-top-bar-socials {
+.footer-landingpage .container .footer-menu-top-bar-socials {
   display: flex;
   gap: 25px;
 }
-footer .container .footer-menu-top-bar-socials-instagram,
-footer .container .footer-menu-top-bar-socials-twitter,
-footer .container .footer-menu-top-bar-socials-facebook {
+.footer-landingpage .container .footer-menu-top-bar-socials-instagram,
+.footer-landingpage .container .footer-menu-top-bar-socials-twitter,
+.footer-landingpage .container .footer-menu-top-bar-socials-facebook {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,47 +230,47 @@ footer .container .footer-menu-top-bar-socials-facebook {
   border-radius: 50%;
   cursor: pointer;
 }
-footer .container .footer-menu-top-bar-socials-instagram:hover svg,
-footer .container .footer-menu-top-bar-socials-twitter:hover svg,
-footer .container .footer-menu-top-bar-socials-facebook:hover svg {
+.footer-landingpage .container .footer-menu-top-bar-socials-instagram:hover svg,
+.footer-landingpage .container .footer-menu-top-bar-socials-twitter:hover svg,
+.footer-landingpage .container .footer-menu-top-bar-socials-facebook:hover svg {
   color: #1ed760;
 }
-footer .container .footer-menu-top-bar-socials-instagram svg,
-footer .container .footer-menu-top-bar-socials-twitter svg,
-footer .container .footer-menu-top-bar-socials-facebook svg {
+.footer-landingpage .container .footer-menu-top-bar-socials-instagram svg,
+.footer-landingpage .container .footer-menu-top-bar-socials-twitter svg,
+.footer-landingpage .container .footer-menu-top-bar-socials-facebook svg {
   width: 24px;
   height: 24px;
   color: #ffffff;
 }
-footer .container .footer-menu-bottom-bar {
+.footer-landingpage .container .footer-menu-bottom-bar {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
 }
-footer .container .footer-menu-bottom-bar-links ul {
+.footer-landingpage .container .footer-menu-bottom-bar-links ul {
   display: flex;
   gap: 25px;
 }
-footer .container .footer-menu-bottom-bar-links ul li {
+.footer-landingpage .container .footer-menu-bottom-bar-links ul li {
   list-style-type: none;
 }
-footer .container .footer-menu-bottom-bar-links ul li a {
+.footer-landingpage .container .footer-menu-bottom-bar-links ul li a {
   padding-top: 7px;
   padding-bottom: 7px;
   color: #919496;
   font-size: 12px;
   text-decoration: none;
 }
-footer .container .footer-menu-bottom-bar-links ul li a:hover {
+.footer-landingpage .container .footer-menu-bottom-bar-links ul li a:hover {
   color: #1ed760;
 }
-footer .container .footer-menu-bottom-bar-informations {
+.footer-landingpage .container .footer-menu-bottom-bar-informations {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
   gap: 12px;
 }
-footer .container .footer-menu-bottom-bar-informations-top a {
+.footer-landingpage .container .footer-menu-bottom-bar-informations-top a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -269,14 +279,17 @@ footer .container .footer-menu-bottom-bar-informations-top a {
   font-size: 13px;
   text-decoration: none;
 }
-footer .container .footer-menu-bottom-bar-informations-top a:hover {
+.footer-landingpage
+  .container
+  .footer-menu-bottom-bar-informations-top
+  a:hover {
   color: #1ed760;
 }
-footer .container .footer-menu-bottom-bar-informations-top a svg {
+.footer-landingpage .container .footer-menu-bottom-bar-informations-top a svg {
   width: 12px;
   height: 12px;
 }
-footer .container .footer-menu-bottom-bar-informations-bottom {
+.footer-landingpage .container .footer-menu-bottom-bar-informations-bottom {
   color: #919496;
   font-size: 12px;
 }

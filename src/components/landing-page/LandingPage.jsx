@@ -36,16 +36,20 @@ const LandingPage = () => {
         <main>
           <div class="container">
             <div>
-              <h1>Listening is everything</h1>
+              <h1 className="h1-landingpage">Listening is everything</h1>
             </div>
 
-            <p>Millions of songs and podcasts. No credit card needed.</p>
+            <p className="p-landingpage">
+              Millions of songs and podcasts. No credit card needed.
+            </p>
 
-            <a href="homepage">Get Spotify Free</a>
+            <a href="homepage" className="a-landingpage">
+              Get Spotify Free
+            </a>
           </div>
         </main>
 
-        <footer>
+        <footer className="footer-landingpage">
           <div class="container">
             <div class="footer-menu-top-bar">
               <a class="footer-menu-top-bar-logo" href="">
