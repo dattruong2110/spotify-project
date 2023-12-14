@@ -34,7 +34,8 @@ const HomePage = () => {
                 </Button>
               </div>
               <div className="mainHeaderRight d-flex align-items-center">
-                <Button variant="btn outline-light btnHeaderDark">
+                <Button 
+                        variant="btn outline-light btnHeaderDark">
                   Premium
                 </Button>
                 <Button variant="btn outline-light btnHeaderDark">
