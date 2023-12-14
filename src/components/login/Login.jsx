@@ -76,7 +76,7 @@ const Login = () => {
           </svg>
         </Link>
       </header>
-      <main className="login-main">
+      <div className="login-main">
         <Container className="d-grid justify-content-center container-form">
           <h1 className="login-title">Login to Spotify</h1>
           {value ? (
@@ -155,7 +155,7 @@ const Login = () => {
             </Link>
           </span>
         </Container>
-      </main>
+      </div>
       <footer className="sign-up-sign-in-footer position-fixed bottom-0">
         <Container>
           <p className="text-center footer-text">

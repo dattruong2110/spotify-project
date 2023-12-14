@@ -1,131 +1,72 @@
 $background-color-base: #121212;
-$white-text-color: #fff;
+$bold-text-color: #fff;
 $base-text-color: #a7a7a7;
 $card-color: #242424;
 $border-radius-oval: 9999px;
 $font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
-.sideBar {
-  display: grid;
-  gap: 8px;
-  height: 100%;
-  width: 100%;
-  position: sticky;
+.sidebar {
+  position: fixed;
+  left: 0;
   top: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: #000000;
+  padding: 24px;
 }
-
-.sideBarHead {
-  background-color: $background-color-base;
-  width: 100%;
-  border-radius: 8px;
+.sidebar .logo img {
+  width: 130px;
 }
-
-.logo {
+.sidebar .navigation ul {
+  list-style: none;
   margin-top: 20px;
 }
-
-.logo > .logoLink {
-  padding: 0 24px;
+.sidebar .navigation ul li {
+  padding: 10px 0px;
 }
-
-.menuList {
-  list-style: none;
-  padding-left: 24px;
-}
-
-.menuItem {
-  margin: 20px 0;
-}
-
-.menuItem > a {
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: $font-family-base;
+.sidebar .navigation ul li a {
   color: $base-text-color;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
 }
-
-.menuItem > a:hover {
-  color: $white-text-color;
+.sidebar .navigation ul li a:hover,
+.sidebar .navigation ul li a:active,
+.sidebar .navigation ul li a:focus {
+  color: #ffffff;
 }
-
-.menuItem a > i {
-  margin-right: 20px;
-  font-size: 1.4rem;
+.sidebar .navigation ul li a:hover .fa,
+.sidebar .navigation ul li a:active .fa,
+.sidebar .navigation ul li a:focus .fa {
+  color: #b3b3b3;
 }
-
-.sideBarBody {
-  background-color: $background-color-base;
-  width: 100%;
-  border-radius: 8px;
+.sidebar .navigation ul li .fa {
+  font-size: 20px;
+  margin-right: 10px;
 }
-
-.sideBarBodyLibraryHeader {
-  padding: 24px;
-  font-weight: 600;
-  font-size: 1rem;
-  font-family: $font-family-base;
-  color: $base-text-color;
+.sidebar .navigation ul li a:hover .fa:hover,
+.sidebar .navigation ul li a:hover .fa:active,
+.sidebar .navigation ul li a:hover .fa:focus {
+  color: #ffffff;
 }
-
-.yourLibrary {
-  cursor: pointer;
+.sidebar .policies {
+  position: absolute;
+  bottom: 100px;
 }
-
-.yourLibrary > i {
-  margin-right: 20px;
-  font-size: 1.4rem;
-}
-
-.addBtn {
-  cursor: pointer;
-}
-
-.sideBarBodyLibraryBody {
-  padding: 0 8px 8px;
-}
-
-.cardLibrary {
-  margin-bottom: 20px;
-  padding: 16px 20px;
-  border-radius: 8px;
-  background-color: $card-color;
-}
-
-.cardBtn {
-  margin-top: 20px;
-}
-
-.cardBtn > Button {
-  padding: 5px 15px;
-  border-radius: $border-radius-oval;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.sideBarBodyFooter {
-  margin: 24px 0;
-  padding: 24px;
-}
-
-.sideBarBodyMenuFooter {
+.sidebar .policies ul {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
 }
-
-.sideBarBodyMenuFooter > li {
-  margin-right: 16px;
-  font-size: 0.7rem;
-  color: $base-text-color;
-  padding: 5px;
+.sidebar .policies ul li {
+  padding-bottom: 5px;
 }
-
-.translateBtn {
-  padding-top: 15px;
+.sidebar .policies ul li a {
+  color: #b3b3b3;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 10px;
 }
-
-.translateBtn > Button {
-  border-radius: $border-radius-oval;
+.sidebar .policies ul li a:hover,
+.sidebar .policies ul li a:active,
+.sidebar .policies ul li a:focus {
+  text-decoration: underline;
 }

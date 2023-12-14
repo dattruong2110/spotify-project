@@ -1,175 +1,190 @@
 import React from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import Footer from "../footer/Footer";
-import SideBar from "../side-bar/SideBar";
 import "./HomePage.scss";
-import { Link, useNavigate } from "react-router-dom";
+import SideBar from "../side-bar/SideBar";
+import FooterPreview from "../footer/FooterPreview";
+import Header from "../header/Header";
 
 const HomePage = () => {
-  const navigate = useNavigate();
-
-  const handleNavigateSignUp = () => {
-    navigate("/signup");
-  };
-
-  const handleNavigateLogin = () => {
-    navigate("/login");
-  };
-
   return (
-    <Container fluid className="spotifyWebApp d-grid">
-      <Row className="topRow">
-        <Col md={2} lg={2} className="sideBarCol">
-          <SideBar />
-        </Col>
-        <Col md={10} lg={10}>
-          <div className="mainSection">
-            <header className="mainSectionHeader d-flex justify-content-between">
-              <div className="mainHeaderLeft">
-                <Button className="mainHeaderBtn">
-                  <i className="fa-solid fa-chevron-left"></i>
-                </Button>
-                <Button className="mainHeaderBtn">
-                  <i className="fa-solid fa-chevron-right"></i>
-                </Button>
+    <>
+      <body>
+        <SideBar />
+        <div class="main-container-homepage">
+          <Header />
+          <div class="spotify-playlists">
+            <h2>Playlist Hit</h2>
+            <div class="list">
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Today's Top Hits</h4>
+                <p>Rema & Selena Gomez are on top of the...</p>
               </div>
-              <div className="mainHeaderRight d-flex align-items-center">
-                <Button 
-                        variant="btn outline-light btnHeaderDark">
-                  Premium
-                </Button>
-                <Button variant="btn outline-light btnHeaderDark">
-                  Support
-                </Button>
-                <Button variant="btn outline-light btnHeaderDark">
-                  Download
-                </Button>
-                <div className="verticalLine"></div>
-                <div>
-                  <Button
-                    variant="btn outline-light btnHeaderDark"
-                    onClick={handleNavigateSignUp}
-                  >
-                    Sign up
-                  </Button>
-                  <Button
-                    variant="btn btn-light btnLogin"
-                    onClick={handleNavigateLogin}
-                  >
-                    Log in
-                  </Button>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
                 </div>
+                <h4>Today's Top Hits</h4>
+                <p>Rema & Selena Gomez are on top of the...</p>
               </div>
-            </header>
-            <main className="mainContent">
-              <header className="mainContentHeader d-flex justify-content-between align-items-center">
-                <h4>
-                  <Link className="mainContentHeaderLink mainContentHeaderLeftLink">
-                    Spotify Playlists
-                  </Link>
-                </h4>
-                <Link className="mainContentHeaderLink mainContentHeaderRightLink">
-                  Show all
-                </Link>
-              </header>
-              <main className="homePage">
-                <Row>
-                  <Col md={2} lg={2}>
-                    <Card className="homePageCard">
-                      <Card.Img
-                        variant="top"
-                        src="https://i.scdn.co/image/ab67706f0000000274fff2139c75c7083370e10c"
-                        className="homePageCardImg"
-                      />
-                      <Card.Body className="homePageCardBody">
-                        <Card.Title className="homePageCardTitle">
-                          chill lofi study beats
-                        </Card.Title>
-                        <Card.Text className="homePageCardDescription">
-                          The perfect study beats. Find your focus, crush your
-                          productivity.
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
-              </main>
-              <footer className="homePageFooter">
-                <div className="footerTopSection d-flex justify-content-between">
-                  <div className="footerInforAboutUs d-flex">
-                    <div className="footerLinkGroup">
-                      <ul className="footerLinkGroupList">
-                        <p className="footerLinkTitle">Company</p>
-                        <Link className="footerInforLink">
-                          <span>About</span>
-                        </Link>
-                        <Link className="footerInforLink">
-                          <span>Jobs</span>
-                        </Link>
-                        <Link className="footerInforLink">
-                          <span>For the Record</span>
-                        </Link>
-                      </ul>
-                    </div>
-                    <div className="footerLinkGroup">
-                      <ul className="footerLinkGroupList">
-                        <p className="footerLinkTitle">Communities</p>
-                        <Link className="footerInforLink">
-                          <span>For Artists</span>
-                        </Link>
-                        <Link className="footerInforLink">
-                          <span>Developers</span>
-                        </Link>
-                        <Link className="footerInforLink">
-                          <span>Advertising</span>
-                        </Link>
-                        <Link className="footerInforLink">
-                          <span>Investors</span>
-                        </Link>
-                        <Link className="footerInforLink">
-                          <span>Vendors</span>
-                        </Link>
-                      </ul>
-                    </div>
-                    <div className="footerLinkGroup">
-                      <ul className="footerLinkGroupList">
-                        <p className="footerLinkTitle">Useful links</p>
-                        <Link className="footerInforLink">
-                          <span>Support</span>
-                        </Link>
-                        <Link className="footerInforLink">
-                          <span>Free Mobile App</span>
-                        </Link>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="footerInforSocial">
-                    <Link className="socialLink">
-                      <i className="fa-brands fa-instagram"></i>
-                    </Link>
-                    <Link className="socialLink">
-                      <i className="fa-brands fa-twitter"></i>
-                    </Link>
-                    <Link className="socialLink">
-                      <i className="fa-brands fa-facebook"></i>
-                    </Link>
-                  </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
                 </div>
-                <hr />
-                <div className="footerBottomSection">
-                  <p className="copyRight">&copy; 2023 Spotify AB</p>
+                <h4>Today's Top Hits</h4>
+                <p>Rema & Selena Gomez are on top of the...</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
                 </div>
-              </footer>
-            </main>
+                <h4>Today's Top Hits</h4>
+                <p>Rema & Selena Gomez are on top of the...</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Today's Top Hits</h4>
+                <p>Rema & Selena Gomez are on top of the...</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Today's Top Hits</h4>
+                <p>Rema & Selena Gomez are on top of the...</p>
+              </div>
+            </div>
+            <hr />
           </div>
-        </Col>
-      </Row>
-      <Row className="botRow">
-        <Col xs={12}>
-          <Footer />
-        </Col>
-      </Row>
-    </Container>
+
+          <div class="spotify-playlists">
+            <h2>Collection The Best</h2>
+            <div class="list">
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Peaceful Piano</h4>
+                <p>Relax and indulge with beautiful piano pieces</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Peaceful Piano</h4>
+                <p>Relax and indulge with beautiful piano pieces</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Peaceful Piano</h4>
+                <p>Relax and indulge with beautiful piano pieces</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Peaceful Piano</h4>
+                <p>Relax and indulge with beautiful piano pieces</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Peaceful Piano</h4>
+                <p>Relax and indulge with beautiful piano pieces</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Peaceful Piano</h4>
+                <p>Relax and indulge with beautiful piano pieces</p>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <div class="spotify-playlists">
+            <h2>Spotify's Choice</h2>
+            <div class="list">
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Mood Booster</h4>
+                <p>Get happy with today's dose of feel-good...</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Mood Booster</h4>
+                <p>Get happy with today's dose of feel-good...</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Mood Booster</h4>
+                <p>Get happy with today's dose of feel-good...</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Mood Booster</h4>
+                <p>Get happy with today's dose of feel-good...</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Mood Booster</h4>
+                <p>Get happy with today's dose of feel-good...</p>
+              </div>
+              <div class="item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
+                <div class="play">
+                  <span class="fa fa-play"></span>
+                </div>
+                <h4>Mood Booster</h4>
+                <p>Get happy with today's dose of feel-good...</p>
+              </div>
+            </div>
+
+            <hr />
+          </div>
+
+          <FooterPreview />
+        </div>
+        <script
+          src="https://kit.fontawesome.com/23cecef777.js"
+          crossorigin="anonymous"
+        ></script>
+      </body>
+    </>
   );
 };
 
