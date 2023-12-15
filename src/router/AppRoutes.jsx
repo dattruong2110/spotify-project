@@ -6,6 +6,7 @@ import LandingPage from "../components/landing-page/LandingPage";
 import SignUp from "../components/sign-up/SignUp";
 import Login from "../components/login/Login";
 import PasswordReset from "../components/password-reset/PasswordReset";
+import Playlist from "../components/playlist/Playlist";
 
 const AppRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/reset-password" element={<PasswordReset />} />
+      <Route path="/playlist" element={<Playlist />} />
     </Routes>
   );
 };

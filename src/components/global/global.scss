@@ -2,6 +2,8 @@ $background-color-base: #121212;
 $base-color: #a7a7a7;
 $white-text-color: #fff;
 $green-btn-color: #1fdf64;
+$green-hover-btn-color: #12eb61;
+$table-background-color-base: #101010;
 $btn-border-radius: 500px;
 
 body {
@@ -10,9 +12,8 @@ body {
   padding: 8px 0px;
 }
 
-.spotifyWebApp {
-  height: 100%;
-  width: 100%;
+.no-scroll {
+  overflow: hidden;
 }
 
 .logo-link > svg {
@@ -46,7 +47,7 @@ body {
 }
 
 .submit-btn:hover {
-  background-color: #13eb5f;
+  background-color: $green-hover-btn-color;
   color: #000;
 }
 
@@ -98,4 +99,115 @@ body {
 
 .policies-link {
   color: $base-color;
+}
+
+.type {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.playlist-title,
+.album-title {
+  margin: 0.08em 0px 0.12em;
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+.playlist-infor,
+.album-infor {
+  margin-top: 8px;
+}
+
+.playlist-artist-image,
+.album-artist-image {
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.playlist-artist-name,
+.album-artist-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $white-text-color;
+  text-decoration: none;
+}
+
+.playlist-artist-name:hover,
+.album-artist-name:hover {
+  text-decoration: underline;
+}
+
+.likes,
+.songs-over-24-hr {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.likes::before,
+.songs-over-24-hr::before {
+  content: "•";
+  margin: 0 4px;
+}
+
+.over-24-hr {
+  color: $base-color;
+}
+
+.list-table-song {
+  background-color: $table-background-color-base;
+}
+
+.list-table-song .list-table-head,
+.list-compact-table-song .list-table-head {
+  background-color: $table-background-color-base;
+}
+
+.list-table-description,
+.list-song-table-description {
+  background-color: $table-background-color-base !important;
+}
+
+.list-song .list-table-head {
+  color: $base-color;
+}
+
+.list-table-song .list-table-description {
+  color: $base-color;
+  border: none;
+  padding-top: 20px;
+}
+
+.list-compact-table-song .list-table-description {
+  color: $base-color;
+  border: none;
+}
+
+.link-album {
+  color: $base-color;
+  text-decoration: none;
+}
+
+.link-album:hover {
+  color: $white-text-color;
+  text-decoration: underline;
+}
+
+.link-song {
+  color: $white-text-color;
+  text-decoration: none;
+}
+
+.link-song:hover {
+  text-decoration: underline;
+}
+
+.link-artist {
+  color: $base-color;
+  text-decoration: none;
+}
+
+.link-artist:hover {
+  color: $white-text-color;
+  text-decoration: underline;
 }
