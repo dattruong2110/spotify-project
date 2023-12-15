@@ -23,7 +23,7 @@ const LandingPage = () => {
             </a>
             <div class="header-menu">
               <div class="header-menu-left-bar">
-                <a href="#">Premium</a>
+                <a href="/premium" onClick={() => navigate("/premium")}>Premium</a>
                 <a href="#">Support</a>
                 <a href="#">Download</a>
               </div>

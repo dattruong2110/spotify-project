@@ -1,10 +1,7 @@
 import React from "react";
 import "./FooterPreview.scss";
-import { useNavigate } from "react-router-dom";
 
 const FooterPreview = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <footer className="footer">
@@ -17,9 +14,7 @@ const FooterPreview = () => {
             </p>
           </div>
           <div class="button">
-            <button type="button" onClick={() => navigate("/signup")}>
-              Sign up free
-            </button>
+            <button type="button">Sign up free</button>
           </div>
         </div>
       </footer>
