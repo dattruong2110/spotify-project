@@ -27,7 +27,9 @@ const Header = ({ isPlaylistPage, showPlayButton }) => {
           <div class="navbar">
             <ul>
               <li>
-                <a href="#">Premium</a>
+                <a href="#/premium"
+                onClick={() => navigate("/premium-page")}
+                >Premium</a>
               </li>
               <li>
                 <a href="#">Support</a>
