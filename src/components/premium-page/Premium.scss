@@ -14,43 +14,8 @@ article{
   padding: 0px;
 }
 
-// Css Banner
-.navbar-nav{
-  --rem: 16;
-  color: #1ed760;
-  font-family: CircularSp,spotify-circular,Helvetica,Arial,sans-serif;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center; 
-}
 
-.navbar-expand-lg .navbar-collapse {
-  display: flex!important;
-  flex-basis: auto;
-  flex-direction: row;
-  justify-content: end;
-}
-
-.navbar-nav .nav-item .nav-link img{
-  border-radius: 50%;
-  box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
-  object-fit: cover;
-
-}
-.navbar-nav .nav-item .vertical-bar{
-  display: flex;
-  flex-grow:inherit;
-  top: 0;
-  font-size: 50px;
-  font-weight: 400;
-  line-height: 1;
-  min-height: 54px;
-}
-
+//-----CSS Banner -----\\
 .main-content .intro .article{
   height: 500px;
 }
@@ -66,7 +31,7 @@ article{
 .main-content .menu .article{
   height: 1000px;
 }
-// css intro
+
 
 .main-content .intro .article .header{
   background-color:#9c2fec;
@@ -148,10 +113,11 @@ article{
 .main-content .intro .article .header .button .list-plans span:hover{
   transform: scale(1.05);
 }
+//-----END CSS BANNER -----\\
 
 
 
-//CSS about 
+//-----CSS ABOUT-----\\ 
 .main-content .about .article .header {
   background-color: white;
   color: black;
@@ -204,9 +170,9 @@ article{
   line-height: 1.5;
   font-size: 16px;
 }
+//-----END CSS ABOUT-----\\ 
 
-
-//css menu
+//-----CSS MENU-----\\
 .main-content .menu{
   background-color: #efefef;
   color: rgb(7, 5, 5);
@@ -235,7 +201,6 @@ article{
   justify-content: center;
   text-align: center;
   color:rgb(0, 0, 0);
-
 }
 
 .main-content .menu .article .payment-list .payment{
@@ -243,8 +208,6 @@ article{
   flex-grow:inherit;
   flex-direction: row;
 }
-
-
 
 .main-content .menu .article .detail-menu{
   display: flex;
@@ -255,8 +218,6 @@ article{
 
 }
 
-
-
 //menu detail
 .main-content .menu .article .detail-menu{
   display: flex;
@@ -266,7 +227,6 @@ article{
 }
 
 .main-content .menu .article .detail-menu .plan{
-
   padding: 20px 25px 30px 20px;
   margin: 40px 16px 0px 0px;
   background-color: rgb(255, 255, 255);
@@ -280,7 +240,6 @@ article{
   display: flex;
   align-items: flex-start;
 }
-
 
 .main-content .menu .article .detail-menu .plan .description{
   display: flex;
@@ -385,14 +344,14 @@ article{
 }
 
 .main-content .menu .article .detail-menu .plan .button a span {
-    margin: 20px 25px 20px 15px;
-    padding: 15px;
-    display:block;
-    flex-wrap: wrap;
-    background-color: black;
-    border-radius: 700px;
-    justify-content: center;
-    text-align: center;
+  margin: 20px 25px 20px 15px;
+  padding: 15px;
+  display:block;
+  flex-wrap: wrap;
+  background-color: black;
+  border-radius: 700px;
+  justify-content: center;
+  text-align: center;
 
 }
 .main-content .menu .article .detail-menu .plan .button p a{
@@ -408,17 +367,17 @@ article{
 
 .main-content .menu .article .payment-list .another span:hover::after{
   content: attr(data-tooltip); /* Sử dụng thuộc tính data-tooltip để chứa nội dung tooltip */
-    display: block;
-    position: auto;
-    background-color: #fcfcfc;
-    color: #080505;
-    padding: 15px;
-    max-width: 70px;
-    border-radius: 10px;
-    bottom: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
+  display: block;
+  position: auto;
+  background-color: #fcfcfc;
+  color: #080505;
+  padding: 15px;
+  max-width: 70px;
+  border-radius: 10px;
+  bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 span li {
   color: white;
@@ -426,120 +385,4 @@ span li {
   pointer-events: none; /* Ngăn sự kiện nhấp chuột được định hình bởi phần tử tooltip */
 }
 
-// css footer
-.footer{
-  background-color: black;
-  color: rgb(255, 255, 255);
-  display: flex;
-  flex-grow:inherit;
-  flex-direction: column;
-  justify-content: center;
-
-}
-.footer a{
-  text-decoration: none !important;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #ffffff;
-}
-.footer a:hover{
-  color: #1ed760;
-}
-.footer .layer0{
-  display: flex;
-  flex-grow:inherit;
-  flex-direction: row;
-  justify-content: space-around;
-  padding-top: 10px;
-}
-
-
-.footer .layer0 .top-links{
-  display: flex;
-  flex-grow:inherit;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 700px;
-
-  font-size: 11px;
-  font-weight: 500;
-}
-.footer .layer0 .top-links dl dt{
-  color: #919496;
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1.4;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.footer .layer0 .social-icons{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  display: block;
-  width: 24px;
-  height: 24px;
-  padding: 5px;
-
-}
-
-
-.footer .country a{
-  display: flex;
-  flex-grow:inherit;
-  justify-content: flex-end;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  border: 2px solid;
-
-}
-
-
-.footer .bottom-links{
-  display: flex;
-  flex-grow:inherit;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.footer .bottom-links ul {
-  width: auto;
-  display: flex;
-  flex-grow:inherit;
-  flex-direction: row;
-  justify-content: space-evenly;
-  font-size: 9px;
-  font-weight: 400;
-
-}
-.footer .bottom-links ul li a{
-  display: flex;
-  flex-grow:inherit;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  padding: 10px;
-  flex-shrink: 0;
-  font-size: 10px;
-  color: #919496;
-}
-
-.footer .bottom-links ul li a:hover{
-  color: #1ed760;
-}
-
-.footer .bottom-links .coppy-right{
-  font-size: 10px;
-  color: #919496;
-  display: flex;
-  flex-grow:inherit;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  padding: 10px;
-}
-
+//-----CSS MENU-----\\

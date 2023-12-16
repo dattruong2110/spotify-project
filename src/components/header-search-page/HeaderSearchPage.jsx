@@ -35,13 +35,13 @@ const HeaderSearchPage = () => {
           <div className="navbar-search">
             <ul>
               <li>
-                <a href="#">Premium</a>
+                <a href="/premium-page">Premium</a>
               </li>
               <li>
                 <a href="#">Support</a>
               </li>
               <li>
-                <a href="#">Download</a>
+                <a href="/downloan-page">Download</a>
               </li>
               <li className="divider-search">|</li>
               <li>

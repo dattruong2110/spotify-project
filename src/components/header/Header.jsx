@@ -27,13 +27,13 @@ const Header = ({ isPlaylistPage, showPlayButton }) => {
           <div class="navbar">
             <ul>
               <li>
-                <a href="#/premium">Premium</a>
+                <a href="/premium-page">Premium</a>
               </li>
               <li>
                 <a href="#">Support</a>
               </li>
               <li>
-                <a href="#">Download</a>
+                <a href="/download-page">Download</a>
               </li>
               <li class="divider">|</li>
               <li>
