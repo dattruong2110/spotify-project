@@ -23,9 +23,9 @@ const LandingPage = () => {
             </a>
             <div class="header-menu">
               <div class="header-menu-left-bar">
-                <a href="#">Premium</a>
+                <a href="/premium-page">Premium</a>
                 <a href="#">Support</a>
-                <a href="#">Download</a>
+                <a href="/download-page">Download</a>
               </div>
               <div class="header-menu-separator"></div>
               <div class="header-menu-right-bar">
