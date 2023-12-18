@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../login/Login.scss";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { auth, provider } from "../../configs/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { REGEX } from "../../constants/regex";
@@ -15,6 +15,7 @@ import { LOG_IN_SUCCESSFULLY } from "../../constants/submitConstant";
 
 const Login = () => {
   const [form, setForm] = useState({});
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [value, setValue] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
@@ -40,6 +41,10 @@ const Login = () => {
     }
 
     return errors;
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
   };
 
   const handleRememberMeChange = () => {
@@ -83,13 +88,17 @@ const Login = () => {
             navigate("/")
           ) : (
             <Button
-              className="btn-external-link"
+              className="btn-external-link mt-4 mb-2"
               onClick={handleSignInWithGoogle}
             >
               <i className="fa-brands fa-google external-link-icon"></i>
-              <span>Login with Google</span>
+              <span>Sign up with Google</span>
             </Button>
           )}
+          <Button className="btn-external-link mb-3">
+            <i className="fa-brands fa-facebook external-link-icon"></i>
+            <span>Sign up with Facebook</span>
+          </Button>
           <hr />
           <Formik
             initialValues={form}
@@ -99,9 +108,9 @@ const Login = () => {
             {({ errors, handleSubmit }) => (
               <Form className="login-form" onSubmit={handleSubmit}>
                 <Form.Group
-                  controlId="logInFormId"
+                  controlId="logInEmailFormId"
                   className={`custom-input ${
-                    errors.email || errors.password ? "custom-input-error" : ""
+                    errors.email ? "custom-input-error" : ""
                   }`}
                 >
                   <Form.Label className="float-start form-label">
@@ -115,16 +124,36 @@ const Login = () => {
                     onChange={handleChange}
                   />
                   <p className="error">{errors.email}</p>
+                </Form.Group>
+                <Form.Group
+                  controlId="logInPasswordFormId"
+                  className={`custom-input ${
+                    errors.password ? "custom-input-error" : ""
+                  }`}
+                >
                   <Form.Label className="float-start form-label">
                     Password
                   </Form.Label>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    placeholder="*********"
-                    className="input-form"
-                    onChange={handleChange}
-                  />
+                  <InputGroup>
+                    <Form.Control
+                      type={passwordVisible ? "text" : "password"}
+                      name="password"
+                      placeholder="*********"
+                      className="input-form"
+                      onChange={handleChange}
+                    />
+                    <Button
+                      variant="outline-secondary"
+                      className="password-toggle-btn"
+                      onClick={togglePasswordVisibility}
+                    >
+                      {passwordVisible ? (
+                        <i className="fa-solid fa-eye-slash"></i>
+                      ) : (
+                        <i className="fa-solid fa-eye"></i>
+                      )}
+                    </Button>
+                  </InputGroup>
                   <p className="error">{errors.password}</p>
                 </Form.Group>
                 <Form className="form-remember-me">
@@ -156,7 +185,7 @@ const Login = () => {
           </span>
         </Container>
       </div>
-      <footer className="sign-up-sign-in-footer position-fixed bottom-0">
+      <footer className="sign-up-sign-in-footer">
         <Container>
           <p className="text-center footer-text">
             This site is protected by reCAPTCHA and the Google{" "}

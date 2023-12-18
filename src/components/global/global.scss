@@ -74,11 +74,22 @@ body {
   margin: 0;
 }
 
+.password-toggle-btn {
+  position: absolute;
+  top: 10px;
+  height: 10%;
+  border-color: $white-text-color;
+}
+
+.password-toggle-btn:hover {
+  border-color: $base-color;
+  background-color: $base-color;
+}
+
 .btn-external-link {
   background-color: $background-color-base;
   border-color: $base-color;
   border-radius: $btn-border-radius;
-  margin: 20px 0;
 }
 
 .btn-external-link:hover {
@@ -92,8 +103,7 @@ body {
 }
 
 .sign-up-sign-in-footer {
-  left: 0;
-  right: 0;
+  margin-top: 100px;
 }
 
 .footer-text {
