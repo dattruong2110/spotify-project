@@ -1,8 +1,9 @@
+@import "../global/global.scss";
+
 .topbar {
   display: flex;
   justify-content: space-between;
   background-color: #121212;
-  padding: 14px 30px;
 }
 .topbar .prev-next-buttons button {
   color: #7a7a7a;
@@ -13,7 +14,7 @@
   font-size: 18px;
   border: 0px;
   background-color: #090909;
-  margin-right: 10px;
+  margin-left: 10px;
   margin-top: 15px;
 }
 .topbar .navbar {
@@ -62,4 +63,48 @@
 .topbar .navbar button:active,
 .topbar .navbar button:focus {
   background-color: #f2f2f2;
+}
+.header-login-btn {
+  margin-top: -5px;
+}
+
+.header-bar-playlist {
+  position: fixed;
+  top: 0;
+  left: 245px;
+  right: 0;
+}
+
+.topbar .prev-next-buttons .play-btn {
+  border: none;
+  border-radius: 100%;
+  background-color: $green-btn-color;
+  color: $background-color-base;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.topbar .prev-next-buttons .play-btn:hover {
+  background-color: $green-hover-btn-color;
+  color: $background-color-base;
+}
+
+.topbar .prev-next-buttons .play-btn:active {
+  background-color: $green-hover-btn-color !important;
+  color: $background-color-base;
+}
+
+.topbar .prev-next-buttons .play-btn .fa-play {
+  font-size: 1.4rem;
+  padding: 7px 5px;
+}
+
+.header-playlist-title {
+  margin-top: 14px;
+  color: $white-text-color;
+  font-size: 1.5rem;
+  font-weight: 700;
 }

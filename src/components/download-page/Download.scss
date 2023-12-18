@@ -1,0 +1,157 @@
+
+*{
+    
+    font-family: spotify-circular, Helvetica, Arial, sans-serif;
+
+}
+
+// layer0
+.main-content .layer0 {
+    background-color: rgb(25, 230, 140);
+    padding: 40px 15px 104px;
+    color: black;
+}
+
+.main-content .layer0 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.main-content .layer0 .download{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content .layer0 .download .image-laptop{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 70px 10px 70px 10px;
+    }
+.main-content .layer0 .download .image-laptop span .laptop, .circle, .check{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.main-content .layer0 .download .title{
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 24px;
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: bold;
+}
+.main-content .layer0 .download .description{
+    margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.main-content .layer0 .download .microsoft-store-badge{
+    margin: 15px;
+    padding: 10px;
+
+}
+.main-content .layer0 .download span .directly-link{
+    text-align: center;
+    padding-top: 48px;
+    text-decoration:underline !important;
+    color: black;
+
+}
+
+//layer1
+.main-content .layer1{
+    background-color: white;
+    padding: 20px 70px 70px 70px;
+
+}
+.main-content .layer1 .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.main-content .layer1 .content .title{
+    font-size: 32px;
+    font-weight: 780;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+    margin: 30px;
+}
+
+.main-content .layer1 .content .description{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.main-content .layer1 .content .more-badge{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+//layer2
+.main-content .layer2 {
+    background-color: rgb(34, 35, 38);
+    padding: 70px 15px 50px;
+}
+
+.main-content .layer2 .platform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content .layer2 .platform h3{
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.5px;
+    -webkit-tap-highlight-color: transparent;
+    padding: 20px 0px 20px 0px ;
+    font-weight: 900;
+}
+
+.main-content .layer2 .platform .platform-list ul{
+    margin: 10px ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content .layer2 .platform .platform-list ul li{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.main-content .layer2 .platform .platform-list ul li:nth-child(n+1):nth-child(-n+8)::after{
+    font-size: 22px;
+    content: "•";
+    padding-left: 14px;
+    padding-right: 14px;
+    color: rgb(29, 185, 84);
+}
+
+.main-content .layer2 .platform .platform-list ul li:nth-child(n+4):nth-child(-n+9) a {
+    color: rgb(29, 185, 84) ;
+    text-decoration: underline !important;
+    transition: color 0.3s ease;
+}
+
+.main-content .layer2 .platform .platform-list ul li:nth-child(n+4):nth-child(-n+9) a:hover {
+    color: #7affa6;
+}

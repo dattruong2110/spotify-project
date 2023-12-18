@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.scss";
+import "../login/Login.scss";
 import { Button, Container, Form } from "react-bootstrap";
 import { auth, provider } from "../../configs/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";

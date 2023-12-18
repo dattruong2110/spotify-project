@@ -2,6 +2,8 @@ $background-color-base: #121212;
 $base-color: #a7a7a7;
 $white-text-color: #fff;
 $green-btn-color: #1fdf64;
+$green-hover-btn-color: #12eb61;
+$table-background-color-base: #101010;
 $btn-border-radius: 500px;
 $green-hover-btn-color: #12eb61;
 
@@ -11,9 +13,12 @@ body {
   padding: 8px 0px;
 }
 
-.spotifyWebApp {
-  height: 100%;
-  width: 100%;
+.logo-spotify img {
+  width: 130px;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 .logo-link > svg {
@@ -47,7 +52,7 @@ body {
 }
 
 .submit-btn:hover {
-  background-color: #13eb5f;
+  background-color: $green-hover-btn-color;
   color: #000;
 }
 
