@@ -159,8 +159,33 @@ body {
   color: $base-color;
 }
 
-.list-song .table-description {
+.list-table-song {
+  background-color: $table-background-color-base;
+}
+
+.list-table-song .list-table-head,
+.list-compact-table-song .list-table-head {
+  background-color: $table-background-color-base;
+}
+
+.list-table-description,
+.list-song-table-description {
+  background-color: $table-background-color-base !important;
+}
+
+.list-song .list-table-head {
   color: $base-color;
+}
+
+.list-table-song .list-table-description {
+  color: $base-color;
+  border: none;
+  padding-top: 20px;
+}
+
+.list-compact-table-song .list-table-description {
+  color: $base-color;
+  border: none;
 }
 
 .link-album {

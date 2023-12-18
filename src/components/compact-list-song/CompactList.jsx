@@ -20,102 +20,102 @@ const CompactList = () => {
       </thead>
       <tbody>
         <tr className="list-table-row">
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0">
             <div className="song-artist-name d-grid">
               <NavLink className="link-song">Daylight</NavLink>
             </div>
           </td>
-          <td className="list-table-description">David Kushner</td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">David Kushner</td>
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0">
             <NavLink className="link-song">Daylight</NavLink>
           </td>
-          <td className="list-table-description">David Kushner</td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">David Kushner</td>
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0">
             <NavLink className="link-song">Daylight</NavLink>
           </td>
-          <td className="list-table-description">David Kushner</td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">David Kushner</td>
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0">
             <NavLink className="link-song">Daylight</NavLink>
           </td>
-          <td className="list-table-description">David Kushner</td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">David Kushner</td>
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0">
             <NavLink className="link-song">Daylight</NavLink>
           </td>
-          <td className="list-table-description">David Kushner</td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">David Kushner</td>
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0">
             <NavLink className="link-song">Daylight</NavLink>
           </td>
-          <td className="list-table-description">David Kushner</td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">David Kushner</td>
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0">
             <NavLink className="link-song">Daylight</NavLink>
           </td>
-          <td className="list-table-description">David Kushner</td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">David Kushner</td>
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0">
             <NavLink className="link-song">Daylight</NavLink>
           </td>
-          <td className="list-table-description">David Kushner</td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">David Kushner</td>
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
       </tbody>
     </Table>

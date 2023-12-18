@@ -19,7 +19,7 @@ const ListSong = () => {
       </thead>
       <tbody>
         <tr className="list-table-row">
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0 d-flex align-items-center">
             <Image
               className="song-playlist-image"
@@ -30,14 +30,14 @@ const ListSong = () => {
               <NavLink className="link-artist">David Kushner</NavLink>
             </div>
           </td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0 d-flex align-items-center">
             <Image
               className="song-playlist-image"
@@ -48,14 +48,14 @@ const ListSong = () => {
               <NavLink className="link-artist">David Kushner</NavLink>
             </div>
           </td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0 d-flex align-items-center">
             <Image
               className="song-playlist-image"
@@ -66,14 +66,14 @@ const ListSong = () => {
               <NavLink className="link-artist">David Kushner</NavLink>
             </div>
           </td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0 d-flex align-items-center">
             <Image
               className="song-playlist-image"
@@ -84,14 +84,14 @@ const ListSong = () => {
               <NavLink className="link-artist">David Kushner</NavLink>
             </div>
           </td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0 d-flex align-items-center">
             <Image
               className="song-playlist-image"
@@ -102,14 +102,14 @@ const ListSong = () => {
               <NavLink className="link-artist">David Kushner</NavLink>
             </div>
           </td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0 d-flex align-items-center">
             <Image
               className="song-playlist-image"
@@ -120,14 +120,14 @@ const ListSong = () => {
               <NavLink className="link-artist">David Kushner</NavLink>
             </div>
           </td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0 d-flex align-items-center">
             <Image
               className="song-playlist-image"
@@ -138,14 +138,14 @@ const ListSong = () => {
               <NavLink className="link-artist">David Kushner</NavLink>
             </div>
           </td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
         <tr>
-          <td className="list-table-description">1</td>
+          <td className="border-0 list-table-description">1</td>
           <td className="list-song-table-description border-0 d-flex align-items-center">
             <Image
               className="song-playlist-image"
@@ -156,11 +156,11 @@ const ListSong = () => {
               <NavLink className="link-artist">David Kushner</NavLink>
             </div>
           </td>
-          <td className="list-table-description">
+          <td className="border-0 list-table-description">
             <NavLink className="link-album">Daylight</NavLink>
           </td>
-          <td className="list-table-description">3 weeks ago</td>
-          <td className="list-table-description">3:32</td>
+          <td className="border-0 list-table-description">3 weeks ago</td>
+          <td className="border-0 list-table-description">3:32</td>
         </tr>
       </tbody>
     </Table>
