@@ -3,8 +3,7 @@
 .topbar {
   display: flex;
   justify-content: space-between;
-  background-color: #101010;
-  padding: 14px 30px;
+  background-color: #121212;
 }
 .topbar .prev-next-buttons button {
   color: #7a7a7a;
@@ -15,7 +14,7 @@
   font-size: 18px;
   border: 0px;
   background-color: #090909;
-  margin-right: 10px;
+  margin-left: 10px;
   margin-top: 15px;
 }
 .topbar .navbar {
@@ -69,8 +68,6 @@
   margin-top: -5px;
 }
 
-// style header for playlist component
-//---------------------
 .header-bar-playlist {
   position: fixed;
   top: 0;
@@ -111,4 +108,3 @@
   font-size: 1.5rem;
   font-weight: 700;
 }
-//---------------------

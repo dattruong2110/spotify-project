@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.scss";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 const Header = ({ isPlaylistPage, showPlayButton }) => {
@@ -27,17 +27,17 @@ const Header = ({ isPlaylistPage, showPlayButton }) => {
           <div class="navbar">
             <ul>
               <li>
-                <a href="/premium-page">Premium</a>
+                <NavLink to="/premium-page">Premium</NavLink>
               </li>
               <li>
-                <a href="#">Support</a>
+                <NavLink to="#">Support</NavLink>
               </li>
               <li>
-                <a href="/download-page">Download</a>
+                <NavLink to="/download-page">Download</NavLink>
               </li>
               <li class="divider">|</li>
               <li>
-                <a href="/signup">Sign Up</a>
+                <NavLink to="/signup">Sign Up</NavLink>
               </li>
             </ul>
             <button

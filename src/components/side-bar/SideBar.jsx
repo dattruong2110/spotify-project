@@ -1,63 +1,65 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "./SideBar.scss";
+import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
   return (
     <>
       <div class="sidebar">
-        <div class="logo">
-          <a href="/homepage">
+        <div class="logo-spotify">
+          <NavLink to="/homepage">
             <img
               src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
               alt="Logo"
             />
-          </a>
+          </NavLink>
         </div>
         <div class="navigation">
           <ul>
             <li>
-              <a href="#">
+              <NavLink to="/homepage">
                 <span class="fa fa-home"></span>
                 <span>Home</span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#">
+              <NavLink to="/search">
                 <span class="fa fa-search"></span>
                 <span>Search</span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#">
+              <NavLink to="/">
                 <span class="fa fas fa-book"></span>
                 <span>Your Library</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
         <div class="navigation">
           <ul>
             <li>
-              <a href="#">
+              <NavLink to="#">
                 <span class="fa fas fa-plus-square"></span>
                 <span>Create Playlist</span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="#">
+              <NavLink to="#">
                 <span class="fa fas fa-heart"></span>
                 <span>Liked Songs</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
         <div class="policies">
           <ul>
             <li>
-              <a href="#">Cookies</a>
+              <NavLink href="#">Cookies</NavLink>
             </li>
             <li>
-              <a href="#">Privacy</a>
+              <NavLink href="#">Privacy</NavLink>
             </li>
           </ul>
         </div>

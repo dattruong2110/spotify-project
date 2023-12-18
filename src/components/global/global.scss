@@ -5,11 +5,16 @@ $green-btn-color: #1fdf64;
 $green-hover-btn-color: #12eb61;
 $table-background-color-base: #101010;
 $btn-border-radius: 500px;
+$green-hover-btn-color: #12eb61;
 
 body {
   background-color: #000;
   color: white;
   padding: 8px 0px;
+}
+
+.logo-spotify img {
+  width: 130px;
 }
 
 .no-scroll {
@@ -154,33 +159,8 @@ body {
   color: $base-color;
 }
 
-.list-table-song {
-  background-color: $table-background-color-base;
-}
-
-.list-table-song .list-table-head,
-.list-compact-table-song .list-table-head {
-  background-color: $table-background-color-base;
-}
-
-.list-table-description,
-.list-song-table-description {
-  background-color: $table-background-color-base !important;
-}
-
-.list-song .list-table-head {
+.list-song .table-description {
   color: $base-color;
-}
-
-.list-table-song .list-table-description {
-  color: $base-color;
-  border: none;
-  padding-top: 20px;
-}
-
-.list-compact-table-song .list-table-description {
-  color: $base-color;
-  border: none;
 }
 
 .link-album {

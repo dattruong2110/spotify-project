@@ -1,0 +1,304 @@
+@import "../global/global.scss";
+.playlist-main-content {
+  padding: 0;
+  margin: 0;
+}
+
+.playlist-image-background {
+  background-image: url("https://img.vietcetera.com/uploads/images/09-mar-2023/mck-feature.jpeg");
+  width: 100%;
+  height: 350px;
+
+  border-radius: 15px;
+}
+.playlist-description {
+  margin-top: 120px;
+  padding: 20px;
+  color: $white-text-color;
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+.song-playlist {
+  padding: 24px;
+}
+.play-react-option-list-song .play-btn {
+  border: none;
+  border-radius: 100%;
+  background-color: $green-btn-color;
+  color: $background-color-base;
+  width: 60px;
+  height: 60px;
+  margin-right: 24px;
+}
+.play-react-option-list-song .play-btn:hover {
+  background-color: $green-hover-btn-color;
+  color: $background-color-base;
+}
+.play-react-option-list-song .play-btn:active {
+  background-color: $green-hover-btn-color !important;
+  color: $background-color-base;
+}
+.play-react-option-list-song .play-btn .fa-play {
+  font-size: 1.4rem;
+  padding: 14px 11px;
+}
+.play-react-option-list-song .follow-artist {
+  border: 1px solid white;
+  border-radius: 100px;
+  background-color: #000000;
+  color: $base-color;
+  width: 100px;
+  height: 40px;
+  margin-top: 10px;
+  margin-right: 24px;
+}
+.play-react-option-list-song .follow-artist:hover {
+  background-color: #000000;
+}
+.play-react-option-list-song .follow-artist:active {
+  background-color: #000000 !important;
+}
+
+.more-option .dropdown-toggle::after {
+  display: none;
+}
+.more-option .option-icon {
+  color: $base-color;
+  font-size: 1.4rem;
+  padding: 12px;
+}
+.more-option .option-icon:hover {
+  color: $white-text-color;
+}
+.more-option .more-option-menu {
+  background-color: #242424;
+  padding: 4px;
+}
+.more-option .more-option-menu-item {
+  color: $white-text-color;
+}
+.more-option .more-option-menu-item:hover {
+  background-color: #3a3939;
+  color: $white-text-color;
+  border-radius: 4px;
+}
+.more-option .more-option-menu-item .more-option-menu-item-btn {
+  color: $white-text-color;
+  padding: 0;
+}
+.more-option
+  .more-option-menu-item
+  .more-option-menu-item-btn
+  .more-option-menu-item-icon {
+  margin-right: 12px;
+}
+.more-option .more-option-menu-item .more-option-menu-item-text {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.more-option-menu-item-btn .search-folder {
+  width: 100%;
+  height: 20px;
+  border-radius: 4px;
+}
+.more-option-menu-item .dropdown-end {
+  background-color: #242424;
+}
+
+.popolar {
+  margin: 20px;
+}
+.list-table-song {
+  margin-top: 20px;
+}
+.song-playlist-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.playlist-artist-container {
+  margin-left: 300px;
+  background-color: #121212;
+}
+
+.check-color {
+  color: blue;
+}
+
+.type {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.artist-name,
+.album-title {
+  margin: 0.08em 0px 0.12em;
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+.album-infor {
+  margin-top: 8px;
+}
+
+.album-artist-image {
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.album-artist-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $white-text-color;
+  text-decoration: none;
+}
+
+.playlist-artist-name:hover,
+.album-artist-name:hover {
+  text-decoration: underline;
+}
+
+.likes,
+.songs-over-24-hr {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.likes::before,
+.songs-over-24-hr::before {
+  content: "•";
+  margin: 0 4px;
+}
+
+.over-24-hr {
+  color: $base-color;
+}
+
+.list-song .table-description {
+  background-color: black;
+}
+
+.link-album {
+  color: $base-color;
+  text-decoration: none;
+}
+
+.link-album:hover {
+  color: $white-text-color;
+  text-decoration: underline;
+}
+
+.link-song {
+  color: $white-text-color;
+  text-decoration: none;
+}
+
+.link-song:hover {
+  text-decoration: underline;
+}
+
+.link-artist {
+  color: $base-color;
+  text-decoration: none;
+}
+
+.link-artist:hover {
+  color: $white-text-color;
+  text-decoration: underline;
+}
+
+.container-artist-playlist {
+  margin-bottom: 10px;
+}
+
+.spotify-playlist-artist {
+  padding: 20px 40px;
+}
+
+.spotify-playlist-artist h2 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.spotify-playlist-artist .list {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+}
+.spotify-playlist-artist .list .item {
+  min-width: 140px;
+  width: 180px;
+  padding: 15px;
+  background-color: #181818;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all ease 0.4s;
+}
+.spotify-playlist-artist .list .item:hover {
+  background-color: #252525;
+}
+.spotify-playlist-artist .list .item img {
+  width: 100%;
+  height: 150px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.spotify-playlist-artist .list .item .play {
+  position: relative;
+}
+.spotify-playlist-artist .list .item .play .fa {
+  position: absolute;
+  right: 10px;
+  top: -60px;
+  padding: 18px;
+  background-color: #1db954;
+  border-radius: 100%;
+  opacity: 0;
+  transition: all ease 0.4s;
+}
+.spotify-playlist-artist .list .item:hover .play .fa {
+  opacity: 1;
+  transform: translateY(-20px);
+}
+.spotify-playlist-artist .list .item h4 {
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.spotify-playlist-artist .list .item p {
+  color: #989898;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.spotify-playlist-artist hr {
+  margin: 70px 0px 0px;
+  border-color: #636363;
+}
+
+.container-footer-artist-playlist {
+  background-image: url("https://img.vietcetera.com/uploads/images/09-mar-2023/mck-feature.jpeg");
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  margin-left: 35px;
+  margin-bottom: 20px;
+  width: 95%;
+  height: 430px;
+}
+
+.container-footer-artist-playlist :hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.content-footer-artist-playlist h2 {
+  padding-top: 380px;
+  padding-left: 10px;
+  font-size: 20px;
+}
