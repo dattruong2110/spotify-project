@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Button, Dropdown, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CompactList from "../compact-list-song/CompactList";
-import FooterMain from "../footer-main/FooterMain";
 import FooterPreview from "../footer/FooterPreview";
 import Header from "../header/Header";
 import ListSong from "../list-song/ListSong";
 import SideBar from "../side-bar/SideBar";
 import "./Playlist.scss";
+import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 
 const Playlist = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -320,7 +320,7 @@ const Playlist = () => {
             </div>
           </div>
           <footer className="playlist-footer">
-            <FooterMain />
+            <FooterDefauft />
           </footer>
         </div>
       </div>
