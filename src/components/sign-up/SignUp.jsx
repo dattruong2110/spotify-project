@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SignUp.scss";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "../../configs/firebaseConfig";
@@ -9,12 +9,15 @@ import { REGEX } from "../../constants/regex";
 import {
   INVALID_EMAIL_ADDRESS,
   INVALID_PASSWORD,
+  PASSWORD_DO_NOT_MATCH,
   REQUIRED,
 } from "../../constants/validateConstant";
 import { SIGN_UP_SUCCESSFULLY } from "../../constants/submitConstant";
 
 const SignUp = () => {
   const [form, setForm] = useState({});
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
@@ -37,8 +40,21 @@ const SignUp = () => {
     } else if (!REGEX.password.test(form.password)) {
       errors.password = INVALID_PASSWORD;
     }
+    if (!form.repeatPassword) {
+      errors.repeatPassword = REQUIRED;
+    } else if (form.repeatPassword !== form.password) {
+      errors.repeatPassword = PASSWORD_DO_NOT_MATCH;
+    }
 
     return errors;
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
+  };
+
+  const toggleRepeatPasswordVisibility = () => {
+    setRepeatPasswordVisible((prev) => !prev);
   };
 
   const handleSubmit = () => {
@@ -82,9 +98,9 @@ const SignUp = () => {
             {({ errors, handleSubmit }) => (
               <Form className="sign-up-form" onSubmit={handleSubmit}>
                 <Form.Group
-                  controlId="signUpFormId"
+                  controlId="signUpEmailFormId"
                   className={`custom-input ${
-                    errors.email || errors.password ? "custom-input-error" : ""
+                    errors.email ? "custom-input-error" : ""
                   }`}
                 >
                   <Form.Label className="float-start form-label">
@@ -98,21 +114,72 @@ const SignUp = () => {
                     onChange={handleChange}
                   />
                   <p className="error">{errors.email}</p>
+                </Form.Group>
+                <Form.Group
+                  controlId="signUpPasswordFormId"
+                  className={`custom-input ${
+                    errors.password ? "custom-input-error" : ""
+                  }`}
+                >
                   <Form.Label className="float-start form-label">
                     Password
                   </Form.Label>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    placeholder="*********"
-                    className="input-form"
-                    onChange={handleChange}
-                  />
+                  <InputGroup>
+                    <Form.Control
+                      type={passwordVisible ? "text" : "password"}
+                      name="password"
+                      placeholder="*********"
+                      className="input-form"
+                      onChange={handleChange}
+                    />
+                    <Button
+                      variant="outline-secondary"
+                      className="password-toggle-btn"
+                      onClick={togglePasswordVisibility}
+                    >
+                      {passwordVisible ? (
+                        <i className="fa-solid fa-eye-slash"></i>
+                      ) : (
+                        <i className="fa-solid fa-eye"></i>
+                      )}
+                    </Button>
+                  </InputGroup>
                   <p className="error">{errors.password}</p>
-                  <Button type="submit" className="submit-btn">
-                    Submit
-                  </Button>
                 </Form.Group>
+                <Form.Group
+                  controlId="repeatPasswordFormId"
+                  className={`custom-input ${
+                    errors.repeatPassword ? "custom-input-error" : ""
+                  }`}
+                >
+                  <Form.Label className="float-start form-label">
+                    Repeat Password
+                  </Form.Label>
+                  <InputGroup>
+                    <Form.Control
+                      type={repeatPasswordVisible ? "text" : "password"}
+                      name="repeatPassword"
+                      placeholder="*********"
+                      className="input-form"
+                      onChange={handleChange}
+                    />
+                    <Button
+                      variant="outline-secondary"
+                      className="password-toggle-btn"
+                      onClick={toggleRepeatPasswordVisibility}
+                    >
+                      {repeatPasswordVisible ? (
+                        <i className="fa-solid fa-eye-slash"></i>
+                      ) : (
+                        <i className="fa-solid fa-eye"></i>
+                      )}
+                    </Button>
+                  </InputGroup>
+                  <p className="error">{errors.repeatPassword}</p>
+                </Form.Group>
+                <Button type="submit" className="submit-btn">
+                  Submit
+                </Button>
               </Form>
             )}
           </Formik>
@@ -121,13 +188,17 @@ const SignUp = () => {
             navigate("/")
           ) : (
             <Button
-              className="btn-external-link"
+              className="btn-external-link mt-4 mb-2"
               onClick={handleSignInWithGoogle}
             >
               <i className="fa-brands fa-google external-link-icon"></i>
               <span>Sign up with Google</span>
             </Button>
           )}
+          <Button className="btn-external-link mb-4">
+            <i className="fa-brands fa-facebook external-link-icon"></i>
+            <span>Sign up with Facebook</span>
+          </Button>
           <hr />
           <span className="text-center already-account">
             Already have an account?{" "}
@@ -137,7 +208,7 @@ const SignUp = () => {
           </span>
         </Container>
       </div>
-      <footer className="sign-up-sign-in-footer position-fixed bottom-0">
+      <footer className="sign-up-sign-in-footer">
         <Container>
           <p className="text-center footer-text">
             This site is protected by reCAPTCHA and the Google <br />
