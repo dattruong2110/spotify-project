@@ -1,13 +1,14 @@
 import "./Premium.scss"
 import React from 'react'
-import { FOOTER_PREMIUM,NAVIGATION_BAR_PREMIUM } from "../../constants/premiumConstants";
+import { NAVIGATION_BAR_PREMIUM } from "../../constants/premiumConstants";
+import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 function Premium() {
   return (
     <>
     <div className="container-root">
       
 {/* //-----Banner trang-----\\ */}
-  <NAVIGATION_BAR_PREMIUM/>
+    <NAVIGATION_BAR_PREMIUM/>
 {/* //-----Banner trang-----\\ */}
 
 {/* //-----Phần nội dung chính-----\\  */}
@@ -18,33 +19,30 @@ function Premium() {
               <header className="header container-fluid">
                   <div className="col">
                     <div className="content">
-                    <h1>59,000₫ cho 3 tháng dùng gói Premium</h1>
-                    <h2>Tận hưởng trải nghiệm nghe nhạc không quảng cáo, không cần kết nối mạng và nhiều lợi ích khác. 
-                        Hủy bất cứ lúc nào.
-                    </h2>
+                    <h1>59,000₫ for 3 months of Premium</h1>
+                    <h2>Enjoy ad-free music listening, offline playback, and more. Cancel anytime.</h2>
                     </div>
                     <div className="button col">
                     <a href="/#">
                       <span className="purchase-btn">
-                        <span>Dùng 3 tháng với giá 59,000₫</span>
+                        <span>Get 3 months for 59,000₫</span>
                       </span></a>
                     <a href="/#">
                       <span className="list-plans">
-                        <span>Xem các gói</span>
+                        <span>View plans</span>
                       </span>
                     </a>
                     </div>
                     <footer>
                       <p className="text">
-                        "Chỉ áp dụng cho gói Individual. Sau đó là 59,000₫/tháng.
-                        <a href="/#">Có áp dụng các điều khoản và điều kiện.</a>
-                        Ưu đãi không dành cho người đã dùng thử gói Premium. 
-                        Ưu đãi kết thúc vào ngày 31/12/2023."
+                        Individual plan only. 59,000₫/month after.
+                        <a href="/#">Terms and conditions apply</a>
+                        . Offer not available for users who have already tried Premium. Offer ends 31/12/2023.
                       </p>
                     </footer>
                   </div>
 {/* Instert image */}
-                <div><img src="https://i.scdn.co/image/ab671c3d0000f430d2978d828938707b9c7b495e" alt="" height={300} /></div>
+                <div><img src="https://i.scdn.co/image/ab671c3d0000f430d2978d828938707b9c7b495e" alt="" height={350} /></div>
               </header>
             </article>
           </section>
@@ -53,43 +51,43 @@ function Premium() {
           <section data-component-position="1" className="about">
             <article className="article">
               <header className="header">
-                <h2>Lý do dùng gói Premium?</h2>
+                <h2>Why go Premium?</h2>
               </header>
               <ul className="exclusive-list container">
                 <li>
                   <div>
-                    <img src="https://i.scdn.co/image/ab671c3d0000f430df61a7d75be4ed36c0857a61" width={100} alt="" />
+                    <img src="https://i.scdn.co/image/ab671c3d0000f430df61a7d75be4ed36c0857a61" width={130} alt="" />
                   </div>
                   <div className="text">
-                    <p className="slogan">Tải nhạc xuống.</p>
-                    <p className="description">Nghe mọi nơi.</p>
+                    <p className="slogan">Download music.</p>
+                    <p className="description">Listen anywhere.</p>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <img src="https://i.scdn.co/image/ab671c3d0000f430773401f794c2cc9a1f161cdc" width={100} alt="" />
+                    <img src="https://i.scdn.co/image/ab671c3d0000f430773401f794c2cc9a1f161cdc" width={130} alt="" />
                   </div>
                   <div className="text">
-                    <p className="slogan">Nghe nhạc không quảng cáo.</p>
-                    <p className="description">Thưởng thức âm nhạc không gián đoạn.</p>
+                    <p className="slogan">Ad-free music listening.</p>
+                    <p className="description">Enjoy uninterrupted music.</p>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <img src="	https://i.scdn.co/image/ab671c3d0000f430d5f682f0043198ce409efaab" width={100} alt="" />
+                    <img src="	https://i.scdn.co/image/ab671c3d0000f430d5f682f0043198ce409efaab" width={130} alt="" />
                   </div>
                   <div className="text">
-                    <p className="slogan">Phát nhạc theo thứ tự bất kỳ.</p>
-                    <p className="description">Phát bài hát bất kỳ theo thứ tự tùy thích.</p>
+                    <p className="slogan">Play songs in any order.</p>
+                    <p className="description">Any song, any order.</p>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <img src="	https://i.scdn.co/image/ab671c3d0000f430311a399af710a733778c610c" width={100} alt="" />
+                    <img src="	https://i.scdn.co/image/ab671c3d0000f430311a399af710a733778c610c" width={130} alt="" />
                   </div>
                   <div className="text">
-                    <p className="slogan">Chất lượng âm thanh vượt trội.</p>
-                    <p className="description">Phiêu cùng âm nhạc.</p>
+                    <p className="slogan">Higher sound quality.</p>
+                    <p className="description">Feel the sound.</p>
                   </div>
                 </li>
               </ul>
@@ -99,8 +97,8 @@ function Premium() {
         <div>
           <section data-component-position="2" className="menu">
             <article className="article">
-              <h2>Chọn gói Premium của bạn</h2>
-              <h3>Nghe không giới hạn trên điện thoại, loa và các thiết bị khác.</h3>
+              <h2>Pick your Premium</h2>
+              <h3>Listen without limits on your phone, speaker, and other devices.</h3>
               <div className="payment-list container">
                 {/* Các phương thức thanh toán */}
                 <ul className="payment">
@@ -122,7 +120,7 @@ function Premium() {
                 </ul>
                 <div className="another">
                   <div>
-                    <span>Và 2 lợi ích khác</span>
+                    <span>+ 2 more</span>
                       <img src="https://content-tooling.spotifycdn.com/images/618c5a31-e82f-4693-bb61-6d1f8db2295e_unionpay.svg" width={20} alt="" />
                       <img src="	https://content-tooling.spotifycdn.com/images/5e344d86-8390-4dbf-b72a-bd74823cb36c_logo-paypal.svg" width={20} alt="" />
                   </div>              
@@ -134,32 +132,31 @@ function Premium() {
                   <div className="row">
                     <ul className="slogan">
                       <li>
-                        <span  id="payOneTime">Thanh toán một lần</span>
+                        <span  id="payOneTime">One-time payment</span>
                       </li>
                     </ul>
                     <h3 className="title">Mini</h3>
-                    <p className="text">Từ 2,300₫/ngày</p>
-                    <p className="text">1 tài khoản chỉ trên thiết bị di động</p>
+                    <p className="text">From 2,300₫/day</p>
+                    <p className="text">1 account on mobile only</p>
                     <hr/>
                   </div>
                   <ul className="description">
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Nghe nhạc không quảng cáo trên thiết bị di động</p>
+                      <p className="text">Ad-free music listening on mobile</p>
                       </li>
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Nhóm nghe chung</p>
+                      <p className="text">Group Session</p>
                     </li>
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Tải 30 bài hát xuống 1 thiết bị di động</p>
+                      <p className="text">Download 30 songs on 1 mobile device</p>
                     </li>
                   </ul>
                   <div className="button">
-                    <a href="/#">
-                    <span>Bắt đầu</span></a>
-                      <p><a href="/#">Áp dụng điều khoản và điều kiện</a>.</p>
+                    <a href="/#"><span>Get started</span></a>
+                    <p><a href="/#">Terms and conditions apply.</a></p>
                   </div>
                 </div>
                 {/*Menu Individual  */}
@@ -167,38 +164,38 @@ function Premium() {
                   <div className="row">
                   <ul className="slogan">
                       <li>
-                        <span id="payThreeMonth">3 tháng với giá 59,000₫</span>
-                        <span id="payOneTime" >Thanh toán một lần</span>
+                        <span id="payThreeMonth">3 months for 59,000₫</span>
+                        <span id="payOneTime" >One-time payment</span>
                       </li>
                     </ul>
                     <h3 className="title">Individual</h3>
-                    <p className="text">59,000₫/tháng sau thời gian ưu đãi</p>
-                    <p className="text">1 tài khoản</p>
+                    <p className="text">59,000₫/month after offer period</p>
+                    <p className="text">1 account</p>
                     <hr/>
                   </div>
                   <ul className="description">
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Nghe nhạc không quảng cáo</p>
+                      <p className="text">Ad-free music listening</p>
                       </li>
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Nghe mọi nơi - ngay cả khi không có kết nối mạng</p>
+                      <p className="text">Play anywhere - even offline</p>
                     </li>
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
 
-                      <p className="text">Phát nhạc theo thứ tự bất kỳ</p>
+                      <p className="text">Play songs in any order</p>
                     </li>
                   </ul>
                   <div className="button">
                     <a href="/#">
-                    <span>Bắt đầu</span></a>
+                    <span>Get started</span></a>
                     <p className="text" >
-                      Chỉ áp dụng cho gói Individual. Sau đó là 59,000₫/tháng.</p>
+                    Individual plan only. 59,000₫/month after.</p>
                       <p>
-                        <a href="/#">Áp dụng điều khoản và điều kiện. </a>
-                        Ưu đãi không dành cho người đã dùng thử gói Premium. Ưu đãi kết thúc vào ngày 31/12/2023.</p>
+                        <a href="/#">Terms and conditions apply. </a>
+                        Offer not available for users who have already tried Premium. Offer ends 31/12/2023.</p>
                   </div>
                 </div>
                 {/*Menu Student  */}
@@ -206,37 +203,37 @@ function Premium() {
                   <div className="row">
                   <ul className="slogan">
                     <li>
-                        <span id="payThreeMonth">Miễn phí 1 tháng khi đăng ký</span>
-                        <span id="payOneTime" >Thanh toán một lần</span>
+                        <span id="payThreeMonth">1 month free with subscription</span>
+                        <span id="payOneTime" >One-time payment</span>
                     </li>
                   </ul>
                   <h3 className="title">Student</h3>
-                  <p className="text">29,500₫/tháng sau thời gian ưu đãi</p>
-                  <p className="text">1 tài khoản</p>
+                  <p className="text">29,500₫/month after offer period</p>
+                  <p className="text">1 account</p>
                   <hr/>
                   </div>
                   <ul className="description">
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Giảm giá đặc biệt cho sinh viên đủ điều kiện</p>
+                      <p className="text">Special discount for eligible students in university</p>
                       </li>
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Nghe nhạc không quảng cáo</p>
+                      <p className="text">Ad-free music listening</p>
                     </li>
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Nghe mọi nơi - ngay cả khi không có kết nối mạng</p>
+                      <p className="text">Play anywhere - even offline</p>
                     </li>
                     <li>
                       <svg><path d="M21.707 4.805a1 1 0 0 1 0 1.414L8.024 19.902l-5.731-5.73a1 1 0 1 1 1.414-1.415l4.317 4.317L20.293 4.805a1 1 0 0 1 1.414 0z" ></path></svg>
-                      <p className="text">Phát nhạc theo thứ tự bất kỳ</p>
+                      <p className="text">Play songs in any order</p>
                     </li>
                   </ul>
                   <div className="button">
                     <a href="/#">
-                    <span>Bắt đầu</span></a>
-                      <p><a href="/#">Áp dụng điều khoản và điều kiện</a>. Gói chỉ dành cho sinh viên tại các trường cao đẳng và đại học chưa dùng thử gói Premium. Sau thời gian dùng thử, mức phí sẽ là 29,500₫/tháng.</p>
+                    <span>Get started</span></a>
+                      <p><a href="/#">Terms and conditions apply.</a> Plan available for higher education students who haven't already tried Premium. After the trial period a monthly fee of 29,500₫/month will be charged.</p>
                   </div>
                 </div>
               </div>
@@ -244,10 +241,10 @@ function Premium() {
           </section>
         </div>
       </div>
-{/* //-----Phần nội dung chính-----\\ */}
+{/* //-----Hết phần nội dung chính-----\\ */}
 
 {/* //-----Footer của trang-----\\ */}
-    <FOOTER_PREMIUM/>
+    <FooterDefauft/>
 {/* //-----Footer của trang-----\\ */}
     </div>
   </>

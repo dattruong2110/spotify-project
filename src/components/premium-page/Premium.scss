@@ -51,29 +51,30 @@ article{
   max-width: 100%;
   display: inline-block;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .main-content .intro .article .header .button .purchase-btn span{
   margin: 10px 25px 10px 15px;
-  padding:10px;
+  padding:15px;
   display:inline-block;
   flex-wrap: wrap;
   background-color: black;
   border-radius: 500px;
   font-size: 14px;
   font-weight: bold;
+  color: white;
 
 }
 .main-content .intro .article .header .button .list-plans span{
   margin: 10px 2px 10px 10px;
   padding: 10px;  
   display:inline-block;
-  background-color: rgb(255, 255, 255);
+  border: #efefef 3px solid;
   border-radius: 500px;
   font-size: 14px;
   font-weight: bold;
-
+  color: white;
 }
 .main-content .intro .article .header .col{
   max-width: 700px;
@@ -89,12 +90,12 @@ article{
 }
 .main-content .intro .article .header .col footer{
   max-width: 700px;
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .main-content .intro .article .header .col footer a{
   color: #ffffff;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: bold;
   text-decoration: underline;
 
@@ -112,6 +113,7 @@ article{
 }
 .main-content .intro .article .header .button .list-plans span:hover{
   transform: scale(1.05);
+  background-color: #531a7b;
 }
 //-----END CSS BANNER -----\\
 
@@ -353,6 +355,11 @@ article{
   justify-content: center;
   text-align: center;
 
+}
+
+.main-content .menu .article .detail-menu .plan .button a span:hover {
+  scale: 1.1;
+  transition: scale 0.5s ease;
 }
 .main-content .menu .article .detail-menu .plan .button p a{
   color: #080505;

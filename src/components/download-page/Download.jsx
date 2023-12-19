@@ -1,6 +1,8 @@
 import React from 'react'
-import { FOOTER_PREMIUM, NAVIGATION_BAR_PREMIUM } from '../../constants/premiumConstants'
+import { NAVIGATION_BAR_PREMIUM } from '../../constants/premiumConstants'
+import FooterDefauft from '../footer/footer-defauft/FooterDefauft';
 import "./Download.scss";
+
 function Download() {
   return (
     <>
@@ -80,7 +82,7 @@ function Download() {
       </div>
         {/* //-----Kết thúc nội dung của trang Web-----\\ */}
     {/* footer của trang web */}
-      <FOOTER_PREMIUM/>
+      <FooterDefauft/>
     </>   
   )
 }
