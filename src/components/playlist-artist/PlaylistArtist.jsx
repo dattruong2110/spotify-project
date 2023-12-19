@@ -158,7 +158,23 @@ const PlaylistArtist = () => {
                 </tbody>
                 <tbody>
                   <tr>
-                    <td className="table-description">1</td>
+                    <td className="table-description">2</td>
+                    <td className="table-description d-flex align-items-center">
+                      <Image
+                        className="song-playlist-image"
+                        src="https://bazaarvietnam.vn/wp-content/uploads/2023/03/Album-moi-cua-MCK.jpg"
+                      />
+                      <div className="song-artist-name d-grid">
+                        <NavLink className="link-song">99%</NavLink>
+                      </div>
+                    </td>
+                    <td className="table-description">33.960.486</td>
+                    <td className="table-description">3:32</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td className="table-description">3</td>
                     <td className="table-description d-flex align-items-center">
                       <Image
                         className="song-playlist-image"
@@ -174,7 +190,7 @@ const PlaylistArtist = () => {
                 </tbody>
                 <tbody>
                   <tr>
-                    <td className="table-description">1</td>
+                    <td className="table-description">4</td>
                     <td className="table-description d-flex align-items-center">
                       <Image
                         className="song-playlist-image"
@@ -190,7 +206,7 @@ const PlaylistArtist = () => {
                 </tbody>
                 <tbody>
                   <tr>
-                    <td className="table-description">1</td>
+                    <td className="table-description">5</td>
                     <td className="table-description d-flex align-items-center">
                       <Image
                         className="song-playlist-image"
@@ -206,23 +222,7 @@ const PlaylistArtist = () => {
                 </tbody>
                 <tbody>
                   <tr>
-                    <td className="table-description">1</td>
-                    <td className="table-description d-flex align-items-center">
-                      <Image
-                        className="song-playlist-image"
-                        src="https://i.scdn.co/image/ab67616d0000485195ca6a9b4083a86c149934ae"
-                      />
-                      <div className="song-artist-name d-grid">
-                        <NavLink className="link-song">Chìm Sâu</NavLink>
-                      </div>
-                    </td>
-                    <td className="table-description">33.960.486</td>
-                    <td className="table-description">3:32</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td className="table-description">1</td>
+                    <td className="table-description">6</td>
                     <td className="table-description d-flex align-items-center">
                       <Image
                         className="song-playlist-image"
@@ -474,6 +474,14 @@ const PlaylistArtist = () => {
 
           <div className="container-footer-artist-playlist">
             <div className="content-footer-artist-playlist">
+              <p>
+                Nghiêm Vũ Hoàng Long sinh ngày 2 tháng 3 năm 1999 tại Hà Nội,
+                thường được biết đến với nghệ danh MCK, RPT MCK, Nger, hay Ngơ
+                khi còn theo đuổi thể loại nhạc indie là một nam rapper, ca sĩ
+                kiêm sáng tác nhạc người Việt Nam. Năm 2020, anh tạo nên bước
+                ngoặt trong sự nghiệp khi tham dự và dừng chân tại vòng chung
+                kết cuộc thi truyền hình Rap Việt mùa 1.
+              </p>
               <h2 className="monthly-listeners-artist-playlist">
                 1.283.397 monthly listeners
               </h2>

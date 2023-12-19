@@ -5,6 +5,7 @@
   justify-content: space-between;
   background-color: #121212;
   margin-top: 8px;
+  border-radius: 10px;
 }
 .topbar .prev-next-buttons button {
   color: #7a7a7a;
@@ -16,7 +17,7 @@
   border: 0px;
   background-color: #090909;
   margin-left: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 .topbar .navbar {
   display: flex;
@@ -24,6 +25,8 @@
 }
 .topbar .navbar ul {
   list-style: none;
+
+  margin-top: 10px;
 }
 .topbar .navbar ul li {
   display: inline-block;
@@ -66,7 +69,8 @@
   background-color: #f2f2f2;
 }
 .header-login-btn {
-  margin-top: -5px;
+  margin-top: 0px;
+  margin-right: 10px;
 }
 
 .header-bar-playlist {
