@@ -1,14 +1,5 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-body {
-  background-color: #121212;
-  font-family: "Montserrat", sans-serif;
-}
-
 .main-container-homepage {
-  margin-left: 245px;
+  margin-left: 300px;
   margin-bottom: 100px;
 }
 
@@ -26,6 +17,7 @@ body {
   overflow: hidden;
 }
 .spotify-playlists .list .item {
+  flex: 1;
   min-width: 160px;
   width: 180px;
   padding: 10px;
