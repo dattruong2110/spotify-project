@@ -30,7 +30,7 @@ const Header = ({ isPlaylistPage, showPlayButton }) => {
                 <NavLink to="/premium-page">Premium</NavLink>
               </li>
               <li>
-                <NavLink to="#">Support</NavLink>
+                <NavLink to="/support">Support</NavLink>
               </li>
               <li>
                 <NavLink to="/download-page">Download</NavLink>
