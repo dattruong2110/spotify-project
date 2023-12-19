@@ -17,7 +17,7 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/homepage" element={<HomePage />} />
+      <Route path="/home-page" element={<HomePage />} />
       <Route path="/playlist-artist" element={<PlaylistArtist />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/signup" element={<SignUp />} />

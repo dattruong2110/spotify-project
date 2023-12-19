@@ -8,7 +8,7 @@ const SideBar = () => {
     <>
       <div class="sidebar">
         <div class="logo-spotify">
-          <NavLink to="/homepage">
+          <NavLink to="/home-page">
             <img
               src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
               alt="Logo"
@@ -18,7 +18,7 @@ const SideBar = () => {
         <div class="navigation">
           <ul>
             <li>
-              <NavLink to="/homepage">
+              <NavLink to="/home-page">
                 <span class="fa fa-home"></span>
                 <span>Home</span>
               </NavLink>

@@ -16,10 +16,10 @@ const PlaylistArtist = () => {
       <SideBarAfterLogin />
       <div className="playlist-artist-container">
         <Header />
-        <div className="playlist-main">
+        <div>
           <div className="playlist-main-content d-flex align-items-end">
             <div className="playlist-image-background">
-              <div className="playlist-description">
+              <div className="playlist-artist-description">
                 <span className="type">
                   <i class="fa-solid fa-circle-check check-color"></i> Nghệ sĩ
                   được xác minh
