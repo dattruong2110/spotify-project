@@ -1,0 +1,352 @@
+@import "../global/global.scss";
+
+.main-support {
+  color: $white-text-color;
+  background-color: $background-color-base;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+.main-highlight {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  z-index: -1;
+  background: linear-gradient(
+      98.85deg,
+      rgba(18, 18, 18, 0.3) 0%,
+      $background-color-base 100%
+    ),
+    linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $background-color-base 100%),
+    $green-btn-color;
+}
+
+.banner .main-highlight {
+  transition: $background-color-base 0.2s linear !important;
+  min-height: 80px;
+  z-index: 1020;
+  line-height: 1.5;
+}
+
+.header-support {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1170px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.brand-wrapper {
+  margin-top: 18px;
+  display: inline-block;
+}
+
+.brand-wrapper-size {
+  margin: 0;
+  height: 40px;
+  width: 132px;
+  display: inline-block;
+  color: $white-text-color;
+}
+
+.brand-logo .brand-wrapper .brand-wrapper-size {
+  text-shadow: none;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  font: 0/0 a;
+  display: inline-block;
+}
+
+.header-logo-support-page {
+  fill: #fff;
+}
+
+.header-support .menu-header-support {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner .menu-name-support-left-support-bar {
+  padding: 27px 17px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.35px;
+  color: $white-text-color;
+}
+
+.banner .menu-space-support {
+  margin-left: 17px;
+  margin-right: 17px;
+  height: 16px;
+  border-right: 1px solid #ffffff;
+}
+.banner .menu-header-support-right-bar {
+  padding: 27px 17px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.35px;
+  color: $white-text-color;
+}
+
+.body-main-spotify-support {
+  max-width: 628px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.content-support-spotify {
+  box-sizing: border-box;
+  margin-block: 0px;
+  font-size: 1rem;
+  font-weight: 400;
+  padding-block-end: 16px;
+  color: $white-text-color;
+}
+
+.content-support-hcwhy {
+  font-size: 3rem;
+  color: $white-text-color;
+  margin-block: 0px;
+  font-weight: 700;
+  padding-block-end: 40px;
+}
+
+.log-in-support {
+  margin: 20px 0px;
+  height: 48px;
+}
+
+.support-when-logging-in {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #6a6a6a;
+}
+
+.logging-in-support {
+  color: $white-text-color;
+  margin-right: 1%;
+}
+
+.distance-support-page {
+  padding: 12px 0px;
+  position: relative;
+  width: 100%;
+}
+
+.search-icon-support {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  color: #6a6a6a;
+  fill: currentColor;
+  box-sizing: border-box;
+  float: right;
+  transition: all 0.25s ease-in;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.search-input-support {
+  appearance: none;
+  background-image: none;
+  border: 0px;
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  inline-size: 100%;
+  border-radius: 4px;
+  color: #121212;
+  min-block-size: 48px;
+  box-shadow: inset 0 0 0 1px #878787;
+  padding-left: 30px;
+}
+
+.list-item-support {
+  padding-top: 16px;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  gap: 16px;
+  justify-content: stretch;
+  margin-bottom: 56px;
+}
+
+.item-support-payment-help {
+  height: 92px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(175, 40, 150);
+}
+
+.item-support-account-help {
+  height: 92px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(83, 122, 161);
+}
+
+.item-support-plan-help {
+  height: 92px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(140, 25, 50);
+}
+
+.item-support-app-help {
+  height: 92px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(176, 98, 57);
+}
+
+.item-support-device-help {
+  height: 92px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(0, 100, 80);
+}
+
+.item-support-safety-and-privacy {
+  height: 92px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(117, 117, 117);
+}
+
+.img-support {
+  height: 64px;
+  position: absolute;
+  top: 25px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+  right: calc(100% - 45px);
+  left: calc(100% - 45px);
+  transform: rotate(25deg);
+}
+
+.span-support {
+  display: block;
+  padding: 12px;
+  position: relative;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $white-text-color;
+}
+
+.the-middle-support {
+  background-color: #2a2a2a;
+}
+
+.quick-help-support {
+  max-width: 682px;
+  margin: 0px auto;
+  padding: 32px 40px;
+}
+
+.content-quick-help-support{
+  margin-block: 0px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-block-end: 32px;
+  color: $white-text-color;
+}
+
+.all-customer-support{
+  box-sizing: border-box;
+  padding-inline: 0px;
+  margin-block: 0px;
+}
+
+.menu-customer-support{
+  display: list-item;
+  list-style-type: none;
+  box-sizing: border-box;
+  margin-block: 0px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: $white-text-color;
+}
+
+.click-customer-support{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.span-menu-customer-support{
+  font-size: 1.125rem;
+  color: $white-text-color;
+}
+
+.icon-arrow-support{
+  display: flex;
+  flex-shrink: 0;
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+}
+
+.go-to-communtity{
+  background-color: #121212;
+  max-width: 628px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+.visit-our-community {
+padding: 56px 0px;
+text-align: center;
+}
+
+.content-visit-our-community{
+  font-size: 3rem;
+  margin-block: 0px;
+  padding-block-end: 16px;
+  font-weight: 700;
+  color: $white-text-color;
+}
+
+.document-support {
+  margin-block: 0px;
+  font-size: 1rem;
+  padding-block-end: 16px;
+  font-weight: 400;
+  color: $white-text-color;
+}
+
+.go-to-community-btn{
+  background-color: $green-btn-color;
+  width: 40%;
+  height: 50px;
+  border-radius: 9999px;
+  color: #121212;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.go-to-community-btn:hover{
+  width: 42%;
+  height: 52px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
