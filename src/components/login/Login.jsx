@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../login/Login.scss";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
-import { auth, provider } from "../../configs/firebaseConfig";
-import { signInWithPopup } from "firebase/auth";
+import {
+  auth,
+  facebookProvider,
+  googleProvider,
+} from "../../configs/firebaseConfig";
+import {
+  FacebookAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { REGEX } from "../../constants/regex";
 import { Formik } from "formik";
 import {
@@ -11,13 +19,19 @@ import {
   INVALID_PASSWORD,
   REQUIRED,
 } from "../../constants/validateConstant";
-import { LOG_IN_SUCCESSFULLY } from "../../constants/submitConstant";
+import {
+  ACCOUNT_DOES_NOT_EXIST,
+  LOG_IN_SUCCESSFULLY,
+} from "../../constants/submitConstant";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/authSlice";
 
 const Login = () => {
   const [form, setForm] = useState({});
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [value, setValue] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -51,16 +65,52 @@ const Login = () => {
     setRememberMe(!rememberMe);
   };
 
-  const handleSubmit = () => {
-    alert(LOG_IN_SUCCESSFULLY);
-    navigate("/");
+  const handleSubmit = async (e) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        form.email,
+        form.password
+      );
+      console.log(userCredential);
+      const user = userCredential.user;
+      localStorage.setItem("token", user.accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+      dispatch(setUser(user));
+      alert(LOG_IN_SUCCESSFULLY);
+      navigate("/home-page");
+    } catch (error) {
+      console.error(error);
+      alert(ACCOUNT_DOES_NOT_EXIST);
+    }
   };
 
   const handleSignInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((data) => {
-      setValue(data.user.email);
-      localStorage.setItem("email", data.user.email);
-    });
+    signInWithPopup(auth, googleProvider)
+      .then((data) => {
+        setValue(data.user.email);
+        localStorage.setItem("email", data.user.email);
+        dispatch(setUser(data));
+        navigate("/home-page");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleSignInWithFacebook = () => {
+    signInWithPopup(auth, facebookProvider)
+      .then((data) => {
+        setValue(data.value);
+        const credential = FacebookAuthProvider.credentialFromResult(data);
+        const accessToken = credential.accessToken;
+        fetch(
+          `https://graph.facebook.com/${data.user.providerData[0].uid}/picture?type=large&access_token=${accessToken}`
+        ).then((response) => response.blob());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -95,10 +145,17 @@ const Login = () => {
               <span>Sign up with Google</span>
             </Button>
           )}
-          <Button className="btn-external-link mb-3">
-            <i className="fa-brands fa-facebook external-link-icon"></i>
-            <span>Sign up with Facebook</span>
-          </Button>
+          {value ? (
+            navigate("/")
+          ) : (
+            <Button
+              className="btn-external-link mb-3"
+              onClick={handleSignInWithFacebook}
+            >
+              <i className="fa-brands fa-facebook external-link-icon"></i>
+              <span>Sign up with Facebook</span>
+            </Button>
+          )}
           <hr />
           <Formik
             initialValues={form}

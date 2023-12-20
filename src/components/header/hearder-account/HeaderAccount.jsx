@@ -1,11 +1,30 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from "react";
-import { NavLink } from "react-router-dom";
-import "../hearder-account/HeaderAccount.scss";
+import React, { useEffect } from "react";
 import { Dropdown } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { setUser } from "../../../features/authSlice";
+import "../hearder-account/HeaderAccount.scss";
 
 const HeaderAccount = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      dispatch(setUser(user));
+    }
+  }, [dispatch]);
+
+  const handleLogout = () => {
+    dispatch(setUser(null));
+
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  };
+
   return (
     <>
       <header>
@@ -46,7 +65,9 @@ const HeaderAccount = () => {
                     <Dropdown.Item href="/account-manage">
                       Account
                     </Dropdown.Item>
-                    <Dropdown.Item href="/login">Log Out</Dropdown.Item>
+                    <Dropdown.Item href="/home-page" onClick={handleLogout}>
+                      Log Out
+                    </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
