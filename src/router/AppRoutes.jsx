@@ -12,6 +12,7 @@ import Premium from "../components/premium-page/Premium";
 import Download from "../components/download-page/Download";
 import SideBarAfterLogin from "../components/side-bar/sidebar-afterlogin/SideBarAfterLogin";
 import FooterPlayMusic from "../components/footer/footer-playmusic/FooterPlayMusic";
+import SupportPage from "../components/support-page/SupportPage";
 
 const AppRoutes = () => {
   return (
@@ -19,7 +20,7 @@ const AppRoutes = () => {
       <Route path="/" element={<LandingPage />} />
       <Route path="/home-page" element={<HomePage />} />
       <Route path="/playlist-artist" element={<PlaylistArtist />} />
-      <Route path="/search" element={<SearchPage />} />
+      <Route path="/search-page" element={<SearchPage />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/reset-password" element={<PasswordReset />} />
@@ -28,6 +29,7 @@ const AppRoutes = () => {
       <Route path="/download-page" element={<Download />} />
       <Route path="/sidebar-afterlogin" element={<SideBarAfterLogin />} />
       <Route path="/footer-playmusic" element={<FooterPlayMusic />} />
+      <Route path="/support-page" element={<SupportPage />} />
     </Routes>
   );
 };
