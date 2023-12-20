@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../login/Login.scss";
-import { Button, Container, Form, InputGroup } from "react-bootstrap";
-import {
-  auth,
-  facebookProvider,
-  googleProvider,
-} from "../../configs/firebaseConfig";
 import {
   FacebookAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { REGEX } from "../../constants/regex";
 import { Formik } from "formik";
+import React, { useState } from "react";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  auth,
+  facebookProvider,
+  googleProvider,
+} from "../../configs/firebaseConfig";
+import { REGEX } from "../../constants/regex";
+import {
+  ACCOUNT_DOES_NOT_EXIST,
+  LOG_IN_SUCCESSFULLY,
+} from "../../constants/submitConstant";
 import {
   INVALID_EMAIL_ADDRESS,
   INVALID_PASSWORD,
   REQUIRED,
 } from "../../constants/validateConstant";
-import {
-  ACCOUNT_DOES_NOT_EXIST,
-  LOG_IN_SUCCESSFULLY,
-} from "../../constants/submitConstant";
-import { useDispatch } from "react-redux";
 import { setUser } from "../../features/authSlice";
+import "../login/Login.scss";
 
 const Login = () => {
   const [form, setForm] = useState({});
@@ -88,9 +88,11 @@ const Login = () => {
   const handleSignInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((data) => {
-        setValue(data.user.email);
-        localStorage.setItem("email", data.user.email);
-        dispatch(setUser(data));
+        const user = {
+          email: data.user.email,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(setUser(user));
         navigate("/home-page");
       })
       .catch((error) => {
