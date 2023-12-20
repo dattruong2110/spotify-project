@@ -1,10 +1,12 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./navigationBarPremium.scss"
+import { Dropdown } from 'react-bootstrap';
 function navigationBarPremium() {
   return (
     <>
     <div className="banner">
-        <nav class="navbar navbar-expand-lg navbar-dark 300px bg-dark container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark 250px bg-dark container-fluid">
           <div class="logo">
             <a href="/#">
               <img
@@ -15,16 +17,16 @@ function navigationBarPremium() {
               <span class="navbar-toggler-icon"></span>
             </button>
           </div>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse container" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a href="/premium-page">Premium</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/#">Hỗ trợ</a>
+                <a class="nav-link" href="/#">Support</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/#">Tải xuống</a>
+                <a class="nav-link" href="/#">Download</a>
               </li>
               <li class="nav-item">
                 <p className="vertical-bar">|</p>
@@ -35,7 +37,15 @@ function navigationBarPremium() {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/#">Hồ sơ</a>
+                  <Dropdown>
+                    <Dropdown.Toggle id="dropdown-basic">
+                      Profile
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu id="dropDownList">
+                      <Dropdown.Item id="1" href="#">Account</Dropdown.Item>
+                      <Dropdown.Item id="2" href="#">Log out</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
               </li>
             </ul>
           </div>
