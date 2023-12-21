@@ -1,5 +1,5 @@
 import React from "react";
-import "./header.scss";
+import "./Header.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
@@ -15,6 +15,14 @@ const Header = ({ isPlaylistPage, showPlayButton }) => {
               <button type="button" class="fa fas fa-chevron-left"></button>
               <button type="button" class="fa fas fa-chevron-right"></button>
             </div>
+            {showPlayButton && (
+              <div className="d-flex">
+                <Button className="play-btn">
+                  <i className="fa fa-play"></i>
+                </Button>
+                <span className="header-playlist-title">lofi beats</span>
+              </div>
+            )}
           </div>
 
           <div class="navbar">

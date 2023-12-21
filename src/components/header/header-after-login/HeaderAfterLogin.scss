@@ -9,17 +9,19 @@
 }
 
 .container-header-after-login {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   margin-top: 15px;
-  background-color: #121212;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
   max-width: 1300px;
+  height: 80px;
+  background-color: #121212;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
 
   .logo-spotify {
     width: 132px;
