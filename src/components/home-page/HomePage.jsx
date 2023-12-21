@@ -1,17 +1,32 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomePage.scss";
 import SideBar from "../side-bar/SideBar";
 import FooterPreview from "../footer/FooterPreview";
 import Header from "../header/Header";
+import HeaderAccount from "../header/hearder-account/HeaderAccount";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsAuthenticated, setUser } from "../../features/authSlice";
+import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
 
 const HomePage = () => {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      dispatch(setUser(user));
+    }
+  }, [dispatch]);
+
   return (
     <>
       <body>
         <SideBar />
         <div class="main-container-homepage">
-          <Header />
+          {isAuthenticated ? <HeaderAccount /> : <Header />}
           <div class="spotify-playlists">
             <h2>Playlist Hit</h2>
             <div class="list">
@@ -178,7 +193,7 @@ const HomePage = () => {
             <hr />
           </div>
 
-          <FooterPreview />
+          {isAuthenticated ? <FooterPlayMusic /> : <FooterPreview />}
         </div>
         <script
           src="https://kit.fontawesome.com/23cecef777.js"
