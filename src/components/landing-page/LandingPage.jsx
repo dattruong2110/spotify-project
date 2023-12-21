@@ -45,7 +45,7 @@ const LandingPage = () => {
               Millions of songs and podcasts. No credit card needed.
             </p>
 
-            <NavLink to="/homepage" className="a-landingpage">
+            <NavLink to="/home-page" className="a-landingpage">
               Get Spotify Free
             </NavLink>
           </div>

@@ -3,7 +3,6 @@ import React from "react";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 import HeaderAccount from "../header/hearder-account/HeaderAccount";
 import "../account-manage/AccountManage.scss";
-import { Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const AccountManage = () => {

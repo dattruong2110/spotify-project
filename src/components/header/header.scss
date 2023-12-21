@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   background-color: #121212;
-  margin-top: 8px;
   border-radius: 10px;
 }
 .topbar .prev-next-buttons button {
@@ -25,7 +24,6 @@
 }
 .topbar .navbar ul {
   list-style: none;
-
   margin-top: 10px;
 }
 .topbar .navbar ul li {
@@ -106,11 +104,4 @@
 .topbar .prev-next-buttons .play-btn .fa-play {
   font-size: 1.4rem;
   padding: 7px 5px;
-}
-
-.header-playlist-title {
-  margin-top: 14px;
-  color: $white-text-color;
-  font-size: 1.5rem;
-  font-weight: 700;
 }
