@@ -90,9 +90,11 @@ const SignUp = () => {
   const handleSignInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((data) => {
-        setValue(data.user.email);
-        localStorage.setItem("email", data.user.email);
-        dispatch(setUser(data));
+        const user = {
+          email: data.user.email,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(setUser(user));
         navigate("/home-page");
       })
       .catch((error) => {
