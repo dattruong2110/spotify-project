@@ -65,6 +65,9 @@ const HomePageAfterLogin = () => {
                   alt="Alessia Cara cover photo"
                 />
               </div>
+              <div class="play">
+                <span class="fa fa-play"></span>
+              </div>
               <p>Alessia Cara</p>
             </div>
             <div class="activity-info">
@@ -73,6 +76,9 @@ const HomePageAfterLogin = () => {
                   src="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb26dbdbdacda5c30dc95e0c2c/3/en/default"
                   alt="Daily Mix 3 playlist cover photo"
                 />
+              </div>
+              <div class="play">
+                <span class="fa fa-play"></span>
               </div>
               <p>Daily Mix 3</p>
             </div>

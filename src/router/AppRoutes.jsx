@@ -12,6 +12,9 @@ import Premium from "../components/premium-page/Premium";
 import Download from "../components/download-page/Download";
 import AccountManage from "../components/account-manage/AccountManage";
 import HomePageAfterLogin from "../components/home-page-after-login/HomePageAfterLogin";
+import AccountManagePlan from "../components/account-manage-plan/AccountManagePlan";
+import AccountManageEditProfile from "../components/account-manage-edit-profile/AccountManageEditProfile";
+import AccountPrivacy from "../components/account-manage-privacy-page/AccountPrivacy";
 
 const AppRoutes = () => {
   return (
@@ -23,11 +26,17 @@ const AppRoutes = () => {
       <Route path="/playlist" element={<Playlist />} />
       <Route path="/premium-page" element={<Premium />} />
       <Route path="/download-page" element={<Download />} />
-      <Route path="/account-manage" element={<AccountManage />} />{" "}
+      <Route path="/account-manage" element={<AccountManage />} />
       <Route path="/" element={<LandingPage />} />
       <Route path="/home-page" element={<HomePage />} />
       <Route path="/playlist-artist" element={<PlaylistArtist />} />
       <Route path="/home-page-after-login" element={<HomePageAfterLogin />} />
+      <Route path="/account-manage-plan" element={<AccountManagePlan />} />
+      <Route
+        path="/account-manage-edit"
+        element={<AccountManageEditProfile />}
+      />
+      <Route path="/account-manage-privacy" element={<AccountPrivacy />} />
     </Routes>
   );
 };

@@ -24,7 +24,7 @@ const SideBar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/search-page">
+              <NavLink to="/search">
                 <span class="fa fa-search"></span>
                 <span>Search</span>
               </NavLink>

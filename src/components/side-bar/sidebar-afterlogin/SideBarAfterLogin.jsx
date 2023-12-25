@@ -11,7 +11,7 @@ const SideBarAfterLogin = () => {
         <div class="navigation-1">
           <ul>
             <li>
-              <NavLink to="/home-page">
+              <NavLink to="/home-page-after-login">
                 <span class="fa fa-home"></span>
                 <span>Home</span>
               </NavLink>

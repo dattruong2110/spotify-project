@@ -19,8 +19,7 @@ const FooterDefauft = () => {
 
             <div class="footer-menu-top-bar-links">
               <div class="footer-menu-top-bar-links-company">
-                <div>Company</div>
-
+                <div className="title">Company</div>
                 <ul>
                   <li>
                     <NavLink to="">About</NavLink>

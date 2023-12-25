@@ -43,7 +43,7 @@
 
 .navbar-container {
   background-color: $background-color-base;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 75%;
   margin-left: auto;
   margin-right: auto;
@@ -94,4 +94,8 @@
     font-size: 1.1rem;
     font-weight: 400;
   }
+}
+
+.container-account-content .navbar-container .tab a {
+  color: white;
 }
