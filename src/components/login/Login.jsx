@@ -1,32 +1,43 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "../login/Login.scss";
-import { Button, Container, Form, InputGroup } from "react-bootstrap";
-import { auth, provider } from "../../configs/firebaseConfig";
-import { signInWithPopup } from "firebase/auth";
-import { REGEX } from "../../constants/regex";
+import {
+  FacebookAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { Formik } from "formik";
+import React, { useState } from "react";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  auth,
+  facebookProvider,
+  googleProvider,
+} from "../../configs/firebaseConfig";
+import { REGEX } from "../../constants/regex";
+import {
+  ACCOUNT_DOES_NOT_EXIST,
+  LOG_IN_SUCCESSFULLY,
+} from "../../constants/submitConstant";
 import {
   INVALID_EMAIL_ADDRESS,
   INVALID_PASSWORD,
   REQUIRED,
 } from "../../constants/validateConstant";
-import { LOG_IN_SUCCESSFULLY } from "../../constants/submitConstant";
-
+import { setUser } from "../../features/authSlice";
+import "../login/Login.scss";
 const Login = () => {
   const [form, setForm] = useState({});
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [value, setValue] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
-
   const handleValidate = () => {
     const errors = {};
     if (!form.email) {
@@ -39,30 +50,71 @@ const Login = () => {
     } else if (!REGEX.password.test(form.password)) {
       errors.password = INVALID_PASSWORD;
     }
-
     return errors;
   };
-
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
   };
-
   const handleRememberMeChange = () => {
     setRememberMe(!rememberMe);
   };
-
-  const handleSubmit = () => {
-    alert(LOG_IN_SUCCESSFULLY);
-    navigate("/");
+  const handleSubmit = async (e) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        form.email,
+        form.password
+      );
+      console.log(userCredential);
+      const user = userCredential.user;
+      localStorage.setItem("token", user.accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+      dispatch(setUser(user));
+      alert(LOG_IN_SUCCESSFULLY);
+      navigate("/home-page");
+    } catch (error) {
+      console.error(error);
+      alert(ACCOUNT_DOES_NOT_EXIST);
+    }
   };
-
   const handleSignInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((data) => {
-      setValue(data.user.email);
-      localStorage.setItem("email", data.user.email);
-    });
+    signInWithPopup(auth, googleProvider)
+      .then((data) => {
+        const user = {
+          email: data.user.email,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(setUser(user));
+        navigate("/home-page");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
-
+  const handleSignInWithFacebook = () => {
+    const facebookProvider = new FacebookAuthProvider();
+    signInWithPopup(auth, facebookProvider)
+      .then((result) => {
+        const user = result.user;
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+        
+        fetch(
+          `https://graph.facebook.com/${user.providerData[0].uid}/picture?type=large&access_token=${accessToken}`
+        )
+          .then((response) => response.blob())
+          .then((blob) => {
+            const profilePictureUrl = URL.createObjectURL(blob);
+            console.log("Profile Picture URL:", profilePictureUrl);
+          })
+          .catch((error) => {
+            console.error("Error fetching profile picture:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error signing in with Facebook:", error);
+      });
+  };
   return (
     <div className="login-page">
       <header className="login-header">
@@ -95,10 +147,17 @@ const Login = () => {
               <span>Sign up with Google</span>
             </Button>
           )}
-          <Button className="btn-external-link mb-3">
-            <i className="fa-brands fa-facebook external-link-icon"></i>
-            <span>Sign up with Facebook</span>
-          </Button>
+          {value ? (
+            navigate("/")
+          ) : (
+            <Button
+              className="btn-external-link mb-3"
+              onClick={handleSignInWithFacebook}
+            >
+              <i className="fa-brands fa-facebook external-link-icon"></i>
+              <span>Sign up with Facebook</span>
+            </Button>
+          )}
           <hr />
           <Formik
             initialValues={form}
@@ -211,5 +270,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

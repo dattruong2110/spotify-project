@@ -23,7 +23,7 @@ const LandingPage = () => {
             <div class="header-menu">
               <div class="header-menu-left-bar">
                 <NavLink to="/premium-page">Premium</NavLink>
-                <NavLink to="#">Support</NavLink>
+                <NavLink to="/support-page">Support</NavLink>
                 <NavLink to="/download-page">Download</NavLink>
               </div>
               <div class="header-menu-separator"></div>

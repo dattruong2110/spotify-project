@@ -3,8 +3,12 @@ import "./SignUp.scss";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, provider } from "../../configs/firebaseConfig";
-import { signInWithPopup } from "firebase/auth";
+import {
+  auth,
+  facebookProvider,
+  googleProvider,
+} from "../../configs/firebaseConfig";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { REGEX } from "../../constants/regex";
 import {
   INVALID_EMAIL_ADDRESS,
@@ -12,22 +16,25 @@ import {
   PASSWORD_DO_NOT_MATCH,
   REQUIRED,
 } from "../../constants/validateConstant";
-import { SIGN_UP_SUCCESSFULLY } from "../../constants/submitConstant";
-
+import {
+  ACOUNT_ALREADY_EXISTS,
+  SIGN_UP_SUCCESSFULLY,
+} from "../../constants/submitConstant";
+import { setUser } from "../../features/authSlice";
+import { useDispatch } from "react-redux";
 const SignUp = () => {
   const [form, setForm] = useState({});
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
   const [value, setValue] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
-
   const handleValidate = () => {
     const errors = {};
     if (!form.email) {
@@ -45,30 +52,56 @@ const SignUp = () => {
     } else if (form.repeatPassword !== form.password) {
       errors.repeatPassword = PASSWORD_DO_NOT_MATCH;
     }
-
     return errors;
   };
-
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
   };
-
   const toggleRepeatPasswordVisibility = () => {
     setRepeatPasswordVisible((prev) => !prev);
   };
-
-  const handleSubmit = () => {
-    alert(SIGN_UP_SUCCESSFULLY);
-    navigate("/login");
+  const handleSubmit = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        form.email,
+        form.password,
+        form.repeatPassword
+      );
+      console.log(userCredential);
+      const user = userCredential.user;
+      localStorage.setItem("token", user.accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+      alert(SIGN_UP_SUCCESSFULLY);
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+      alert(ACOUNT_ALREADY_EXISTS);
+    }
   };
-
   const handleSignInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((data) => {
-      setValue(data.user.email);
-      localStorage.setItem("email", data.user.email);
-    });
+    signInWithPopup(auth, googleProvider)
+      .then((data) => {
+        const user = {
+          email: data.user.email,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+        dispatch(setUser(user));
+        navigate("/home-page");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
-
+  const handleSignInWithFacebook = () => {
+    signInWithPopup(auth, facebookProvider)
+      .then((data) => {
+        setValue(data.value);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <div className="sign-up-page">
       <header className="sign-up-header">
@@ -195,10 +228,17 @@ const SignUp = () => {
               <span>Sign up with Google</span>
             </Button>
           )}
-          <Button className="btn-external-link mb-4">
-            <i className="fa-brands fa-facebook external-link-icon"></i>
-            <span>Sign up with Facebook</span>
-          </Button>
+          {value ? (
+            navigate("/")
+          ) : (
+            <Button
+              className="btn-external-link mb-4"
+              onClick={handleSignInWithFacebook}
+            >
+              <i className="fa-brands fa-facebook external-link-icon"></i>
+              <span>Sign up with Facebook</span>
+            </Button>
+          )}
           <hr />
           <span className="text-center already-account">
             Already have an account?{" "}
@@ -234,5 +274,4 @@ const SignUp = () => {
     </div>
   );
 };
-
 export default SignUp;
