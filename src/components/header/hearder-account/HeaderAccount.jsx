@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from "react";
-import { Dropdown } from "react-bootstrap";
+import { Button, Dropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { setUser } from "../../../features/authSlice";
 import "../hearder-account/HeaderAccount.scss";
 
-const HeaderAccount = () => {
+const HeaderAccount = ({ isPlaylistPage, showPlayButton }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,14 +28,28 @@ const HeaderAccount = () => {
   return (
     <>
       <header>
-        <div className="container-header-account">
-          <div className="logo-spotify">
-            <NavLink to="/home-page">
-              <img
-                src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
-                alt="Logo"
-              />
-            </NavLink>
+        <div
+          className={`container-header-account ${
+            isPlaylistPage ? "header-bar-account-playlist" : ""
+          }`}
+        >
+          <div className="logo-spotify d-flex">
+            <div className="d-flex">
+              <NavLink to="/home-page">
+                <img
+                  src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
+                  alt="Logo"
+                />
+              </NavLink>
+            </div>
+            {showPlayButton && (
+              <div className="d-flex">
+                <Button className="play-btn">
+                  <i className="fa fa-play"></i>
+                </Button>
+                <span className="header-playlist-title">lofi beats</span>
+              </div>
+            )}
           </div>
           <div className="header-menu">
             <div className="header-menu-left-bar">

@@ -101,17 +101,28 @@ const Login = () => {
   };
 
   const handleSignInWithFacebook = () => {
+    const facebookProvider = new FacebookAuthProvider();
+
     signInWithPopup(auth, facebookProvider)
-      .then((data) => {
-        setValue(data.value);
-        const credential = FacebookAuthProvider.credentialFromResult(data);
+      .then((result) => {
+        const user = result.user;
+        const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
+        
         fetch(
-          `https://graph.facebook.com/${data.user.providerData[0].uid}/picture?type=large&access_token=${accessToken}`
-        ).then((response) => response.blob());
+          `https://graph.facebook.com/${user.providerData[0].uid}/picture?type=large&access_token=${accessToken}`
+        )
+          .then((response) => response.blob())
+          .then((blob) => {
+            const profilePictureUrl = URL.createObjectURL(blob);
+            console.log("Profile Picture URL:", profilePictureUrl);
+          })
+          .catch((error) => {
+            console.error("Error fetching profile picture:", error);
+          });
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error signing in with Facebook:", error);
       });
   };
 

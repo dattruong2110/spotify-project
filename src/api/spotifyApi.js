@@ -176,9 +176,13 @@ const SpotifyAPI = () => {
 
   return {
     token,
+    setToken,
     genres,
+    setGenres,
     playlist,
+    setPlaylist,
     tracks,
+    setTracks,
     getSpotifyToken,
     getGenres,
     getPlaylistAndTracks,
