@@ -10,30 +10,33 @@ import PlaylistArtist from "../components/playlist-artist/PlaylistArtist";
 import Playlist from "../components/playlist/Playlist";
 import Premium from "../components/premium-page/Premium";
 import Download from "../components/download-page/Download";
-import SideBarAfterLogin from "../components/side-bar/sidebar-afterlogin/SideBarAfterLogin";
-import FooterPlayMusic from "../components/footer/footer-playmusic/FooterPlayMusic";
-import SupportPage from "../components/support-page/SupportPage";
-import HeaderAccount from "../components/header/hearder-account/HeaderAccount";
 import AccountManage from "../components/account-manage/AccountManage";
+import HomePageAfterLogin from "../components/home-page-after-login/HomePageAfterLogin";
+import AccountManagePlan from "../components/account-manage-plan/AccountManagePlan";
+import AccountManageEditProfile from "../components/account-manage-edit-profile/AccountManageEditProfile";
+import AccountPrivacy from "../components/account-manage-privacy-page/AccountPrivacy";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/home-page" element={<HomePage />} />
-      <Route path="/playlist-artist" element={<PlaylistArtist />} />
-      <Route path="/search-page" element={<SearchPage />} />
+      <Route path="/search" element={<SearchPage />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/reset-password" element={<PasswordReset />} />
       <Route path="/playlist" element={<Playlist />} />
       <Route path="/premium-page" element={<Premium />} />
       <Route path="/download-page" element={<Download />} />
-      <Route path="/sidebar-afterlogin" element={<SideBarAfterLogin />} />
-      <Route path="/header-account" element={<HeaderAccount />} />
-      <Route path="/footer-playmusic" element={<FooterPlayMusic />} />
-      <Route path="/support-page" element={<SupportPage />} />
       <Route path="/account-manage" element={<AccountManage />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/home-page" element={<HomePage />} />
+      <Route path="/playlist-artist" element={<PlaylistArtist />} />
+      <Route path="/home-page-after-login" element={<HomePageAfterLogin />} />
+      <Route path="/account-manage-plan" element={<AccountManagePlan />} />
+      <Route
+        path="/account-manage-edit"
+        element={<AccountManageEditProfile />}
+      />
+      <Route path="/account-manage-privacy" element={<AccountPrivacy />} />
     </Routes>
   );
 };

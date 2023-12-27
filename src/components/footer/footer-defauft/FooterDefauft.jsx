@@ -8,8 +8,8 @@ const FooterDefauft = () => {
       <footer className="footer-landingpage">
         <div class="container">
           <div class="footer-menu-top-bar">
-            <div class="logo-spotify" to="/homepage">
-              <NavLink to="/homepage">
+            <div class="logo-spotify" to="/home-page">
+              <NavLink to="/home-page">
                 <img
                   src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
                   alt="Logo"
@@ -19,8 +19,7 @@ const FooterDefauft = () => {
 
             <div class="footer-menu-top-bar-links">
               <div class="footer-menu-top-bar-links-company">
-                <div>Company</div>
-
+                <div className="title">Company</div>
                 <ul>
                   <li>
                     <NavLink to="">About</NavLink>

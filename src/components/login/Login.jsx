@@ -25,7 +25,6 @@ import {
 } from "../../constants/validateConstant";
 import { setUser } from "../../features/authSlice";
 import "../login/Login.scss";
-
 const Login = () => {
   const [form, setForm] = useState({});
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -33,14 +32,12 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
-
   const handleValidate = () => {
     const errors = {};
     if (!form.email) {
@@ -53,18 +50,14 @@ const Login = () => {
     } else if (!REGEX.password.test(form.password)) {
       errors.password = INVALID_PASSWORD;
     }
-
     return errors;
   };
-
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
   };
-
   const handleRememberMeChange = () => {
     setRememberMe(!rememberMe);
   };
-
   const handleSubmit = async (e) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -84,7 +77,6 @@ const Login = () => {
       alert(ACCOUNT_DOES_NOT_EXIST);
     }
   };
-
   const handleSignInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((data) => {
@@ -99,7 +91,6 @@ const Login = () => {
         console.error(error);
       });
   };
-
   const handleSignInWithFacebook = () => {
     const facebookProvider = new FacebookAuthProvider();
 
@@ -107,8 +98,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
-        
+        const accessToken = credential.accessToken;     
+
         fetch(
           `https://graph.facebook.com/${user.providerData[0].uid}/picture?type=large&access_token=${accessToken}`
         )
@@ -125,7 +116,6 @@ const Login = () => {
         console.error("Error signing in with Facebook:", error);
       });
   };
-
   return (
     <div className="login-page">
       <header className="login-header">
@@ -281,5 +271,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

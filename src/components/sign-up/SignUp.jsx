@@ -22,7 +22,6 @@ import {
 } from "../../constants/submitConstant";
 import { setUser } from "../../features/authSlice";
 import { useDispatch } from "react-redux";
-
 const SignUp = () => {
   const [form, setForm] = useState({});
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -30,14 +29,12 @@ const SignUp = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
-
   const handleValidate = () => {
     const errors = {};
     if (!form.email) {
@@ -55,18 +52,14 @@ const SignUp = () => {
     } else if (form.repeatPassword !== form.password) {
       errors.repeatPassword = PASSWORD_DO_NOT_MATCH;
     }
-
     return errors;
   };
-
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
   };
-
   const toggleRepeatPasswordVisibility = () => {
     setRepeatPasswordVisible((prev) => !prev);
   };
-
   const handleSubmit = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -86,7 +79,6 @@ const SignUp = () => {
       alert(ACOUNT_ALREADY_EXISTS);
     }
   };
-
   const handleSignInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((data) => {
@@ -101,7 +93,6 @@ const SignUp = () => {
         console.error(error);
       });
   };
-
   const handleSignInWithFacebook = () => {
     signInWithPopup(auth, facebookProvider)
       .then((data) => {
@@ -111,7 +102,6 @@ const SignUp = () => {
         console.error(error);
       });
   };
-
   return (
     <div className="sign-up-page">
       <header className="sign-up-header">
@@ -284,5 +274,4 @@ const SignUp = () => {
     </div>
   );
 };
-
 export default SignUp;
