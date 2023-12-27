@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.scss";
+import "./header.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
