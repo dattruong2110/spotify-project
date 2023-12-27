@@ -24,6 +24,7 @@ const Header = ({ isPlaylistPage, showPlayButton }) => {
               </div>
             )}
           </div>
+
           <div class="navbar">
             <ul>
               <li>

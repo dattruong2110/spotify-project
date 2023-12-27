@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   background-color: #121212;
-  margin-top: 8px;
   border-radius: 10px;
 }
 .topbar .prev-next-buttons button {
@@ -25,7 +24,6 @@
 }
 .topbar .navbar ul {
   list-style: none;
-
   margin-top: 10px;
 }
 .topbar .navbar ul li {
@@ -90,7 +88,7 @@
   height: 45px;
   margin-right: 10px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .topbar .prev-next-buttons .play-btn:hover {
@@ -109,7 +107,7 @@
 }
 
 .header-playlist-title {
-  margin-top: 14px;
+  margin-top: 21px;
   color: $white-text-color;
   font-size: 1.5rem;
   font-weight: 700;

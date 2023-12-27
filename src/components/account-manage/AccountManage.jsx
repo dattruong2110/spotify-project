@@ -3,7 +3,6 @@ import React from "react";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 import HeaderAccount from "../header/hearder-account/HeaderAccount";
 import "../account-manage/AccountManage.scss";
-import { Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 const AccountManage = () => {
@@ -27,7 +26,7 @@ const AccountManage = () => {
               dụng các điều khoản và điều kiện. Ưu đãi không dành cho người đã
               dùng thử gói Premium. Ưu đãi kết thúc vào ngày 2023-12-31.
             </p>
-            <NavLink to="/">Dùng 3 Tháng Với Giá 59,000đ</NavLink>
+            <NavLink to="/premium-page">Dùng 3 Tháng Với Giá 59,000đ</NavLink>
           </div>
         </div>
 
@@ -35,17 +34,23 @@ const AccountManage = () => {
           <h2 className="title-navbar">Account</h2>
           <div class="tab">
             <i id="library-icon" class="fa-brands fa-spotify"></i>
-            <p class="tab-title">Manage your packages</p>
+            <p class="tab-title">
+              <NavLink to="/account-manage-plan">Manage your packages</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-pen"></i>
-            <p class="tab-title">Edit profile</p>
+            <p class="tab-title">
+              <NavLink to="/account-manage-edit">Edit profile</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-arrow-rotate-left"></i>
-            <p class="tab-title">Restore playlist</p>
+            <p class="tab-title">
+              <NavLink to="/">Restore playlist</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
         </nav>
@@ -53,17 +58,23 @@ const AccountManage = () => {
           <h2 className="title-navbar">Pay</h2>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-book"></i>
-            <p class="tab-title">Order history</p>
+            <p class="tab-title">
+              <NavLink to="/">Order history</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-regular fa-credit-card"></i>
-            <p class="tab-title">Saved payment card</p>
+            <p class="tab-title">
+              <NavLink to="/">Saved payment card</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-tag"></i>
-            <p class="tab-title">Change</p>
+            <p class="tab-title">
+              <NavLink to="/">Change</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
         </nav>
@@ -71,32 +82,44 @@ const AccountManage = () => {
           <h2 className="title-navbar">Security and privacy</h2>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-unlock-keyhole"></i>
-            <p class="tab-title">Change password</p>
+            <p class="tab-title">
+              <NavLink to="/">Change password</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-tablet-button"></i>
-            <p class="tab-title">Manage app</p>
+            <p class="tab-title">
+              <NavLink to="/">Manage app</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-bell"></i>
-            <p class="tab-title">Setting notification</p>
+            <p class="tab-title">
+              <NavLink to="/">Setting notification</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-eye"></i>
-            <p class="tab-title">Setting privacy</p>
+            <p class="tab-title">
+              <NavLink to="/">Setting privacy</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-list-ul"></i>
-            <p class="tab-title">Setting method login</p>
+            <p class="tab-title">
+              <NavLink to="/">Setting method login</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-arrow-right"></i>
-            <p class="tab-title">Logout everywhere</p>
+            <p class="tab-title">
+              <NavLink to="/">Logout everywhere</NavLink>
+            </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
         </nav>
