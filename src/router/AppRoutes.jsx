@@ -15,6 +15,7 @@ import HomePageAfterLogin from "../components/home-page-after-login/HomePageAfte
 import AccountManagePlan from "../components/account-manage-plan/AccountManagePlan";
 import AccountManageEditProfile from "../components/account-manage-edit-profile/AccountManageEditProfile";
 import AccountPrivacy from "../components/account-manage-privacy-page/AccountPrivacy";
+import SupportPage from "../components/support-page/SupportPage";
 
 const AppRoutes = () => {
   return (
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         element={<AccountManageEditProfile />}
       />
       <Route path="/account-manage-privacy" element={<AccountPrivacy />} />
+      <Route path="/support-page" element={<SupportPage />} />
     </Routes>
   );
 };
