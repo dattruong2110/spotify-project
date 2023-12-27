@@ -38,7 +38,7 @@ const HeaderSearchPage = () => {
                 <a href="/premium-page">Premium</a>
               </li>
               <li>
-                <a href="#">Support</a>
+                <a href="/support-page">Support</a>
               </li>
               <li>
                 <a href="/downloan-page">Download</a>
