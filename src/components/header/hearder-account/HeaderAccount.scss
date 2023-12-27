@@ -68,6 +68,51 @@ header {
   }
 }
 
+.header-bar-account-playlist {
+  position: fixed;
+  background-color: black;
+  max-width: 100%;
+  top: 0;
+  left: 245px;
+  right: 0;
+  margin-top: 0;
+}
+
+.container-header-account .play-btn {
+  border: none;
+  border-radius: 100%;
+  background-color: $green-btn-color;
+  color: $background-color-base;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.container-header-account .play-btn:hover {
+  background-color: $green-hover-btn-color;
+  color: $background-color-base;
+}
+
+.container-header-account .play-btn:active {
+  background-color: $green-hover-btn-color !important;
+  color: $background-color-base;
+}
+
+.container-header-account .play-btn .fa-play {
+  font-size: 1.4rem;
+  padding: 7px 5px;
+}
+
+.container-header-account .header-playlist-title {
+  width: 200px;
+  margin-top: 5px;
+  color: $white-text-color;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .container-account {
   position: relative;
   display: flex;

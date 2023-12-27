@@ -93,11 +93,12 @@ const Login = () => {
   };
   const handleSignInWithFacebook = () => {
     const facebookProvider = new FacebookAuthProvider();
+
     signInWithPopup(auth, facebookProvider)
       .then((result) => {
         const user = result.user;
         const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;
+        const accessToken = credential.accessToken;     
 
         fetch(
           `https://graph.facebook.com/${user.providerData[0].uid}/picture?type=large&access_token=${accessToken}`

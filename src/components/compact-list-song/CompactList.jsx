@@ -2,123 +2,56 @@ import React from "react";
 import "./CompactList.scss";
 import { Table } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { formatDuration, formatWeeksAgo } from "../list-song/ListSong";
 
-const CompactList = () => {
+const CompactList = ({
+  index,
+  name,
+  album,
+  artists,
+  addedAt,
+  duration,
+  previewUrl,
+  isSongPlaying,
+  onPlayPause,
+}) => {
   return (
-    <Table hover variant="dark" className="list-compact-table-song">
-      <thead>
-        <tr>
-          <th className="list-table-head">#</th>
-          <th className="list-table-head">Title</th>
-          <th className="list-table-head">Artist</th>
-          <th className="list-table-head">Album</th>
-          <th className="list-table-head">Date added</th>
-          <th className="list-table-head">
-            <i className="fa-regular fa-clock"></i>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className="list-table-row">
-          <td className="border-0 list-table-description">1</td>
-          <td className="list-song-table-description border-0">
-            <div className="song-artist-name d-grid">
-              <NavLink className="link-song">Daylight</NavLink>
-            </div>
-          </td>
-          <td className="border-0 list-table-description">David Kushner</td>
-          <td className="border-0 list-table-description">
-            <NavLink className="link-album">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">3 weeks ago</td>
-          <td className="border-0 list-table-description">3:32</td>
-        </tr>
-        <tr>
-          <td className="border-0 list-table-description">1</td>
-          <td className="list-song-table-description border-0">
-            <NavLink className="link-song">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">David Kushner</td>
-          <td className="border-0 list-table-description">
-            <NavLink className="link-album">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">3 weeks ago</td>
-          <td className="border-0 list-table-description">3:32</td>
-        </tr>
-        <tr>
-          <td className="border-0 list-table-description">1</td>
-          <td className="list-song-table-description border-0">
-            <NavLink className="link-song">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">David Kushner</td>
-          <td className="border-0 list-table-description">
-            <NavLink className="link-album">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">3 weeks ago</td>
-          <td className="border-0 list-table-description">3:32</td>
-        </tr>
-        <tr>
-          <td className="border-0 list-table-description">1</td>
-          <td className="list-song-table-description border-0">
-            <NavLink className="link-song">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">David Kushner</td>
-          <td className="border-0 list-table-description">
-            <NavLink className="link-album">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">3 weeks ago</td>
-          <td className="border-0 list-table-description">3:32</td>
-        </tr>
-        <tr>
-          <td className="border-0 list-table-description">1</td>
-          <td className="list-song-table-description border-0">
-            <NavLink className="link-song">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">David Kushner</td>
-          <td className="border-0 list-table-description">
-            <NavLink className="link-album">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">3 weeks ago</td>
-          <td className="border-0 list-table-description">3:32</td>
-        </tr>
-        <tr>
-          <td className="border-0 list-table-description">1</td>
-          <td className="list-song-table-description border-0">
-            <NavLink className="link-song">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">David Kushner</td>
-          <td className="border-0 list-table-description">
-            <NavLink className="link-album">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">3 weeks ago</td>
-          <td className="border-0 list-table-description">3:32</td>
-        </tr>
-        <tr>
-          <td className="border-0 list-table-description">1</td>
-          <td className="list-song-table-description border-0">
-            <NavLink className="link-song">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">David Kushner</td>
-          <td className="border-0 list-table-description">
-            <NavLink className="link-album">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">3 weeks ago</td>
-          <td className="border-0 list-table-description">3:32</td>
-        </tr>
-        <tr>
-          <td className="border-0 list-table-description">1</td>
-          <td className="list-song-table-description border-0">
-            <NavLink className="link-song">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">David Kushner</td>
-          <td className="border-0 list-table-description">
-            <NavLink className="link-album">Daylight</NavLink>
-          </td>
-          <td className="border-0 list-table-description">3 weeks ago</td>
-          <td className="border-0 list-table-description">3:32</td>
-        </tr>
-      </tbody>
-    </Table>
+    <tr
+      className={`list-table-row ${isSongPlaying ? "playing" : ""}`}
+      onClick={() => onPlayPause({ id: index, name, previewUrl })}
+    >
+      <td className="border-0 list-table-description">
+        <span className="index">{index}</span>
+        {previewUrl && (
+          <button
+            className={`play-button ${isSongPlaying ? "pause" : "play"}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onPlayPause({ id: previewUrl, name, previewUrl });
+            }}
+          >
+            <i
+              className={`fa-solid ${isSongPlaying ? "fa-pause" : "fa-play"}`}
+            ></i>
+          </button>
+        )}
+      </td>
+      <td className="list-song-table-description border-0">
+        <div className="song-artist-name d-grid">
+          <NavLink className="link-song">{name}</NavLink>
+        </div>
+      </td>
+      <td className="border-0 list-table-description">{artists[0].name}</td>
+      <td className="border-0 list-table-description">
+        <NavLink className="link-album">{album.name}</NavLink>
+      </td>
+      <td className="border-0 list-table-description">
+        {formatWeeksAgo(addedAt)}
+      </td>
+      <td className="border-0 list-table-description">
+        {formatDuration(duration)}
+      </td>
+    </tr>
   );
 };
 
