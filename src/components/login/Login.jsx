@@ -98,7 +98,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         const credential = FacebookAuthProvider.credentialFromResult(result);
-        const accessToken = credential.accessToken;     
+        const accessToken = credential.accessToken;
 
         fetch(
           `https://graph.facebook.com/${user.providerData[0].uid}/picture?type=large&access_token=${accessToken}`
@@ -145,7 +145,7 @@ const Login = () => {
               onClick={handleSignInWithGoogle}
             >
               <i className="fa-brands fa-google external-link-icon"></i>
-              <span>Sign up with Google</span>
+              <span>Login with Google</span>
             </Button>
           )}
           {value ? (
@@ -156,7 +156,7 @@ const Login = () => {
               onClick={handleSignInWithFacebook}
             >
               <i className="fa-brands fa-facebook external-link-icon"></i>
-              <span>Sign up with Facebook</span>
+              <span>Login with Facebook</span>
             </Button>
           )}
           <hr />

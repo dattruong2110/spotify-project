@@ -16,10 +16,7 @@ import {
   PASSWORD_DO_NOT_MATCH,
   REQUIRED,
 } from "../../constants/validateConstant";
-import {
-  ACOUNT_ALREADY_EXISTS,
-  SIGN_UP_SUCCESSFULLY,
-} from "../../constants/submitConstant";
+import { ACOUNT_ALREADY_EXISTS } from "../../constants/submitConstant";
 import { setUser } from "../../features/authSlice";
 import { useDispatch } from "react-redux";
 const SignUp = () => {
@@ -72,8 +69,7 @@ const SignUp = () => {
       const user = userCredential.user;
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("user", JSON.stringify(user));
-      alert(SIGN_UP_SUCCESSFULLY);
-      navigate("/login");
+      navigate("/create-profile");
     } catch (error) {
       console.error(error);
       alert(ACOUNT_ALREADY_EXISTS);

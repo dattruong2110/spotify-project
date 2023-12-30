@@ -15,6 +15,7 @@ import HeaderAccount from "../header/hearder-account/HeaderAccount";
 import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
 import axios from "axios";
 import { Credentials } from "../../constants/Credentials";
+import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
 
 const Playlist = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -183,7 +184,7 @@ const Playlist = () => {
       <SideBar />
       <div className="playlist-container">
         {isAuthenticated ? (
-          <HeaderAccount
+          <HeaderAfterLogin
             isPlaylistPage={true}
             showPlayButton={showPlayButton}
           />
