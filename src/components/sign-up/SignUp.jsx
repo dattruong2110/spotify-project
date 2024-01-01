@@ -101,7 +101,7 @@ const SignUp = () => {
   return (
     <div className="sign-up-page">
       <header className="sign-up-header">
-        <Link className="logo-link" to={"/"}>
+        <Link className="logo-link" to={"/home-page"}>
           <svg
             role="img"
             viewBox="0 0 78 24"

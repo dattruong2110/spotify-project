@@ -121,7 +121,7 @@ const Login = () => {
   return (
     <div className="login-page">
       <header className="login-header">
-        <Link className="logo-link" to={"/"}>
+        <Link className="logo-link" to={"/home-page"}>
           <svg
             role="img"
             viewBox="0 0 78 24"
