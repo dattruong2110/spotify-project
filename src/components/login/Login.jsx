@@ -7,7 +7,7 @@ import { Formik } from "formik";
 import React, { useState } from "react";
 import { Button, Container, Form, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   auth,
   facebookProvider,
@@ -32,6 +32,8 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -71,7 +73,7 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(user));
       dispatch(setUser(user));
       alert(LOG_IN_SUCCESSFULLY);
-      navigate("/home-page");
+      navigate(-1);
     } catch (error) {
       console.error(error);
       alert(ACCOUNT_DOES_NOT_EXIST);
@@ -85,7 +87,7 @@ const Login = () => {
         };
         localStorage.setItem("user", JSON.stringify(user));
         dispatch(setUser(user));
-        navigate("/home-page");
+        navigate(-1);
       })
       .catch((error) => {
         console.error(error);

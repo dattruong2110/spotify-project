@@ -83,7 +83,7 @@ const SignUp = () => {
         };
         localStorage.setItem("user", JSON.stringify(user));
         dispatch(setUser(user));
-        navigate("/home-page");
+        navigate(-1);
       })
       .catch((error) => {
         console.error(error);
