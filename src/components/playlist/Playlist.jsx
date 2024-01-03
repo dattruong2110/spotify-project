@@ -15,6 +15,7 @@ import HeaderAccount from "../header/hearder-account/HeaderAccount";
 import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
 import axios from "axios";
 import { Credentials } from "../../constants/Credentials";
+import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
 
 const Playlist = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -41,6 +42,7 @@ const Playlist = () => {
   } = SpotifyAPI();
   const spotify = Credentials();
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const audioRef = useRef(new Audio());
 
   useEffect(() => {
@@ -137,13 +139,17 @@ const Playlist = () => {
   };
 
   const playSong = (track) => {
-    if (currentlyPlaying && currentlyPlaying.id === track.id) {
-      setCurrentlyPlaying(null);
-      audioRef.current.pause();
+    if (isAuthenticated) {
+      if (currentlyPlaying && currentlyPlaying.id === track.id) {
+        setCurrentlyPlaying(null);
+        audioRef.current.pause();
+      } else {
+        setCurrentlyPlaying(track);
+        audioRef.current.src = track.previewUrl;
+        audioRef.current.play();
+      }
     } else {
-      setCurrentlyPlaying(track);
-      audioRef.current.src = track.previewUrl;
-      audioRef.current.play();
+      setShowLoginModal(true);
     }
   };
 
@@ -183,7 +189,7 @@ const Playlist = () => {
       <SideBar />
       <div className="playlist-container">
         {isAuthenticated ? (
-          <HeaderAccount
+          <HeaderAfterLogin
             isPlaylistPage={true}
             showPlayButton={showPlayButton}
           />
@@ -472,7 +478,6 @@ const Playlist = () => {
               </div>
             </div>
             <div className="list-song">
-              {console.log("Tracks data:", tracks.listOfTracksFromAPI)}
               {selectedView === "list" && (
                 <Table hover variant="dark" className="list-table-song">
                   <thead>
@@ -503,6 +508,9 @@ const Playlist = () => {
                             currentlyPlaying.id === track.track.id
                           }
                           onPlayPause={playSong}
+                          isAuthenticated={isAuthenticated}
+                          showLoginModal={showLoginModal}
+                          setShowLoginModal={setShowLoginModal}
                         />
                       ))
                     ) : (
@@ -542,6 +550,9 @@ const Playlist = () => {
                             currentlyPlaying.id === track.track.id
                           }
                           onPlayPause={playSong}
+                          isAuthenticated={isAuthenticated}
+                          showLoginModal={showLoginModal}
+                          setShowLoginModal={setShowLoginModal}
                         />
                       ))
                     ) : (

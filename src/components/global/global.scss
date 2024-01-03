@@ -198,6 +198,10 @@ body {
   border: none;
 }
 
+.index-table {
+  width: 40px;
+}
+
 .link-album {
   color: $base-color;
   text-decoration: none;
@@ -225,4 +229,19 @@ body {
 .link-artist:hover {
   color: $white-text-color;
   text-decoration: underline;
+}
+
+.modal-song-playlist-image {
+  max-width: 200px;
+  margin-right: 20px;
+}
+
+.modal-song-playlist-title {
+  font-weight: 700;
+}
+
+.modal-button-sign-up {
+  border-radius: $btn-border-radius;
+  padding: 10px 20px;
+  margin: 20px 0 0;
 }

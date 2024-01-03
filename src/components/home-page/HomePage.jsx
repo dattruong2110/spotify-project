@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuthenticated, setUser } from "../../features/authSlice";
 import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
 import SpotifyAPI from "../../api/spotifyApi";
+import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
 
 const HomePage = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
