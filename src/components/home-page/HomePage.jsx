@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./HomePage.scss";
 import SideBar from "../side-bar/SideBar";
 import FooterPreview from "../footer/FooterPreview";
@@ -8,10 +7,26 @@ import HeaderAccount from "../header/hearder-account/HeaderAccount";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuthenticated, setUser } from "../../features/authSlice";
 import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
+import SpotifyAPI from "../../api/spotifyApi";
 
 const HomePage = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const dispatch = useDispatch();
+  const spotifyAPI = SpotifyAPI();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await spotifyAPI.getSpotifyToken();
+        await spotifyAPI.getGenres();
+        await spotifyAPI.getPlaylistAndTracks();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -22,183 +37,56 @@ const HomePage = () => {
     }
   }, [dispatch]);
 
+  const [showAllPlaylists, setShowAllPlaylists] = useState(false);
+
+  const handleShowAllClick = () => {
+    setShowAllPlaylists(true);
+  };
+
+  const renderPlaylists = () => {
+    const allPlaylists = spotifyAPI.playlist.listOfPlaylistFromAPI;
+    const playlistsToRender = showAllPlaylists
+      ? allPlaylists
+      : allPlaylists.slice(0, 5);
+
+    return playlistsToRender.map((playlist) => (
+      <div className="item" key={playlist.id}>
+        <img src={playlist.images[0].url} alt={playlist.name} />
+        <div className="play">
+          <span className="fa fa-play"></span>
+        </div>
+        <h4>{playlist.name}</h4>
+        <p>{playlist.description}</p>
+      </div>
+    ));
+  };
+
   return (
     <>
       <body>
         <SideBar />
-        <div class="main-container-homepage">
+        <div className="main-container-homepage">
           {isAuthenticated ? <HeaderAccount /> : <Header />}
-          <div class="spotify-playlists">
-            <h2>Playlist Hit</h2>
-            <div class="list">
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Today's Top Hits</h4>
-                <p>Rema & Selena Gomez are on top of the...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Today's Top Hits</h4>
-                <p>Rema & Selena Gomez are on top of the...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Today's Top Hits</h4>
-                <p>Rema & Selena Gomez are on top of the...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Today's Top Hits</h4>
-                <p>Rema & Selena Gomez are on top of the...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Today's Top Hits</h4>
-                <p>Rema & Selena Gomez are on top of the...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Today's Top Hits</h4>
-                <p>Rema & Selena Gomez are on top of the...</p>
-              </div>
+          <div className="spotify-playlists">
+            <div className="d-flex">
+              <h2>Playlist Hit</h2>
+              {!showAllPlaylists && (
+                <button
+                  className="btn-display-more"
+                  onClick={handleShowAllClick}
+                >
+                  Show all
+                </button>
+              )}
             </div>
-            <hr />
-          </div>
-
-          <div class="spotify-playlists">
-            <h2>Collection The Best</h2>
-            <div class="list">
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Peaceful Piano</h4>
-                <p>Relax and indulge with beautiful piano pieces</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Peaceful Piano</h4>
-                <p>Relax and indulge with beautiful piano pieces</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Peaceful Piano</h4>
-                <p>Relax and indulge with beautiful piano pieces</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Peaceful Piano</h4>
-                <p>Relax and indulge with beautiful piano pieces</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Peaceful Piano</h4>
-                <p>Relax and indulge with beautiful piano pieces</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Peaceful Piano</h4>
-                <p>Relax and indulge with beautiful piano pieces</p>
-              </div>
-            </div>
-            <hr />
-          </div>
-
-          <div class="spotify-playlists">
-            <h2>Spotify's Choice</h2>
-            <div class="list">
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Mood Booster</h4>
-                <p>Get happy with today's dose of feel-good...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Mood Booster</h4>
-                <p>Get happy with today's dose of feel-good...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Mood Booster</h4>
-                <p>Get happy with today's dose of feel-good...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Mood Booster</h4>
-                <p>Get happy with today's dose of feel-good...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Mood Booster</h4>
-                <p>Get happy with today's dose of feel-good...</p>
-              </div>
-              <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3OJyIheL7ILSEMaoGP0XjzwXODWg0SJSVP_D6YBDc2UGziOkxR6cG8yXc5s4StNd4Tus&usqp=CAU" />
-                <div class="play">
-                  <span class="fa fa-play"></span>
-                </div>
-                <h4>Mood Booster</h4>
-                <p>Get happy with today's dose of feel-good...</p>
-              </div>
-            </div>
-
-            <hr />
+            <div className="list">{renderPlaylists()}</div>
           </div>
 
           {isAuthenticated ? <FooterPlayMusic /> : <FooterPreview />}
         </div>
         <script
           src="https://kit.fontawesome.com/23cecef777.js"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
       </body>
     </>

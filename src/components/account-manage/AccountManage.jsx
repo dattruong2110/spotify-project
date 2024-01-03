@@ -104,7 +104,7 @@ const AccountManage = () => {
           <div class="tab">
             <i id="library-icon" class="fa-solid fa-eye"></i>
             <p class="tab-title">
-              <NavLink to="/">Setting privacy</NavLink>
+              <NavLink to="/account-manage-privacy">Setting privacy</NavLink>
             </p>
             <i id="arrow-icon" class="fas fa-chevron-right"></i>
           </div>
