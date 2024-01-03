@@ -1,38 +1,51 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Button, Dropdown } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { selectIsAuthenticated, setUser } from "../../../features/authSlice";
+import { auth } from "../../../configs/firebaseConfig";
+import {
+  clearUser,
+  selectIsAuthenticated,
+  selectUser,
+  setUser,
+} from "../../../features/authSlice";
 import "../hearder-account/HeaderAccount.scss";
 
 const HeaderAccount = ({ isPlaylistPage, showPlayButton }) => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const user = JSON.parse(storedUser);
-      dispatch(setUser(user));
-    }
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(setUser(user));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+
+    return () => unsubscribe();
   }, [dispatch]);
 
   const handleLogout = () => {
-    dispatch(setUser(null));
-
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    auth
+      .signOut()
+      .then(() => {
+        dispatch(clearUser());
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
   };
 
   return (
     <>
       <header>
         <div
-          className={`container-header-account ${
-            isPlaylistPage ? "header-bar-account-playlist" : ""
-          }`}
+          className={`container-header-account`}
         >
           <div className="logo-spotify d-flex">
             <div className="d-flex">
@@ -43,14 +56,6 @@ const HeaderAccount = ({ isPlaylistPage, showPlayButton }) => {
                 />
               </NavLink>
             </div>
-            {showPlayButton && (
-              <div className="d-flex">
-                <Button className="play-btn">
-                  <i className="fa fa-play"></i>
-                </Button>
-                <span className="header-playlist-title">lofi beats</span>
-              </div>
-            )}
           </div>
           {isAuthenticated ? (
             <div className="header-menu">
@@ -69,10 +74,9 @@ const HeaderAccount = ({ isPlaylistPage, showPlayButton }) => {
                       id="dropdown-basic"
                     >
                       <span className="account__img">
-                        <img
-                          src="https://i.scdn.co/image/ab67757000003b828cc8b4e3dfdcc631e85a642f"
-                          alt="image-account"
-                        />
+                        {user && user.photoURL && (
+                          <img src={user.photoURL} alt="image-account" />
+                        )}
                       </span>
                       Profile
                     </Dropdown.Toggle>
@@ -112,4 +116,5 @@ const HeaderAccount = ({ isPlaylistPage, showPlayButton }) => {
     </>
   );
 };
+
 export default HeaderAccount;

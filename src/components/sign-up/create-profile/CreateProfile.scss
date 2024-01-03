@@ -1,0 +1,10 @@
+@import "../../global/global.scss";
+
+.create-profile-page {
+    padding: 32px;
+}
+
+.create-profile-form .input-form:disabled {
+    background-color: $base-color;
+    cursor: not-allowed;
+}

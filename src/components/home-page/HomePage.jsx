@@ -8,6 +8,7 @@ import HeaderAccount from "../header/hearder-account/HeaderAccount";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuthenticated, setUser } from "../../features/authSlice";
 import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
+import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
 
 const HomePage = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -27,7 +28,7 @@ const HomePage = () => {
       <body>
         <SideBar />
         <div class="main-container-homepage">
-          {isAuthenticated ? <HeaderAccount /> : <Header />}
+          {isAuthenticated ? <HeaderAfterLogin /> : <Header />}
           <div class="spotify-playlists">
             <h2>Playlist Hit</h2>
             <div class="list">

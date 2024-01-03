@@ -16,6 +16,7 @@ import AccountManagePlan from "../components/account-manage-plan/AccountManagePl
 import AccountManageEditProfile from "../components/account-manage-edit-profile/AccountManageEditProfile";
 import AccountPrivacy from "../components/account-manage-privacy-page/AccountPrivacy";
 import SupportPage from "../components/support-page/SupportPage";
+import CreateProfile from "../components/sign-up/create-profile/CreateProfile";
 
 const AppRoutes = () => {
   return (
@@ -39,6 +40,7 @@ const AppRoutes = () => {
       />
       <Route path="/account-manage-privacy" element={<AccountPrivacy />} />
       <Route path="/support-page" element={<SupportPage />} />
+      <Route path="/create-profile" element={<CreateProfile />} />
     </Routes>
   );
 };
