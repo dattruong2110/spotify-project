@@ -25,7 +25,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/reset-password" element={<PasswordReset />} />
-      <Route path="/playlist" element={<Playlist />} />
+      <Route path="/playlist/:playlistId" element={<Playlist />} />
       <Route path="/premium-page" element={<Premium />} />
       <Route path="/download-page" element={<Download />} />
       <Route path="/account-manage" element={<AccountManage />} />
