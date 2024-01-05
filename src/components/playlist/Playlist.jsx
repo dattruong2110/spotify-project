@@ -1,21 +1,33 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Dropdown, Image, Table } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import SpotifyAPI from "../../api/spotifyApi";
+import { Credentials } from "../../constants/Credentials";
+import { selectIsAuthenticated, setUser } from "../../features/authSlice";
+import {
+  selectCurrentSong,
+  selectCurrentSongIndex,
+  selectCurrentlyPlaying,
+  selectIsPlaying,
+  setCurrentSong,
+  setCurrentSongIndex,
+  setCurrentTrackDuration,
+  setCurrentlyPlaying,
+  setIsPlaying,
+  togglePlaybackState,
+  updatePlaybackTime,
+} from "../../features/songSlice";
 import CompactList from "../compact-list-song/CompactList";
 import FooterPreview from "../footer/FooterPreview";
+import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
+import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
 import Header from "../header/Header";
+import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
 import ListSong from "../list-song/ListSong";
 import SideBar from "../side-bar/SideBar";
 import "./Playlist.scss";
-import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
-import SpotifyAPI from "../../api/spotifyApi";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsAuthenticated, setUser } from "../../features/authSlice";
-import HeaderAccount from "../header/hearder-account/HeaderAccount";
-import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
-import axios from "axios";
-import { Credentials } from "../../constants/Credentials";
-import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
 
 const Playlist = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -25,6 +37,8 @@ const Playlist = () => {
   const [showShareDropdown, setShowShareDropdown] = useState(false);
   const [selectedView, setSelectedView] = useState("list");
   const [showPlayButton, setShowPlayButton] = useState(false);
+  const currentSong = useSelector(selectCurrentSong);
+  const isPlaying = useSelector(selectIsPlaying);
 
   const {
     token,
@@ -41,9 +55,10 @@ const Playlist = () => {
     getPlaylistAndTracksByView,
   } = SpotifyAPI();
   const spotify = Credentials();
-  const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
+  const currentlyPlaying = useSelector(selectCurrentlyPlaying);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const audioRef = useRef(new Audio());
+  const currentSongIndex = useSelector(selectCurrentSongIndex);
 
   useEffect(() => {
     let isMounted = true;
@@ -112,6 +127,7 @@ const Playlist = () => {
           setTracks({
             selectedTrack: tracks.selectedTrack,
             listOfTracksFromAPI: tracksResponse.data.items,
+            tracks: tracksResponse.data.items,
           });
         }
       } catch (error) {
@@ -126,6 +142,11 @@ const Playlist = () => {
     };
   }, [spotify.ClientId, spotify.ClientSecret]);
 
+  useEffect(() => {
+    dispatch(setCurrentSong(tracks.listOfTracksFromAPI[0]));
+    dispatch(togglePlaybackState());
+  }, [dispatch, tracks.listOfTracksFromAPI]);
+
   const handleViewChange = async (view) => {
     setSelectedView(view);
 
@@ -138,18 +159,137 @@ const Playlist = () => {
     }
   };
 
-  const playSong = (track) => {
+  const playSong = (track, index) => {
     if (isAuthenticated) {
       if (currentlyPlaying && currentlyPlaying.id === track.id) {
-        setCurrentlyPlaying(null);
+        dispatch(setCurrentlyPlaying(null));
+        dispatch(setCurrentSongIndex(null));
         audioRef.current.pause();
       } else {
-        setCurrentlyPlaying(track);
+        dispatch(setCurrentlyPlaying(track));
+        dispatch(setIsPlaying(true));
         audioRef.current.src = track.previewUrl;
+        dispatch(setCurrentTrackDuration(track.duration_ms));
         audioRef.current.play();
       }
     } else {
       setShowLoginModal(true);
+    }
+    dispatch(setCurrentSong(track));
+    dispatch(togglePlaybackState());
+  };
+
+  const pauseSong = () => {
+    audioRef.current.pause();
+    dispatch(setIsPlaying(false));
+  };
+
+  const checkCanPlay = async (previewUrl) => {
+    return new Promise((resolve) => {
+      const audio = new Audio();
+      audio.src = previewUrl;
+
+      audio.addEventListener("canplaythrough", () => {
+        resolve(true);
+      });
+
+      audio.addEventListener("error", () => {
+        resolve(false);
+      });
+
+      audio.load();
+    });
+  };
+
+  const playSongPlaylist = async (track, index) => {
+    if (isAuthenticated) {
+      if (!track || !track.previewUrl) {
+        console.error("Invalid song data:", track);
+        playNextSong();
+        return;
+      }
+
+      audioRef.current.src = track.previewUrl;
+
+      try {
+        await audioRef.current.load();
+        await audioRef.current.play();
+      } catch (error) {
+        console.error("Error playing song", error);
+        playNextSong();
+      }
+
+      if (currentlyPlaying && currentlyPlaying.id === track.id) {
+        dispatch(setCurrentlyPlaying(null));
+        dispatch(setCurrentSongIndex(null));
+        audioRef.current.pause();
+      } else {
+        const canPlay = await checkCanPlay(track.previewUrl);
+
+        if (canPlay) {
+          dispatch(setCurrentlyPlaying(track));
+          dispatch(setCurrentSongIndex(index));
+          audioRef.current.src = track.previewUrl;
+          dispatch(setCurrentTrackDuration(track.duration_ms));
+          audioRef.current.play();
+        } else {
+          console.error(
+            "Failed to load because no supported source was found."
+          );
+          playNextSong();
+        }
+      }
+    } else {
+      setShowLoginModal(true);
+    }
+  };
+
+  const playNextSong = () => {
+    if (
+      currentSongIndex !== null &&
+      currentSongIndex < tracks.listOfTracksFromAPI.length - 1
+    ) {
+      const nextSongIndex = currentSongIndex + 1;
+      const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
+      playSong(nextSong, nextSongIndex);
+    } else {
+      dispatch(setCurrentlyPlaying(null));
+      dispatch(setCurrentSongIndex(null));
+    }
+  };
+
+  useEffect(() => {
+    const handleSongEnd = () => {
+      if (
+        currentSongIndex !== null &&
+        currentSongIndex < tracks.listOfTracksFromAPI.length - 1
+      ) {
+        const nextSongIndex = currentSongIndex + 1;
+        const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
+
+        dispatch(setCurrentlyPlaying(nextSong));
+        dispatch(setCurrentSongIndex(nextSongIndex));
+
+        audioRef.current.src = nextSong.track.preview_url;
+        audioRef.current.play();
+      } else {
+        dispatch(setCurrentlyPlaying(null));
+        dispatch(setCurrentSongIndex(null));
+      }
+    };
+
+    audioRef.current.addEventListener("ended", handleSongEnd);
+
+    return () => {
+      audioRef.current.removeEventListener("ended", handleSongEnd);
+    };
+  }, [audioRef, currentSongIndex, tracks.listOfTracksFromAPI]);
+
+  const handleTimeUpdate = (newTime) => {
+    dispatch(updatePlaybackTime(newTime));
+
+    if (newTime > 30) {
+      console.log("The playback has reached 30 seconds.");
     }
   };
 
@@ -240,7 +380,9 @@ const Playlist = () => {
               <div className="d-flex">
                 <Button
                   className="play-btn"
-                  onClick={() => playSong(tracks.listOfTracksFromAPI[0])}
+                  onClick={() =>
+                    playSongPlaylist(tracks.listOfTracksFromAPI[0], 0)
+                  }
                 >
                   <i className="fa fa-play"></i>
                 </Button>
@@ -568,7 +710,25 @@ const Playlist = () => {
           </footer>
         </div>
       </div>
-      {isAuthenticated ? <FooterPlayMusic /> : <FooterPreview />}
+      {isAuthenticated ? (
+        <>
+          <FooterPlayMusic
+            isSongPlaying={isPlaying}
+            onPlayPause={
+              isPlaying
+                ? pauseSong
+                : () => playSong(currentlyPlaying, currentSongIndex)
+            }
+            currentSong={currentSong}
+            audioRef={audioRef}
+            playlist={playlist}
+            onTimeUpdate={handleTimeUpdate}
+            setCurrentTrackDuration={setCurrentTrackDuration}
+          />
+        </>
+      ) : (
+        <FooterPreview />
+      )}
     </div>
   );
 };

@@ -1,19 +1,38 @@
-import React, { useEffect, useState } from "react";
-import "./HomePage.scss";
-import SideBar from "../side-bar/SideBar";
-import FooterPreview from "../footer/FooterPreview";
-import Header from "../header/Header";
-import HeaderAccount from "../header/hearder-account/HeaderAccount";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsAuthenticated, setUser } from "../../features/authSlice";
-import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
 import SpotifyAPI from "../../api/spotifyApi";
+import { selectIsAuthenticated, setUser } from "../../features/authSlice";
+import FooterPreview from "../footer/FooterPreview";
+import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
+import Header from "../header/Header";
 import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
+import SideBar from "../side-bar/SideBar";
+import "./HomePage.scss";
+import {
+  selectCurrentSong,
+  selectCurrentSongIndex,
+  selectCurrentlyPlaying,
+  selectIsPlaying,
+  selectPlaybackTime,
+  setCurrentSong,
+  setCurrentSongIndex,
+  setCurrentTrackDuration,
+  setCurrentlyPlaying,
+  setIsPlaying,
+  togglePlaybackState,
+  updatePlaybackTime,
+} from "../../features/songSlice";
 
 const HomePage = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const dispatch = useDispatch();
   const spotifyAPI = SpotifyAPI();
+  const audioRef = useRef(new Audio());
+  const currentSong = useSelector(selectCurrentSong);
+  const isPlaying = useSelector(selectIsPlaying);
+  const currentlyPlaying = useSelector(selectCurrentlyPlaying);
+  const currentSongIndex = useSelector(selectCurrentSongIndex);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +63,35 @@ const HomePage = () => {
     setShowAllPlaylists(true);
   };
 
+  const playSong = (track, index) => {
+    if (isAuthenticated) {
+      if (currentlyPlaying && currentlyPlaying.id === track.id) {
+        dispatch(setCurrentlyPlaying(null));
+        dispatch(setCurrentSongIndex(null));
+        audioRef.current.pause();
+      } else {
+        dispatch(setCurrentlyPlaying(track));
+        dispatch(setIsPlaying(true));
+        audioRef.current.src = track.previewUrl;
+        dispatch(setCurrentTrackDuration(track.duration_ms));
+        audioRef.current.play();
+      }
+    } else {
+      setShowLoginModal(true);
+    }
+    dispatch(setCurrentSong(track));
+    dispatch(togglePlaybackState());
+  };
+
+  const pauseSong = () => {
+    audioRef.current.pause();
+    dispatch(setIsPlaying(false));
+  };
+
+  const handleTimeUpdateInHomepage = (newTime) => {
+    dispatch(updatePlaybackTime(newTime));
+  };
+
   const renderPlaylists = () => {
     const allPlaylists = spotifyAPI.playlist.listOfPlaylistFromAPI;
     const playlistsToRender = showAllPlaylists
@@ -67,8 +115,8 @@ const HomePage = () => {
       <body>
         <SideBar />
         <div className="main-container-homepage">
-          {isAuthenticated ? <HeaderAccount /> : <Header />}
-          <div className="spotify-playlists">
+          {isAuthenticated ? <HeaderAfterLogin /> : <Header />}
+          <div className={`spotify-playlists ${isAuthenticated ? "mt-5" : ""}`}>
             <div className="d-flex">
               <h2>Playlist Hit</h2>
               {!showAllPlaylists && (
@@ -83,7 +131,22 @@ const HomePage = () => {
             <div className="list">{renderPlaylists()}</div>
           </div>
 
-          {isAuthenticated ? <FooterPlayMusic /> : <FooterPreview />}
+          {isAuthenticated ? (
+            <FooterPlayMusic
+              isSongPlaying={isPlaying}
+              onPlayPause={
+                isPlaying
+                  ? pauseSong
+                  : () => playSong(currentlyPlaying, currentSongIndex)
+              }
+              audioRef={audioRef}
+              currentSong={currentSong}
+              onTimeUpdate={handleTimeUpdateInHomepage}
+              setCurrentTrackDuration={setCurrentTrackDuration}
+            />
+          ) : (
+            <FooterPreview />
+          )}
         </div>
         <script
           src="https://kit.fontawesome.com/23cecef777.js"
