@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Dropdown, Image, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CompactList from "../compact-list-song/CompactList";
 import FooterPreview from "../footer/FooterPreview";
 import Header from "../header/Header";
@@ -44,6 +44,8 @@ const Playlist = () => {
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const audioRef = useRef(new Audio());
+  const [playlistDetail, setplaylistDetail] = useState(null);
+  const { playlistId } = useParams();
 
   useEffect(() => {
     let isMounted = true;
@@ -97,7 +99,7 @@ const Playlist = () => {
             listOfPlaylistFromAPI: playlistResponse.data.playlists.items,
           });
 
-          const playlistId = playlistResponse.data.playlists.items[0].id;
+          // const playlistId = playlistResponse.data.playlists.items[0].id;
 
           const tracksResponse = await axios(
             `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
