@@ -22,6 +22,7 @@ import {
   togglePlaybackState,
   updatePlaybackTime,
 } from "../../features/songSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -33,15 +34,42 @@ const HomePage = () => {
   const currentlyPlaying = useSelector(selectCurrentlyPlaying);
   const currentSongIndex = useSelector(selectCurrentSongIndex);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const navigate = useNavigate();
+
+  const handlePlaylistClick = (playlistId) => {
+    navigate(`/playlist/${playlistId}`);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await spotifyAPI.getSpotifyToken();
+      } catch (error) {
+        console.error("Error fetching Spotify token:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         await spotifyAPI.getGenres();
+      } catch (error) {
+        console.error("Error fetching genres:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         await spotifyAPI.getPlaylistAndTracks();
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching playlist and tracks:", error);
       }
     };
 
@@ -94,18 +122,23 @@ const HomePage = () => {
 
   const renderPlaylists = () => {
     const allPlaylists = spotifyAPI.playlist.listOfPlaylistFromAPI;
+    if (!allPlaylists || allPlaylists.length === 0) {
+      return <p>No playlists available.</p>;
+    }
     const playlistsToRender = showAllPlaylists
       ? allPlaylists
-      : allPlaylists.slice(0, 5);
+      : allPlaylists.slice(0, 7);
 
     return playlistsToRender.map((playlist) => (
       <div className="item" key={playlist.id}>
-        <img src={playlist.images[0].url} alt={playlist.name} />
-        <div className="play">
-          <span className="fa fa-play"></span>
-        </div>
-        <h4>{playlist.name}</h4>
-        <p>{playlist.description}</p>
+        <Link className="" to={`/playlist/${playlist.id}`}>
+          <img src={playlist.images[0].url} alt={playlist.name} />
+          <div className="play">
+            <span className="fa fa-play"></span>
+          </div>
+          <h4>{playlist.name}</h4>
+          <p>{playlist.description}</p>
+        </Link>
       </div>
     ));
   };

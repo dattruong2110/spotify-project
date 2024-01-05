@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Dropdown, Image, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import SpotifyAPI from "../../api/spotifyApi";
 import { Credentials } from "../../constants/Credentials";
 import { selectIsAuthenticated, setUser } from "../../features/authSlice";
@@ -19,6 +18,7 @@ import {
   togglePlaybackState,
   updatePlaybackTime,
 } from "../../features/songSlice";
+import { Link, useParams } from "react-router-dom";
 import CompactList from "../compact-list-song/CompactList";
 import FooterPreview from "../footer/FooterPreview";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
@@ -59,6 +59,8 @@ const Playlist = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const audioRef = useRef(new Audio());
   const currentSongIndex = useSelector(selectCurrentSongIndex);
+  const [playlistDetail, setplaylistDetail] = useState(null);
+  const { playlistId } = useParams();
 
   useEffect(() => {
     let isMounted = true;
@@ -112,7 +114,7 @@ const Playlist = () => {
             listOfPlaylistFromAPI: playlistResponse.data.playlists.items,
           });
 
-          const playlistId = playlistResponse.data.playlists.items[0].id;
+          // const playlistId = playlistResponse.data.playlists.items[0].id;
 
           const tracksResponse = await axios(
             `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
