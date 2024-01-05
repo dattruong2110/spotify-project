@@ -1,13 +1,13 @@
 import React from 'react'
-import { NAVIGATION_BAR_PREMIUM } from '../../constants/premiumConstants'
 import FooterDefauft from '../footer/footer-defauft/FooterDefauft';
 import "./Download.scss";
+import HeaderAccount from '../header/hearder-account/HeaderAccount';
 
 function Download() {
   return (
     <>
     {/* Banner */}
-    <NAVIGATION_BAR_PREMIUM/>
+    <HeaderAccount/>
     {/* //-----Bắt đầu nội dung của trang Web-----\\ */}
       <div className='main-content'>
       {/* Phần 1 */}

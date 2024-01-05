@@ -1,14 +1,14 @@
 import "./Premium.scss"
 import React from 'react'
-import { NAVIGATION_BAR_PREMIUM } from "../../constants/premiumConstants";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
+import HeaderAccount from "../header/hearder-account/HeaderAccount";
 function Premium() {
   return (
     <>
     <div className="container-root">
       
 {/* //-----Banner trang-----\\ */}
-    <NAVIGATION_BAR_PREMIUM/>
+    <HeaderAccount/>
 {/* //-----Banner trang-----\\ */}
 
 {/* //-----Phần nội dung chính-----\\  */}

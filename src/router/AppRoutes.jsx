@@ -16,6 +16,9 @@ import AccountManagePlan from "../components/account-manage-plan/AccountManagePl
 import AccountManageEditProfile from "../components/account-manage-edit-profile/AccountManageEditProfile";
 import AccountPrivacy from "../components/account-manage-privacy-page/AccountPrivacy";
 import SupportPage from "../components/support-page/SupportPage";
+import CreatePlayList from "../components/create-playlist-page/CreatePlayList"
+import OrderHistory from "../components/overview-payment/order-history-page/OrderHistory";
+import SavedPaymentCards from "../components/overview-payment/saved-payment-cards-page/SavedPaymentCards";
 
 const AppRoutes = () => {
   return (
@@ -39,7 +42,11 @@ const AppRoutes = () => {
       />
       <Route path="/account-manage-privacy" element={<AccountPrivacy />} />
       <Route path="/support-page" element={<SupportPage />} />
-    </Routes>
+      <Route path="/create-playlist-page" element={<CreatePlayList />} />
+      <Route path="/order-history-page" element={<OrderHistory/>} />
+      <Route path="/saved-payment-cards-page" element={<SavedPaymentCards/>} />
+
+    </Routes> 
   );
 };
 
