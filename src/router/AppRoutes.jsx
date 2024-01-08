@@ -16,10 +16,9 @@ import AccountManagePlan from "../components/account-manage-plan/AccountManagePl
 import AccountManageEditProfile from "../components/account-manage-edit-profile/AccountManageEditProfile";
 import AccountPrivacy from "../components/account-manage-privacy-page/AccountPrivacy";
 import SupportPage from "../components/support-page/SupportPage";
-import CreatePlayList from "../components/create-playlist-page/CreatePlayList"
-import OrderHistory from "../components/overview-payment/order-history-page/OrderHistory";
 import SavedPaymentCards from "../components/overview-payment/saved-payment-cards-page/SavedPaymentCards";
-
+import OrderHistory from "../components/overview-payment/order-history-page/OrderHistory";
+import CreatePlayList from "../components/create-playlist-page/CreatePlayList"
 const AppRoutes = () => {
   return (
     <Routes>
@@ -27,7 +26,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/reset-password" element={<PasswordReset />} />
-      <Route path="/playlist" element={<Playlist />} />
+      <Route path="/playlist/:playlistId" element={<Playlist />} />
       <Route path="/premium-page" element={<Premium />} />
       <Route path="/download-page" element={<Download />} />
       <Route path="/account-manage" element={<AccountManage />} />

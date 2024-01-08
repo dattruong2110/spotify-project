@@ -5,23 +5,18 @@
   top: 0;
   left: 0;
   right: 0;
-  margin-left: 300px;
+  margin-left: 340px;
+  z-index: 1;
 }
 
 .container-header-after-login {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin-top: 15px;
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
   max-width: 1300px;
-  height: 80px;
+  height: 70px;
   background-color: #121212;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
   .logo-spotify {
     width: 132px;
@@ -33,13 +28,6 @@
   }
 
   .header-menu {
-    margin-left: auto;
-    position: fixed;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     .header-menu-left-bar a,
     .header-menu-right-bar a {
       background-color: #121212;
@@ -89,26 +77,68 @@
   border: 0px;
   background-color: #090909;
   left: 0;
-  margin-top: 5px;
 }
 
-.container-header-after-login .prev-next-buttons :hover {
-  background-color: black;
-  color: white;
-}
-
-.container-header-after-login .prev-next-buttons :active {
-  background-color: $green-hover-btn-color !important;
+.container-header-after-login .prev-next-buttons:active {
   color: $background-color-base;
 }
 
 .container-header-after-login .prev-next-buttons {
   font-size: 1.4rem;
-  padding: 7px 5px;
-  margin-right: 600px;
+  padding: 0 5px;
 }
 
-container-header-after-login .container-account {
+.header-bar-after-login-playlist {
+  border-radius: 0;
+  position: fixed;
+  background-color: #121212;
+  max-width: 100%;
+  top: 0;
+  left: 269px;
+  right: 0;
+  margin-top: 0;
+}
+
+.header-bar-after-login-playlist .prev-next-buttons {
+  padding: 0;
+}
+
+.container-header-after-login .prev-next-buttons .play-btn {
+  border: none;
+  border-radius: 100%;
+  background-color: $green-btn-color;
+  color: $background-color-base;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.container-header-after-login .prev-next-buttons .play-btn:hover {
+  background-color: $green-hover-btn-color;
+  color: $background-color-base;
+}
+
+.container-header-after-login .prev-next-buttons .play-btn:active {
+  background-color: $green-hover-btn-color !important;
+  color: $background-color-base;
+}
+
+.container-header-after-login .prev-next-buttons .play-btn .fa-play {
+  font-size: 1.4rem;
+  padding: 7px 5px;
+}
+
+.container-header-after-login .prev-next-buttons .header-playlist-title {
+  width: 200px;
+  margin-top: 5px;
+  color: $white-text-color;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.container-header-after-login .container-account {
   position: relative;
   display: flex;
   flex-flow: column wrap;
@@ -134,12 +164,11 @@ container-header-after-login .container-account {
   }
 
   .dropdown-menu {
-    margin-top: 5px;
+    margin-top: 0px;
     border: none;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-top: 10px;
-    background-color: #000000;
+    background-color: #121212;
     color: #ffffff;
 
     .dropdown-item {
@@ -155,14 +184,14 @@ container-header-after-login .container-account {
 
   .dropdown-toggle {
     background-color: #ffffff;
-    color: #000000;
+    color: #121212;
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
     cursor: pointer;
 
     &:hover {
-      background-color: #f2f2f2;
+      background-color: black;
     }
   }
 }
