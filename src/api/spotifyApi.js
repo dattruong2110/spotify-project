@@ -97,7 +97,7 @@ const SpotifyAPI = () => {
       // const playlistId = playlistResponse.data.playlists.items[0].id;
 
       const tracksResponse = await axios(
-        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
+        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
         {
           method: "GET",
           headers: {
@@ -135,7 +135,7 @@ const SpotifyAPI = () => {
       );
       const selectedCategoryId = categoryIds[0];
       const playlistResponse = await axios(
-        `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=10`,
+        `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=50`,
         {
           method: "GET",
           headers: { Authorization: "Bearer " + token },

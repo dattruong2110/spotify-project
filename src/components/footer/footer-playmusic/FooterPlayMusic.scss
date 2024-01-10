@@ -19,7 +19,11 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    margin: 0 2px;
+    margin: 0 10px;
+  }
+
+  .control-button svg {
+    fill: $white-text-color;
   }
 
   .footer-play-button {
@@ -69,9 +73,45 @@
     span {
       cursor: default;
     }
+
+    .tooltip-container {
+      position: relative;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; /* Adjust the tooltip position */
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .tooltip-text .mute {
+      width: 60px;
+    }
+
+    .tooltip-text .unmute {
+      width: 70px;
+    }
+
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+    }
   }
 
   .song-cover {
     margin-right: 10px;
+  }
+
+  .footer-play-button.disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 }
