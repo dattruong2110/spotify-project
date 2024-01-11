@@ -16,6 +16,12 @@ import AccountManagePlan from "../components/account-manage-plan/AccountManagePl
 import AccountManageEditProfile from "../components/account-manage-edit-profile/AccountManageEditProfile";
 import AccountPrivacy from "../components/account-manage-privacy-page/AccountPrivacy";
 import SupportPage from "../components/support-page/SupportPage";
+import PaymentHelp from "../components/support-page/payment-help/PaymentHelp";
+import AccountHelp from "../components/support-page/account-help/AccountHelp";
+import PlanHelp from "../components/support-page/plan-help/PlanHelp";
+import AppHelp from "../components/support-page/app-help/AppHelp";
+import DeviceHelp from "../components/support-page/device-help/DeviceHelp";
+import SafetyPrivacy from "../components/support-page/safety-privacy/SafetyPrivacy";
 import CreateProfile from "../components/sign-up/create-profile/CreateProfile";
 
 const AppRoutes = () => {
@@ -40,6 +46,12 @@ const AppRoutes = () => {
       />
       <Route path="/account-manage-privacy" element={<AccountPrivacy />} />
       <Route path="/support-page" element={<SupportPage />} />
+      <Route path="/payment-help" element={<PaymentHelp />} />
+      <Route path="/account-help" element={<AccountHelp />} />
+      <Route path="/plan-help" element={<PlanHelp />} />
+      <Route path="/app-help" element={<AppHelp />} />
+      <Route path="/device-help" element={<DeviceHelp />} />
+      <Route path="/safety-privacy" element={<SafetyPrivacy />} />
       <Route path="/create-profile" element={<CreateProfile />} />
     </Routes>
   );
