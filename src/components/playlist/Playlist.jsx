@@ -10,11 +10,13 @@ import {
   selectCurrentSongIndex,
   selectCurrentlyPlaying,
   selectIsPlaying,
+  selectIsRepeating,
   setCurrentSong,
   setCurrentSongIndex,
   setCurrentTrackDuration,
   setCurrentlyPlaying,
   setIsPlaying,
+  setIsRepeating,
   togglePlaybackState,
   updatePlaybackTime,
 } from "../../features/songSlice";
@@ -59,7 +61,10 @@ const Playlist = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const audioRef = useRef(new Audio());
   const currentSongIndex = useSelector(selectCurrentSongIndex);
-  const [playlistDetail, setplaylistDetail] = useState(null);
+  const filteredTracks = tracks.listOfTracksFromAPI.filter(
+    (track) => track.track.preview_url
+  );
+  const isRepeating = useSelector(selectIsRepeating);
   const { playlistId } = useParams();
   const [indexPlaylist, setIndexPlaylist] = useState(null);
   const [selectedGenreIndex, setSelectedGenreIndex] = useState(0);
@@ -135,7 +140,6 @@ const Playlist = () => {
           setTracks({
             selectedTrack: tracks.selectedTrack,
             listOfTracksFromAPI: tracksResponse.data.items,
-            tracks: tracksResponse.data.items,
           });
 
           // Xác định index dựa trên playlistId
@@ -178,17 +182,20 @@ const Playlist = () => {
     }
   };
 
-  const playSong = (track, index) => {
+  const playSong = async (track, index) => {
     if (isAuthenticated) {
       if (currentlyPlaying && currentlyPlaying.id === track.id) {
         dispatch(setCurrentlyPlaying(null));
         dispatch(setCurrentSongIndex(null));
         audioRef.current.pause();
+        document.title = "Spotify - Web Player: Music for everyone";
       } else {
-        dispatch(setCurrentlyPlaying(track));
-        dispatch(setIsPlaying(true));
         audioRef.current.src = track.previewUrl;
+        dispatch(setIsPlaying(true));
+        dispatch(setCurrentlyPlaying(track));
         dispatch(setCurrentTrackDuration(track.duration_ms));
+        dispatch(setCurrentSongIndex(index));
+        document.title = `${track.name} - Web Player: Music for everyone`;
         audioRef.current.play();
       }
     } else {
@@ -203,106 +210,71 @@ const Playlist = () => {
     dispatch(setIsPlaying(false));
   };
 
-  const checkCanPlay = async (previewUrl) => {
-    return new Promise((resolve) => {
-      const audio = new Audio();
-      audio.src = previewUrl;
-
-      audio.addEventListener("canplaythrough", () => {
-        resolve(true);
-      });
-
-      audio.addEventListener("error", () => {
-        resolve(false);
-      });
-
-      audio.load();
-    });
-  };
-
-  const playSongPlaylist = async (track, index) => {
+  const playSongPlaylist = async (startIndex) => {
+    dispatch(setCurrentSongIndex(startIndex));
     if (isAuthenticated) {
-      if (!track || !track.previewUrl) {
-        console.error("Invalid song data:", track);
-        playNextSong();
-        return;
-      }
+      const playNext = async (index) => {
+        if (index < tracks.listOfTracksFromAPI.length) {
+          const track = tracks.listOfTracksFromAPI[index];
 
-      audioRef.current.src = track.previewUrl;
+          if (track.track.preview_url) {
+            dispatch(setIsPlaying(true));
+            dispatch(setCurrentlyPlaying(track));
+            dispatch(setCurrentTrackDuration(track.track.duration_ms));
+            dispatch(setCurrentSongIndex(index));
+            audioRef.current.src = track.track.preview_url;
+            audioRef.current.play();
+            document.title = `${track.track.name} - Web Player: Music for everyone`;
 
-      try {
-        await audioRef.current.load();
-        await audioRef.current.play();
-      } catch (error) {
-        console.error("Error playing song", error);
-        playNextSong();
-      }
+            await new Promise((resolve) => {
+              audioRef.current.addEventListener("ended", resolve, {
+                once: true,
+              });
+            });
 
-      if (currentlyPlaying && currentlyPlaying.id === track.id) {
-        dispatch(setCurrentlyPlaying(null));
-        dispatch(setCurrentSongIndex(null));
-        audioRef.current.pause();
-      } else {
-        const canPlay = await checkCanPlay(track.previewUrl);
-
-        if (canPlay) {
-          dispatch(setCurrentlyPlaying(track));
-          dispatch(setCurrentSongIndex(index));
-          audioRef.current.src = track.previewUrl;
-          dispatch(setCurrentTrackDuration(track.duration_ms));
-          audioRef.current.play();
+            dispatch(setIsPlaying(false));
+            playNext(index + 1);
+          } else {
+            playNext(index + 1);
+          }
         } else {
-          console.error(
-            "Failed to load because no supported source was found."
-          );
-          playNextSong();
+          dispatch(setCurrentlyPlaying(null));
+          dispatch(setCurrentSongIndex(null));
         }
-      }
+      };
+
+      playNext(startIndex);
     } else {
       setShowLoginModal(true);
     }
   };
 
-  const playNextSong = () => {
-    if (
-      currentSongIndex !== null &&
-      currentSongIndex < tracks.listOfTracksFromAPI.length - 1
-    ) {
-      const nextSongIndex = currentSongIndex + 1;
-      const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
-      playSong(nextSong, nextSongIndex);
-    } else {
-      dispatch(setCurrentlyPlaying(null));
-      dispatch(setCurrentSongIndex(null));
-    }
-  };
+  // useEffect(() => {
+  //   const handleSongEnd = () => {
+  //     if (
+  //       currentSongIndex !== null &&
+  //       currentSongIndex < tracks.listOfTracksFromAPI.length - 1
+  //     ) {
+  //       const nextSongIndex = currentSongIndex + 1;
+  //       const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
 
-  useEffect(() => {
-    const handleSongEnd = () => {
-      if (
-        currentSongIndex !== null &&
-        currentSongIndex < tracks.listOfTracksFromAPI.length - 1
-      ) {
-        const nextSongIndex = currentSongIndex + 1;
-        const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
+  //       dispatch(setCurrentlyPlaying(nextSong));
+  //       dispatch(setCurrentSongIndex(nextSongIndex));
 
-        dispatch(setCurrentlyPlaying(nextSong));
-        dispatch(setCurrentSongIndex(nextSongIndex));
+  //       audioRef.current.src = nextSong.track.preview_url;
+  //       audioRef.current.play();
+  //     } else {
+  //       dispatch(setCurrentlyPlaying(null));
+  //       dispatch(setCurrentSongIndex(null));
+  //     }
+  //   };
 
-        audioRef.current.src = nextSong.track.preview_url;
-        audioRef.current.play();
-      } else {
-        dispatch(setCurrentlyPlaying(null));
-        dispatch(setCurrentSongIndex(null));
-      }
-    };
+  //   audioRef.current.addEventListener("ended", handleSongEnd);
 
-    audioRef.current.addEventListener("ended", handleSongEnd);
-
-    return () => {
-      audioRef.current.removeEventListener("ended", handleSongEnd);
-    };
-  }, [audioRef, currentSongIndex, tracks.listOfTracksFromAPI]);
+  //   return () => {
+  //     audioRef.current.removeEventListener("ended", handleSongEnd);
+  //   };
+  // }, [audioRef, currentSongIndex, tracks.listOfTracksFromAPI]);
 
   const handleTimeUpdate = (newTime) => {
     dispatch(updatePlaybackTime(newTime));
@@ -349,11 +321,16 @@ const Playlist = () => {
       <div className="playlist-container">
         {isAuthenticated ? (
           <HeaderAfterLogin
+            name={playlist?.listOfPlaylistFromAPI[indexPlaylist]?.name}
             isPlaylistPage={true}
             showPlayButton={showPlayButton}
           />
         ) : (
-          <Header isPlaylistPage={true} showPlayButton={showPlayButton} />
+          <Header
+            name={playlist?.listOfPlaylistFromAPI[indexPlaylist]?.name}
+            isPlaylistPage={true}
+            showPlayButton={showPlayButton}
+          />
         )}
         <div className="playlist-main">
           <div className="playlist-main-content d-flex align-items-end">
@@ -405,6 +382,7 @@ const Playlist = () => {
                   onClick={() =>
                     playSongPlaylist(tracks.listOfTracksFromAPI[1], 0)
                   }
+                  // onClick={() => playSongPlaylist(0)}
                 >
                   <i className="fa fa-play"></i>
                 </Button>
@@ -656,11 +634,11 @@ const Playlist = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {tracks.listOfTracksFromAPI.length > 0 ? (
-                      tracks?.listOfTracksFromAPI?.map((track, index) => (
+                    {filteredTracks.length > 0 ? (
+                      filteredTracks.map((track, index) => (
                         <ListSong
                           key={index}
-                          index={index + 1}
+                          index={index}
                           name={track.track.name}
                           album={track.track.album}
                           artists={track.track.artists}
@@ -675,6 +653,7 @@ const Playlist = () => {
                           isAuthenticated={isAuthenticated}
                           showLoginModal={showLoginModal}
                           setShowLoginModal={setShowLoginModal}
+                          setCurrentSongIndex={setCurrentSongIndex}
                         />
                       ))
                     ) : (
@@ -698,11 +677,11 @@ const Playlist = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {tracks.listOfTracksFromAPI.length > 0 ? (
-                      tracks?.listOfTracksFromAPI?.map((track, index) => (
+                    {filteredTracks.length > 0 ? (
+                      filteredTracks.map((track, index) => (
                         <CompactList
                           key={index}
-                          index={index + 1}
+                          index={index}
                           name={track.track.name}
                           album={track.track.album}
                           artists={track.track.artists}
@@ -744,6 +723,7 @@ const Playlist = () => {
             currentSong={currentSong}
             audioRef={audioRef}
             playlist={playlist}
+            tracks={tracks.listOfTracksFromAPI}
             onTimeUpdate={handleTimeUpdate}
             setCurrentTrackDuration={setCurrentTrackDuration}
           />
