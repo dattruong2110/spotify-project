@@ -129,6 +129,15 @@ const SpotifyAPI = () => {
       //     },
       //   }
       // );
+      const tracksResponse = await axios(
+        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
 
       // setTracks({
       //   selectedTrack: tracks.selectedTrack,
