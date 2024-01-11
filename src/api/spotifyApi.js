@@ -18,8 +18,11 @@ const SpotifyAPI = () => {
     selectedTrack: "",
     listOfTracksFromAPI: [],
   });
+
   const [loading, setLoading] = useState(false);
   const { playlistId } = useParams();
+  const [selectedGenreId, setSelectedGenreId] = useState("");
+  const [indexGenres, setIndexGenres] = useState(null);
 
   const getSpotifyToken = async () => {
     try {
@@ -53,16 +56,37 @@ const SpotifyAPI = () => {
         }
       );
 
+      const genreId = response.data.categories.items[0]?.id || "";
+
       setGenres({
         selectedGenre: genres.selectedGenre,
         listOfGenresFromAPI: response.data.categories.items,
       });
+
+      setSelectedGenreId(genreId);
     } catch (error) {
       console.error("Error fetching genres:", error);
     } finally {
       setLoading(false);
     }
   };
+
+  // const getPlaylistDetailById = async (playlistId) => {
+  //   try {
+  //     const response = await axios(
+  //       `https://api.spotify.com/v1/playlists/${playlistId}`,
+  //       {
+  //         method: "GET",
+  //         headers: { Authorization: "Bearer " + token },
+  //       }
+  //     );
+
+  //     return response.data;
+  //   } catch (error) {
+  //     console.error("Error fetching playlist detail by :", error);
+  //     return null;
+  //   }
+  // };
 
   const getPlaylistAndTracks = async () => {
     try {
@@ -82,7 +106,7 @@ const SpotifyAPI = () => {
       );
       const selectedCategoryId = categoryIds[0];
       const playlistResponse = await axios(
-        `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=10`,
+        `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=50`,
         {
           method: "GET",
           headers: { Authorization: "Bearer " + token },
@@ -96,20 +120,20 @@ const SpotifyAPI = () => {
 
       // const playlistId = playlistResponse.data.playlists.items[0].id;
 
-      const tracksResponse = await axios(
-        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      // const tracksResponse = await axios(
+      //   `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
+      //   {
+      //     method: "GET",
+      //     headers: {
+      //       Authorization: "Bearer " + token,
+      //     },
+      //   }
+      // );
 
-      setTracks({
-        selectedTrack: tracks.selectedTrack,
-        listOfTracksFromAPI: tracksResponse.data.items,
-      });
+      // setTracks({
+      //   selectedTrack: tracks.selectedTrack,
+      //   listOfTracksFromAPI: tracksResponse.data.items,
+      // });
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -135,7 +159,7 @@ const SpotifyAPI = () => {
       );
       const selectedCategoryId = categoryIds[0];
       const playlistResponse = await axios(
-        `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=10`,
+        `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=50`,
         {
           method: "GET",
           headers: { Authorization: "Bearer " + token },
@@ -156,12 +180,48 @@ const SpotifyAPI = () => {
       }
 
       const tracksResponse = await axios(
-        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
+        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
         {
           method: "GET",
           headers: {
             Authorization: "Bearer " + token,
           },
+        }
+      );
+
+      setTracks({
+        selectedTrack: tracks.selectedTrack,
+        listOfTracksFromAPI: tracksResponse.data.items,
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getPlaylistAndTracksByGenre = async (genreId) => {
+    try {
+      setLoading(true);
+
+      const playlistResponse = await axios(
+        `https://api.spotify.com/v1/browse/categories/${genreId}/playlists?limit=50`,
+        {
+          method: "GET",
+          headers: { Authorization: "Bearer " + token },
+        }
+      );
+
+      setPlaylist({
+        selectedPlaylist: playlist.selectedPlaylist,
+        listOfPlaylistFromAPI: playlistResponse.data.playlists.items,
+      });
+
+      const tracksResponse = await axios(
+        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
+        {
+          method: "GET",
+          headers: { Authorization: "Bearer " + token },
         }
       );
 
@@ -187,8 +247,10 @@ const SpotifyAPI = () => {
     setTracks,
     getSpotifyToken,
     getGenres,
+    // getPlaylistDetailById,
     getPlaylistAndTracks,
     getPlaylistAndTracksByView,
+    getPlaylistAndTracksByGenre,
   };
 };
 

@@ -61,6 +61,8 @@ const Playlist = () => {
   const currentSongIndex = useSelector(selectCurrentSongIndex);
   const [playlistDetail, setplaylistDetail] = useState(null);
   const { playlistId } = useParams();
+  const [indexPlaylist, setIndexPlaylist] = useState(null);
+  const [selectedGenreIndex, setSelectedGenreIndex] = useState(0);
 
   useEffect(() => {
     let isMounted = true;
@@ -97,12 +99,16 @@ const Playlist = () => {
             listOfGenresFromAPI: genresResponse.data.categories.items,
           });
 
-          const categoryIds = genresResponse.data.categories.items.map(
-            (category) => category.id
-          );
-          const selectedCategoryId = categoryIds[0];
+          const selectedCategoryId =
+            genresResponse.data.categories.items[selectedGenreIndex]?.id ||
+            genresResponse.data.categories.items[0]?.id;
+
+          // const categoryIds = genresResponse.data.categories.items.map(
+          //   (category) => category.id
+          // );
+          // const selectedCategoryId = categoryIds[0];
           const playlistResponse = await axios(
-            `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=10`,
+            `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=50`,
             {
               method: "GET",
               headers: { Authorization: "Bearer " + fetchedToken },
@@ -117,7 +123,7 @@ const Playlist = () => {
           // const playlistId = playlistResponse.data.playlists.items[0].id;
 
           const tracksResponse = await axios(
-            `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
+            `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
             {
               method: "GET",
               headers: {
@@ -131,6 +137,14 @@ const Playlist = () => {
             listOfTracksFromAPI: tracksResponse.data.items,
             tracks: tracksResponse.data.items,
           });
+
+          // Xác định index dựa trên playlistId
+          const playlistIndex = playlistResponse.data.playlists.items.findIndex(
+            (playlist) => playlist.id === playlistId
+          );
+          if (isMounted) {
+            setIndexPlaylist(playlistIndex);
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -143,6 +157,9 @@ const Playlist = () => {
       isMounted = false;
     };
   }, [spotify.ClientId, spotify.ClientSecret]);
+  console.log(indexPlaylist);
+  console.log(genres);
+  console.log(playlist);
 
   useEffect(() => {
     dispatch(setCurrentSong(tracks.listOfTracksFromAPI[0]));
@@ -343,8 +360,8 @@ const Playlist = () => {
             <div className="playlist-image-space">
               <Image
                 src={
-                  playlist.listOfPlaylistFromAPI[0]?.images[0]?.url ||
-                  "fallback_image_url"
+                  playlist.listOfPlaylistFromAPI[indexPlaylist]?.images[0]
+                    ?.url || "fallback_image_url"
                 }
                 className="playlist-image"
               />
@@ -352,10 +369,11 @@ const Playlist = () => {
             <div className="playlist-description">
               <span className="type">Playlist</span>
               <h1 className="playlist-title">
-                {playlist.listOfPlaylistFromAPI[0]?.name || "Fallback Title"}
+                {playlist.listOfPlaylistFromAPI[indexPlaylist]?.name ||
+                  "Fallback Title"}
               </h1>
               <span className="description-playlist">
-                {playlist.listOfPlaylistFromAPI[0]?.description ||
+                {playlist.listOfPlaylistFromAPI[indexPlaylist]?.description ||
                   "Fallback Description"}
               </span>
               <div className="playlist-infor d-flex align-items-center">
@@ -367,12 +385,14 @@ const Playlist = () => {
                   <Link className="playlist-artist-name">Spotify</Link>
                 </div>
                 <span className="likes">
-                  {playlist.listOfPlaylistFromAPI[0]?.followers?.total || 0}{" "}
+                  {playlist.listOfPlaylistFromAPI[indexPlaylist]?.followers
+                    ?.total || 0}{" "}
                   likes
                 </span>
                 <span className="songs-over-24-hr">
-                  {playlist.listOfPlaylistFromAPI[0]?.tracks?.total || 0} songs,{" "}
-                  , <span className="over-24-hr">over 24 hr</span>
+                  {playlist.listOfPlaylistFromAPI[indexPlaylist]?.tracks
+                    ?.total || 0}{" "}
+                  songs, , <span className="over-24-hr">over 24 hr</span>
                 </span>
               </div>
             </div>
@@ -383,7 +403,7 @@ const Playlist = () => {
                 <Button
                   className="play-btn"
                   onClick={() =>
-                    playSongPlaylist(tracks.listOfTracksFromAPI[0], 0)
+                    playSongPlaylist(tracks.listOfTracksFromAPI[1], 0)
                   }
                 >
                   <i className="fa fa-play"></i>
