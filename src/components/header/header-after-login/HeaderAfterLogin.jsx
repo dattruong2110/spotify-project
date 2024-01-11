@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearUser, selectUser, setUser } from "../../../features/authSlice";
 import { auth } from "../../../configs/firebaseConfig";
 
-const HeaderAfterLogin = ({ isPlaylistPage, showPlayButton, name }) => {
+const HeaderAfterLogin = ({ isPlaylistPage, showPlayButton }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
@@ -53,7 +53,7 @@ const HeaderAfterLogin = ({ isPlaylistPage, showPlayButton, name }) => {
                   <Button className="play-btn">
                     <i className="fa fa-play"></i>
                   </Button>
-                  <span className="header-playlist-title">{name}</span>
+                  <span className="header-playlist-title">lofi beats</span>
                 </div>
               )}
             </div>
@@ -100,10 +100,7 @@ const HeaderAfterLogin = ({ isPlaylistPage, showPlayButton, name }) => {
                       >
                         Upgrade to premium
                       </Dropdown.Item>
-                      <Dropdown.Item
-                        className="dropdown-item"
-                        href="/support-page"
-                      >
+                      <Dropdown.Item className="dropdown-item" href="/support-page">
                         Support
                       </Dropdown.Item>
                       <Dropdown.Item

@@ -198,6 +198,7 @@ const HomePage = () => {
               audioRef={audioRef}
               currentSong={currentSong}
               onTimeUpdate={handleTimeUpdateInHomepage}
+              setCurrentTrackDuration={setCurrentTrackDuration}
             />
           ) : (
             <FooterPreview />

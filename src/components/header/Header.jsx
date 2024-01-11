@@ -3,7 +3,7 @@ import "./header.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-const Header = ({ isPlaylistPage, showPlayButton, name }) => {
+const Header = ({ isPlaylistPage, showPlayButton }) => {
   const navigate = useNavigate();
 
   return (
@@ -20,7 +20,7 @@ const Header = ({ isPlaylistPage, showPlayButton, name }) => {
                 <Button className="play-btn">
                   <i className="fa fa-play"></i>
                 </Button>
-                <span className="header-playlist-title">{name}</span>
+                <span className="header-playlist-title">lofi beats</span>
               </div>
             )}
           </div>
