@@ -16,10 +16,7 @@ import {
   PASSWORD_DO_NOT_MATCH,
   REQUIRED,
 } from "../../constants/validateConstant";
-import {
-  ACOUNT_ALREADY_EXISTS,
-  SIGN_UP_SUCCESSFULLY,
-} from "../../constants/submitConstant";
+import { ACOUNT_ALREADY_EXISTS } from "../../constants/submitConstant";
 import { setUser } from "../../features/authSlice";
 import { useDispatch } from "react-redux";
 const SignUp = () => {
@@ -72,8 +69,7 @@ const SignUp = () => {
       const user = userCredential.user;
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("user", JSON.stringify(user));
-      alert(SIGN_UP_SUCCESSFULLY);
-      navigate("/login");
+      navigate("/create-profile");
     } catch (error) {
       console.error(error);
       alert(ACOUNT_ALREADY_EXISTS);
@@ -87,7 +83,7 @@ const SignUp = () => {
         };
         localStorage.setItem("user", JSON.stringify(user));
         dispatch(setUser(user));
-        navigate("/home-page");
+        navigate(-1);
       })
       .catch((error) => {
         console.error(error);
@@ -105,7 +101,7 @@ const SignUp = () => {
   return (
     <div className="sign-up-page">
       <header className="sign-up-header">
-        <Link className="logo-link" to={"/"}>
+        <Link className="logo-link" to={"/home-page"}>
           <svg
             role="img"
             viewBox="0 0 78 24"

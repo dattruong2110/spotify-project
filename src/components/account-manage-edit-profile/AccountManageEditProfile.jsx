@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderAccount from "../header/hearder-account/HeaderAccount";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 import { Button } from "react-bootstrap";
 import "../account-manage-edit-profile/AccountManageEditProfile.scss";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearUser,
+  getUserInfo,
+  selectUser,
+  setUser,
+} from "../../features/authSlice";
+import { auth } from "../../configs/firebaseConfig";
 
 const AccountManageEditProfile = () => {
   const handleGoBackPage = () => {
@@ -11,12 +19,26 @@ const AccountManageEditProfile = () => {
   };
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const userInfo = getUserInfo();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(setUser(user));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+
+    return () => unsubscribe();
+  }, [dispatch]);
 
   const handleGenderChange = (e) => {
     setSelectedGender(e.target.value);
@@ -151,23 +173,15 @@ const AccountManageEditProfile = () => {
         <div className="account-manage-edit-content">
           <div className="account-manage-edit-username">
             <h2>Username</h2>
-            <h2>314xgsu6aea7k2h6ejviy5c5b2je</h2>
+            {user && user.uid && <h2>{user.uid}</h2>}
           </div>
 
           <div className="account-manage-edit">
             <h2>Email</h2>
             <input
               type="email"
-              value={email}
+              value={userInfo ? userInfo.email : ""}
               onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="account-manage-edit">
-            <h2>Password</h2>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 

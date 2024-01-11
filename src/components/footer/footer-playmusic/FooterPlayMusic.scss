@@ -1,143 +1,117 @@
-#audioBar {
-  width: 100%;
-  height: 80px;
+@import "../../global/global.scss";
 
+.footer-play-music {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to right, #093253, #282a2c);
-  padding: 15px 40px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  background-color: #101010;
+  padding: 10px 32px;
 
-  #musicaPlay {
-    width: 20%;
-  }
-
-  button.icones {
-    background-color: rgba(0, 0, 0, 0);
-    fill: #fff;
+  .control-button {
+    background: none;
+    color: #fff;
     border: none;
-    opacity: 0.7;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    &.aleatorio {
-      margin: 5px 15px 5px 5px;
-    }
-    &.proximo {
-      margin: 5px 5px 5px 15px;
-      svg {
-        margin-bottom: 4px;
-      }
-    }
-    &.anterior {
-      transform: rotate(180deg);
-      margin: 5px 15px 5px 5px;
-      svg {
-        margin-bottom: 4px;
-      }
-    }
-    &.repetir {
-      margin: 5px 5px 5px 15px;
-    }
-    &.legenda,
-    &.lista,
-    &.outrosDispositivos {
-      padding-right: 15px;
-    }
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin: 0 10px;
   }
 
-  #caixaCentral {
-    #caixaSetas {
-      button.playPause {
-        width: 35px;
-        height: 35px;
-        border-radius: 24px;
-        background-color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-
-        &:hover {
-          padding: 2px;
-        }
-      }
-    }
-
-    #barraDeProgresso {
-      small {
-        color: #fff;
-        font-size: 0.9em;
-        margin: 10px;
-      }
-      input[type="range"] {
-        width: 30rem;
-      }
-    }
+  .control-button svg {
+    fill: $white-text-color;
   }
 
-  #configAudio {
-    #volume {
-      input[type="range"] {
-        width: 5rem;
-      }
-    }
+  .footer-play-button {
+    padding: 9px 15px;
+    background-color: $white-text-color;
+    color: #101010;
   }
 
   input[type="range"] {
+    width: 100%;
     -webkit-appearance: none;
-    appearance: none;
     background: transparent;
-    cursor: pointer;
-    width: 5rem;
-  }
-
-  input[type="range"]:focus {
-    outline: none;
-  }
-
-  input[type="range"]::-webkit-slider-runnable-track {
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    height: 0.25rem;
   }
 
   input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    margin-top: -3.1999999999999997px; /* Centers thumb on the track */
-    background-color: #22c925;
-    border-radius: 0.5rem;
-    height: 0.7rem;
-    width: 0.7rem;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    margin-top: -5px;
+    background: #4caf50;
+    border-radius: 50%;
+    cursor: pointer;
   }
 
-  input[type="range"]:focus::-webkit-slider-thumb {
-    outline: 3px solid #22c925;
-    outline-offset: 0.125rem;
+  input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: #d3d3d3;
+    border-radius: 5px;
   }
 
-  input[type="range"]::-moz-range-track {
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    height: 0.25rem;
+  .music-info {
+    flex: 0.5;
   }
 
-  input[type="range"]::-moz-range-thumb {
-    background-color: #22c925;
-    border: none;
-    border-radius: 0.5rem;
-    height: 0.7rem;
-    width: 0.7rem;
+  .controls {
+    flex: 1;
   }
 
-  input[type="range"]:focus::-moz-range-thumb {
-    outline: 3px solid #22c925;
-    outline-offset: 0.125rem;
+  .volume-control {
+    flex: 0.5;
+  }
+
+  .volume-control-container {
+    margin-left: 217px;
+
+    span {
+      cursor: default;
+    }
+
+    .tooltip-container {
+      position: relative;
+    }
+
+    .tooltip-text {
+      visibility: hidden;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; /* Adjust the tooltip position */
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .tooltip-text .mute {
+      width: 60px;
+    }
+
+    .tooltip-text .unmute {
+      width: 70px;
+    }
+
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+    }
+  }
+
+  .song-cover {
+    margin-right: 10px;
+  }
+
+  .footer-play-button.disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 }

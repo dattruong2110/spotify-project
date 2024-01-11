@@ -1,20 +1,35 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Dropdown, Image, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import SpotifyAPI from "../../api/spotifyApi";
+import { Credentials } from "../../constants/Credentials";
+import { selectIsAuthenticated, setUser } from "../../features/authSlice";
+import {
+  selectCurrentSong,
+  selectCurrentSongIndex,
+  selectCurrentlyPlaying,
+  selectIsPlaying,
+  selectIsRepeating,
+  setCurrentSong,
+  setCurrentSongIndex,
+  setCurrentTrackDuration,
+  setCurrentlyPlaying,
+  setIsPlaying,
+  setIsRepeating,
+  togglePlaybackState,
+  updatePlaybackTime,
+} from "../../features/songSlice";
+import { Link, useParams } from "react-router-dom";
 import CompactList from "../compact-list-song/CompactList";
 import FooterPreview from "../footer/FooterPreview";
+import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
+import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
 import Header from "../header/Header";
+import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
 import ListSong from "../list-song/ListSong";
 import SideBar from "../side-bar/SideBar";
 import "./Playlist.scss";
-import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
-import SpotifyAPI from "../../api/spotifyApi";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIsAuthenticated, setUser } from "../../features/authSlice";
-import HeaderAccount from "../header/hearder-account/HeaderAccount";
-import FooterPlayMusic from "../footer/footer-playmusic/FooterPlayMusic";
-import axios from "axios";
-import { Credentials } from "../../constants/Credentials";
 
 const Playlist = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -24,6 +39,8 @@ const Playlist = () => {
   const [showShareDropdown, setShowShareDropdown] = useState(false);
   const [selectedView, setSelectedView] = useState("list");
   const [showPlayButton, setShowPlayButton] = useState(false);
+  const currentSong = useSelector(selectCurrentSong);
+  const isPlaying = useSelector(selectIsPlaying);
 
   const {
     token,
@@ -40,8 +57,15 @@ const Playlist = () => {
     getPlaylistAndTracksByView,
   } = SpotifyAPI();
   const spotify = Credentials();
-  const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
+  const currentlyPlaying = useSelector(selectCurrentlyPlaying);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const audioRef = useRef(new Audio());
+  const currentSongIndex = useSelector(selectCurrentSongIndex);
+  const filteredTracks = tracks.listOfTracksFromAPI.filter(
+    (track) => track.track.preview_url
+  );
+  const isRepeating = useSelector(selectIsRepeating);
+  const { playlistId } = useParams();
 
   useEffect(() => {
     let isMounted = true;
@@ -95,10 +119,10 @@ const Playlist = () => {
             listOfPlaylistFromAPI: playlistResponse.data.playlists.items,
           });
 
-          const playlistId = playlistResponse.data.playlists.items[0].id;
+          // const playlistId = playlistResponse.data.playlists.items[0].id;
 
           const tracksResponse = await axios(
-            `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
+            `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
             {
               method: "GET",
               headers: {
@@ -124,6 +148,11 @@ const Playlist = () => {
     };
   }, [spotify.ClientId, spotify.ClientSecret]);
 
+  useEffect(() => {
+    dispatch(setCurrentSong(tracks.listOfTracksFromAPI[0]));
+    dispatch(togglePlaybackState());
+  }, [dispatch, tracks.listOfTracksFromAPI]);
+
   const handleViewChange = async (view) => {
     setSelectedView(view);
 
@@ -136,14 +165,105 @@ const Playlist = () => {
     }
   };
 
-  const playSong = (track) => {
-    if (currentlyPlaying && currentlyPlaying.id === track.id) {
-      setCurrentlyPlaying(null);
-      audioRef.current.pause();
+  const playSong = async (track, index) => {
+    if (isAuthenticated) {
+      if (currentlyPlaying && currentlyPlaying.id === track.id) {
+        dispatch(setCurrentlyPlaying(null));
+        dispatch(setCurrentSongIndex(null));
+        audioRef.current.pause();
+        document.title = "Spotify - Web Player: Music for everyone";
+      } else {
+        audioRef.current.src = track.previewUrl;
+        dispatch(setIsPlaying(true));
+        dispatch(setCurrentlyPlaying(track));
+        dispatch(setCurrentTrackDuration(track.duration_ms));
+        dispatch(setCurrentSongIndex(index));
+        document.title = `${track.name} - Web Player: Music for everyone`;
+        audioRef.current.play();
+      }
     } else {
-      setCurrentlyPlaying(track);
-      audioRef.current.src = track.previewUrl;
-      audioRef.current.play();
+      setShowLoginModal(true);
+    }
+    dispatch(setCurrentSong(track));
+    dispatch(togglePlaybackState());
+  };
+
+  const pauseSong = () => {
+    audioRef.current.pause();
+    dispatch(setIsPlaying(false));
+  };
+
+  const playSongPlaylist = async (startIndex) => {
+    dispatch(setCurrentSongIndex(startIndex));
+    if (isAuthenticated) {
+      const playNext = async (index) => {
+        if (index < tracks.listOfTracksFromAPI.length) {
+          const track = tracks.listOfTracksFromAPI[index];
+
+          if (track.track.preview_url) {
+            dispatch(setIsPlaying(true));
+            dispatch(setCurrentlyPlaying(track));
+            dispatch(setCurrentTrackDuration(track.track.duration_ms));
+            dispatch(setCurrentSongIndex(index));
+            audioRef.current.src = track.track.preview_url;
+            audioRef.current.play();
+            document.title = `${track.track.name} - Web Player: Music for everyone`;
+
+            await new Promise((resolve) => {
+              audioRef.current.addEventListener("ended", resolve, {
+                once: true,
+              });
+            });
+
+            dispatch(setIsPlaying(false));
+            playNext(index + 1);
+          } else {
+            playNext(index + 1);
+          }
+        } else {
+          dispatch(setCurrentlyPlaying(null));
+          dispatch(setCurrentSongIndex(null));
+        }
+      };
+
+      playNext(startIndex);
+    } else {
+      setShowLoginModal(true);
+    }
+  };
+
+  // useEffect(() => {
+  //   const handleSongEnd = () => {
+  //     if (
+  //       currentSongIndex !== null &&
+  //       currentSongIndex < tracks.listOfTracksFromAPI.length - 1
+  //     ) {
+  //       const nextSongIndex = currentSongIndex + 1;
+  //       const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
+
+  //       dispatch(setCurrentlyPlaying(nextSong));
+  //       dispatch(setCurrentSongIndex(nextSongIndex));
+
+  //       audioRef.current.src = nextSong.track.preview_url;
+  //       audioRef.current.play();
+  //     } else {
+  //       dispatch(setCurrentlyPlaying(null));
+  //       dispatch(setCurrentSongIndex(null));
+  //     }
+  //   };
+
+  //   audioRef.current.addEventListener("ended", handleSongEnd);
+
+  //   return () => {
+  //     audioRef.current.removeEventListener("ended", handleSongEnd);
+  //   };
+  // }, [audioRef, currentSongIndex, tracks.listOfTracksFromAPI]);
+
+  const handleTimeUpdate = (newTime) => {
+    dispatch(updatePlaybackTime(newTime));
+
+    if (newTime > 30) {
+      console.log("The playback has reached 30 seconds.");
     }
   };
 
@@ -183,12 +303,17 @@ const Playlist = () => {
       <SideBar />
       <div className="playlist-container">
         {isAuthenticated ? (
-          <HeaderAccount
+          <HeaderAfterLogin
+            name={playlist?.listOfPlaylistFromAPI[0]?.name}
             isPlaylistPage={true}
             showPlayButton={showPlayButton}
           />
         ) : (
-          <Header isPlaylistPage={true} showPlayButton={showPlayButton} />
+          <Header
+            name={playlist?.listOfPlaylistFromAPI[0]?.name}
+            isPlaylistPage={true}
+            showPlayButton={showPlayButton}
+          />
         )}
         <div className="playlist-main">
           <div className="playlist-main-content d-flex align-items-end">
@@ -234,7 +359,7 @@ const Playlist = () => {
               <div className="d-flex">
                 <Button
                   className="play-btn"
-                  onClick={() => playSong(tracks.listOfTracksFromAPI[0])}
+                  onClick={() => playSongPlaylist(0)}
                 >
                   <i className="fa fa-play"></i>
                 </Button>
@@ -472,7 +597,6 @@ const Playlist = () => {
               </div>
             </div>
             <div className="list-song">
-              {console.log("Tracks data:", tracks.listOfTracksFromAPI)}
               {selectedView === "list" && (
                 <Table hover variant="dark" className="list-table-song">
                   <thead>
@@ -487,11 +611,11 @@ const Playlist = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {tracks.listOfTracksFromAPI.length > 0 ? (
-                      tracks?.listOfTracksFromAPI?.map((track, index) => (
+                    {filteredTracks.length > 0 ? (
+                      filteredTracks.map((track, index) => (
                         <ListSong
                           key={index}
-                          index={index + 1}
+                          index={index}
                           name={track.track.name}
                           album={track.track.album}
                           artists={track.track.artists}
@@ -503,6 +627,10 @@ const Playlist = () => {
                             currentlyPlaying.id === track.track.id
                           }
                           onPlayPause={playSong}
+                          isAuthenticated={isAuthenticated}
+                          showLoginModal={showLoginModal}
+                          setShowLoginModal={setShowLoginModal}
+                          setCurrentSongIndex={setCurrentSongIndex}
                         />
                       ))
                     ) : (
@@ -526,11 +654,11 @@ const Playlist = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {tracks.listOfTracksFromAPI.length > 0 ? (
-                      tracks?.listOfTracksFromAPI?.map((track, index) => (
+                    {filteredTracks.length > 0 ? (
+                      filteredTracks.map((track, index) => (
                         <CompactList
                           key={index}
-                          index={index + 1}
+                          index={index}
                           name={track.track.name}
                           album={track.track.album}
                           artists={track.track.artists}
@@ -542,6 +670,9 @@ const Playlist = () => {
                             currentlyPlaying.id === track.track.id
                           }
                           onPlayPause={playSong}
+                          isAuthenticated={isAuthenticated}
+                          showLoginModal={showLoginModal}
+                          setShowLoginModal={setShowLoginModal}
                         />
                       ))
                     ) : (
@@ -557,7 +688,26 @@ const Playlist = () => {
           </footer>
         </div>
       </div>
-      {isAuthenticated ? <FooterPlayMusic /> : <FooterPreview />}
+      {isAuthenticated ? (
+        <>
+          <FooterPlayMusic
+            isSongPlaying={isPlaying}
+            onPlayPause={
+              isPlaying
+                ? pauseSong
+                : () => playSong(currentlyPlaying, currentSongIndex)
+            }
+            currentSong={currentSong}
+            audioRef={audioRef}
+            playlist={playlist}
+            tracks={tracks.listOfTracksFromAPI}
+            onTimeUpdate={handleTimeUpdate}
+            setCurrentTrackDuration={setCurrentTrackDuration}
+          />
+        </>
+      ) : (
+        <FooterPreview />
+      )}
     </div>
   );
 };

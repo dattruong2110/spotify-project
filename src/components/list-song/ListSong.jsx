@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Button, Image, Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { setIsPlaying } from "../../features/songSlice";
 import "./ListSong.scss";
-import { Image } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
 
 export const formatWeeksAgo = (timestamp) => {
   const now = new Date();
@@ -32,54 +34,134 @@ const ListSong = ({
   previewUrl,
   isSongPlaying,
   onPlayPause,
+  isAuthenticated,
+  showLoginModal,
+  setShowLoginModal,
+  setCurrentSongIndex,
 }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isCurrentSongPlaying = isSongPlaying && isSongPlaying.id === index;
+
+  const playSong = (track) => {
+    if (isAuthenticated) {
+      if (isSongPlaying && isSongPlaying.id === track.id) {
+        onPlayPause(null);
+        dispatch(setIsPlaying(false));
+      } else {
+        onPlayPause(track);
+        dispatch(setIsPlaying(track));
+        dispatch(setCurrentSongIndex(index));
+      }
+    } else {
+      setShowLoginModal({ show: true, songInfo: { name, album } });
+    }
+  };
+
   return (
-    <tr
-      className={`list-table-row ${isSongPlaying ? "playing" : ""}`}
-      onClick={() => onPlayPause({ id: index, name, previewUrl })}
-    >
-      <td className="border-0 list-table-description">
-        <span className="index">{index}</span>
-        {previewUrl && (
-          <button
-            className={`play-button ${isSongPlaying ? "pause" : "play"}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              onPlayPause({ id: previewUrl, name, previewUrl });
-            }}
-          >
-            <i
-              className={`fa-solid ${isSongPlaying ? "fa-pause" : "fa-play"}`}
-            ></i>
-          </button>
-        )}
-      </td>
-      <td className="list-song-table-description border-0 d-flex align-items-center">
-        <Image
-          className="song-playlist-image"
-          src={album.images[0].url}
-          alt={name}
-        />
-        <div className="song-artist-name d-grid">
-          <NavLink className="link-song">{name}</NavLink>
-          <NavLink className="link-artist">{artists[0].name}</NavLink>
-          {/* {previewUrl && (
-            <button className="play-button" onClick={playPauseHandler}>
-              <i className="fa-solid fa-play"></i>
+    <>
+      <tr
+        className="list-table-row"
+        onClick={() => playSong({ id: index, name, previewUrl })}
+      >
+        <td className="border-0 list-table-description index-table">
+          <span className="index">{index + 1}</span>
+          {previewUrl && (
+            <button
+              className="play-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                playSong({ id: index, name, previewUrl });
+              }}
+            >
+              <i
+                className={`fa-solid ${
+                  isCurrentSongPlaying ? "fa-pause" : "fa-play"
+                }`}
+              ></i>
             </button>
-          )} */}
-        </div>
-      </td>
-      <td className="border-0 list-table-description">
-        <NavLink className="link-album">{album.name}</NavLink>
-      </td>
-      <td className="border-0 list-table-description">
-        {formatWeeksAgo(addedAt)}
-      </td>
-      <td className="border-0 list-table-description">
-        {formatDuration(duration)}
-      </td>
-    </tr>
+          )}
+        </td>
+        <td className="list-song-table-description border-0 d-flex align-items-center">
+          <Image
+            className="song-playlist-image"
+            src={album.images[0].url}
+            alt={name}
+          />
+          <div className="song-artist-name d-grid">
+            <NavLink
+              className={`link-song ${
+                isCurrentSongPlaying ? "song-active" : ""
+              }`}
+            >
+              {name}
+            </NavLink>
+            <NavLink className="link-artist">
+              {artists.map((artist, index) => (
+                <span key={index}>
+                  {artist.name}
+                  {index < artists.length - 1 && ", "}
+                </span>
+              ))}
+            </NavLink>
+          </div>
+        </td>
+        <td className="border-0 list-table-description">
+          <NavLink className="link-album">{album.name}</NavLink>
+        </td>
+        <td className="border-0 list-table-description">
+          {formatWeeksAgo(addedAt)}
+        </td>
+        <td className="border-0 list-table-description">
+          {formatDuration(duration)}
+        </td>
+      </tr>
+      {showLoginModal && (
+        <Modal
+          show={showLoginModal.show}
+          onHide={() => setShowLoginModal(false)}
+          centered
+        >
+          <Modal.Body>
+            <div className="d-flex align-items-center">
+              <div className="left-modal">
+                <Image
+                  className="modal-song-playlist-image"
+                  src={showLoginModal.songInfo.album.images[0].url}
+                  alt={showLoginModal.songInfo.name}
+                />
+              </div>
+              <div className="right-modal d-grid">
+                <h4 className="modal-song-playlist-title">
+                  Start listening with a free Spotify account
+                </h4>
+                <Button
+                  className="modal-button-sign-up"
+                  onClick={() => navigate("/signup")}
+                >
+                  Sign up free
+                </Button>
+                <br />
+                <span className="text-center already-account">
+                  Already have an account?{" "}
+                  <Link to={"/login"} className="login-link">
+                    Log in here
+                  </Link>
+                </span>
+              </div>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setShowLoginModal(false)}
+            >
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
+    </>
   );
 };
 

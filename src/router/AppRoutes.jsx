@@ -22,6 +22,7 @@ import PlanHelp from "../components/support-page/plan-help/PlanHelp";
 import AppHelp from "../components/support-page/app-help/AppHelp";
 import DeviceHelp from "../components/support-page/device-help/DeviceHelp";
 import SafetyPrivacy from "../components/support-page/safety-privacy/SafetyPrivacy";
+import CreateProfile from "../components/sign-up/create-profile/CreateProfile";
 
 const AppRoutes = () => {
   return (
@@ -30,7 +31,7 @@ const AppRoutes = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
       <Route path="/reset-password" element={<PasswordReset />} />
-      <Route path="/playlist" element={<Playlist />} />
+      <Route path="/playlist/:playlistId" element={<Playlist />} />
       <Route path="/premium-page" element={<Premium />} />
       <Route path="/download-page" element={<Download />} />
       <Route path="/account-manage" element={<AccountManage />} />
@@ -51,6 +52,7 @@ const AppRoutes = () => {
       <Route path="/app-help" element={<AppHelp />} />
       <Route path="/device-help" element={<DeviceHelp />} />
       <Route path="/safety-privacy" element={<SafetyPrivacy />} />
+      <Route path="/create-profile" element={<CreateProfile />} />
     </Routes>
   );
 };

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Credentials } from "../constants/Credentials";
+import { useParams } from "react-router-dom";
 
 const SpotifyAPI = () => {
   const spotify = Credentials();
@@ -18,6 +19,7 @@ const SpotifyAPI = () => {
     listOfTracksFromAPI: [],
   });
   const [loading, setLoading] = useState(false);
+  const { playlistId } = useParams();
 
   const getSpotifyToken = async () => {
     try {
@@ -92,10 +94,10 @@ const SpotifyAPI = () => {
         listOfPlaylistFromAPI: playlistResponse.data.playlists.items,
       });
 
-      const playlistId = playlistResponse.data.playlists.items[0].id;
+      // const playlistId = playlistResponse.data.playlists.items[0].id;
 
       const tracksResponse = await axios(
-        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
+        `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
         {
           method: "GET",
           headers: {
@@ -133,7 +135,7 @@ const SpotifyAPI = () => {
       );
       const selectedCategoryId = categoryIds[0];
       const playlistResponse = await axios(
-        `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=10`,
+        `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=50`,
         {
           method: "GET",
           headers: { Authorization: "Bearer " + token },
@@ -145,7 +147,7 @@ const SpotifyAPI = () => {
         listOfPlaylistFromAPI: playlistResponse.data.playlists.items,
       });
 
-      let playlistId;
+      // let playlistId;
 
       if (view === "compact") {
         playlistId = playlistResponse.data.playlists.items[0].id;
