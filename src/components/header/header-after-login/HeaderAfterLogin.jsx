@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../header-after-login/HeaderAfterLogin.scss";
 import { Button, Dropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
@@ -7,7 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearUser, selectUser, setUser } from "../../../features/authSlice";
 import { auth } from "../../../configs/firebaseConfig";
 
-const HeaderAfterLogin = ({ isPlaylistPage, showPlayButton, name }) => {
+const HeaderAfterLogin = ({
+  isPlaylistPage,
+  showPlayButton,
+  name,
+  playSongPlaylist,
+}) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
@@ -34,6 +39,14 @@ const HeaderAfterLogin = ({ isPlaylistPage, showPlayButton, name }) => {
       });
   };
 
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
+  const handleGoForward = () => {
+    window.history.go(1);
+  };
+
   return (
     <>
       <header className="homepage-afterlogin">
@@ -43,14 +56,25 @@ const HeaderAfterLogin = ({ isPlaylistPage, showPlayButton, name }) => {
           }`}
         >
           <div className="header-menu d-flex justify-content-between align-items-center">
-            <div class="prev-next-buttons d-flex align-items-center">
+            <div className="prev-next-buttons d-flex align-items-center">
               <div className="d-flex">
-                <button type="button" class="fa fas fa-chevron-left"></button>
-                <button type="button" class="fa fas fa-chevron-right"></button>
+                <button
+                  type="button"
+                  className="fa fas fa-chevron-left"
+                  onClick={handleGoBack}
+                ></button>
+                <button
+                  type="button"
+                  className="fa fas fa-chevron-right"
+                  onClick={handleGoForward}
+                ></button>
               </div>
               {showPlayButton && (
                 <div className="d-flex">
-                  <Button className="play-btn">
+                  <Button
+                    className="play-btn"
+                    onClick={() => playSongPlaylist(0)}
+                  >
                     <i className="fa fa-play"></i>
                   </Button>
                   <span className="header-playlist-title">{name}</span>

@@ -2,10 +2,16 @@ import React from "react";
 import "../footer-defauft/FooterDefauft.scss";
 import { NavLink } from "react-router-dom";
 
-const FooterDefauft = () => {
+const FooterDefauft = ({ isPlaylistPage, isSupportPage, isHomePage }) => {
   return (
     <>
-      <footer className="footer-landingpage">
+      <footer
+        className={`${
+          isPlaylistPage ? "footer-playlist" : "footer-landingpage"
+        } ${isSupportPage ? "footer-support-page" : "footer-landingpage"} ${
+          isHomePage ? "footer-home-page" : "footer-landingpage"
+        }`}
+      >
         <div class="container">
           <div class="footer-menu-top-bar">
             <div class="logo-spotify" to="/home-page">
@@ -59,7 +65,7 @@ const FooterDefauft = () => {
                 <div>Useful Links</div>
                 <ul>
                   <li>
-                    <NavLink to="">Support</NavLink>
+                    <NavLink to="/support-page">Support</NavLink>
                   </li>
                   <li>
                     <NavLink to="">Web Player</NavLink>

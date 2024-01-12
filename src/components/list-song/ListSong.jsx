@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Image, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { setIsPlaying } from "../../features/songSlice";
+import { selectCurrentlyPlaying, setIsPlaying } from "../../features/songSlice";
 import "./ListSong.scss";
 
 export const formatWeeksAgo = (timestamp) => {
@@ -41,7 +41,9 @@ const ListSong = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isCurrentSongPlaying = isSongPlaying && isSongPlaying.id === index;
+  const currentlyPlaying = useSelector(selectCurrentlyPlaying);
+  const isCurrentSongPlaying =
+    currentlyPlaying && currentlyPlaying.id === index;
 
   const playSong = (track) => {
     if (isAuthenticated) {
@@ -50,7 +52,7 @@ const ListSong = ({
         dispatch(setIsPlaying(false));
       } else {
         onPlayPause(track);
-        dispatch(setIsPlaying(track));
+        dispatch(setIsPlaying(true));
         dispatch(setCurrentSongIndex(index));
       }
     } else {

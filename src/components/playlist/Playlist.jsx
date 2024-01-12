@@ -196,37 +196,42 @@ const Playlist = () => {
   const playSongPlaylist = async (startIndex) => {
     dispatch(setCurrentSongIndex(startIndex));
     if (isAuthenticated) {
-      const playNext = async (index) => {
-        if (index < tracks.listOfTracksFromAPI.length) {
-          const track = tracks.listOfTracksFromAPI[index];
+      if (currentlyPlaying && isPlaying) {
+        audioRef.current.pause();
+        dispatch(setIsPlaying(false));
+      } else {
+        const playNext = async (index) => {
+          if (index < tracks.listOfTracksFromAPI.length) {
+            const track = tracks.listOfTracksFromAPI[index];
 
-          if (track.track.preview_url) {
-            dispatch(setIsPlaying(true));
-            dispatch(setCurrentlyPlaying(track));
-            dispatch(setCurrentTrackDuration(track.track.duration_ms));
-            dispatch(setCurrentSongIndex(index));
-            audioRef.current.src = track.track.preview_url;
-            audioRef.current.play();
-            document.title = `${track.track.name} - Web Player: Music for everyone`;
+            if (track.track.preview_url) {
+              dispatch(setIsPlaying(true));
+              dispatch(setCurrentlyPlaying(track));
+              dispatch(setCurrentTrackDuration(track.track.duration_ms));
+              dispatch(setCurrentSongIndex(index));
+              audioRef.current.src = track.track.preview_url;
+              audioRef.current.play();
+              document.title = `${track.track.name} - Web Player: Music for everyone`;
 
-            await new Promise((resolve) => {
-              audioRef.current.addEventListener("ended", resolve, {
-                once: true,
+              await new Promise((resolve) => {
+                audioRef.current.addEventListener("ended", resolve, {
+                  once: true,
+                });
               });
-            });
 
-            dispatch(setIsPlaying(false));
-            playNext(index + 1);
+              dispatch(setIsPlaying(false));
+              playNext(index + 1);
+            } else {
+              playNext(index + 1);
+            }
           } else {
-            playNext(index + 1);
+            dispatch(setCurrentlyPlaying(null));
+            dispatch(setCurrentSongIndex(null));
           }
-        } else {
-          dispatch(setCurrentlyPlaying(null));
-          dispatch(setCurrentSongIndex(null));
-        }
-      };
+        };
 
-      playNext(startIndex);
+        playNext(startIndex);
+      }
     } else {
       setShowLoginModal(true);
     }
@@ -307,6 +312,7 @@ const Playlist = () => {
             name={playlist?.listOfPlaylistFromAPI[0]?.name}
             isPlaylistPage={true}
             showPlayButton={showPlayButton}
+            playSongPlaylist={playSongPlaylist}
           />
         ) : (
           <Header
@@ -684,7 +690,7 @@ const Playlist = () => {
             </div>
           </div>
           <footer className="playlist-footer">
-            <FooterDefauft />
+            <FooterDefauft isPlaylistPage={true} />
           </footer>
         </div>
       </div>

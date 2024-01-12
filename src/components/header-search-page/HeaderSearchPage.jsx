@@ -1,7 +1,10 @@
 import React from "react";
 import "./HeaderSearchPage.scss";
+import { useNavigate } from "react-router-dom";
 
 const HeaderSearchPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <header>
@@ -45,10 +48,12 @@ const HeaderSearchPage = () => {
               </li>
               <li className="divider-search">|</li>
               <li>
-                <a href="#">Sign Up</a>
+                <a href="/signup">Sign Up</a>
               </li>
             </ul>
-            <button type="button">Log In</button>
+            <button type="button" onClick={() => navigate("/login")}>
+              Log In
+            </button>
           </div>
         </div>
       </header>

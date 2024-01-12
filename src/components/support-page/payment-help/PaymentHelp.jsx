@@ -99,7 +99,7 @@ const PaymentHelp = () => {
             </div>
           </Container>
         </div>
-        <FooterDefauft />
+        <FooterDefauft isSupportPage={true} />
       </div>
     </>
   );

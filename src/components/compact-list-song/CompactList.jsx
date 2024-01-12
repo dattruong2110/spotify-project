@@ -3,8 +3,12 @@ import "./CompactList.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { formatDuration, formatWeeksAgo } from "../list-song/ListSong";
 import { Button, Image, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { setCurrentSongIndex, setIsPlaying } from "../../features/songSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCurrentlyPlaying,
+  setCurrentSongIndex,
+  setIsPlaying,
+} from "../../features/songSlice";
 
 const CompactList = ({
   index,
@@ -22,7 +26,9 @@ const CompactList = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isCurrentSongPlaying = isSongPlaying && isSongPlaying.id === index;
+  const currentlyPlaying = useSelector(selectCurrentlyPlaying);
+  const isCurrentSongPlaying =
+    currentlyPlaying && currentlyPlaying.id === index;
 
   const playSong = (track) => {
     if (isAuthenticated) {
