@@ -4,9 +4,29 @@
   width: 75%;
   background-color: #000000;
 }
+.footer-home-page {
+  padding-left: 45px;
+  padding-right: 100px;
+  width: 100%;
+  background-color: #000000;
+}
+.footer-playlist {
+  width: 100%;
+  background-color: #000000;
+}
+.footer-support-page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-color: #000000;
+}
 .footer-landingpage .container {
   padding-top: 80px;
   padding-bottom: 60px;
+}
+.footer-home-page .container,
+.footer-playlist .container {
+  padding: 20px 0 0;
 }
 .footer-landingpage .container .footer-menu-top-bar {
   display: flex;

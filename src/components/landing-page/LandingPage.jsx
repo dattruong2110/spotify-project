@@ -3,37 +3,45 @@ import React from "react";
 import "../landing-page/LandingPage.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
+import { selectIsAuthenticated } from "../../features/authSlice";
+import { useSelector } from "react-redux";
+import HeaderAccount from "../header/hearder-account/HeaderAccount";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
 
   return (
     <>
       <body>
-        <header>
-          <div class="container-header-defauft">
-            <div class="logo-spotify">
-              <NavLink to="/home-page">
-                <img
-                  src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
-                  alt="Logo"
-                />
-              </NavLink>
-            </div>
-            <div class="header-menu">
-              <div class="header-menu-left-bar">
-                <NavLink to="/premium-page">Premium</NavLink>
-                <NavLink to="/support-page">Support</NavLink>
-                <NavLink to="/download-page">Download</NavLink>
+        {isAuthenticated ? (
+          <HeaderAccount />
+        ) : (
+          <header>
+            <div class="container-header-defauft">
+              <div class="logo-spotify">
+                <NavLink to="/home-page">
+                  <img
+                    src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png"
+                    alt="Logo"
+                  />
+                </NavLink>
               </div>
-              <div class="header-menu-separator"></div>
-              <div class="header-menu-right-bar">
-                <NavLink to="/signup">Sign up</NavLink>
-                <button onClick={() => navigate("/login")}>Log in</button>
+              <div class="header-menu">
+                <div class="header-menu-left-bar">
+                  <NavLink to="/premium-page">Premium</NavLink>
+                  <NavLink to="/support-page">Support</NavLink>
+                  <NavLink to="/download-page">Download</NavLink>
+                </div>
+                <div class="header-menu-separator"></div>
+                <div class="header-menu-right-bar">
+                  <NavLink to="/signup">Sign up</NavLink>
+                  <button onClick={() => navigate("/login")}>Log in</button>
+                </div>
               </div>
             </div>
-          </div>
-        </header>
+          </header>
+        )}
 
         <main>
           <div class="container">

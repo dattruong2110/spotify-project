@@ -1,15 +1,21 @@
 import React from "react";
 import "./SearchPage.scss";
+import { useSelector } from "react-redux";
 import SideBar from "../side-bar/SideBar";
 import HeaderSearchPage from "../header-search-page/HeaderSearchPage";
 import FooterPreview from "../footer/FooterPreview";
+import { selectIsAuthenticated } from "../../features/authSlice";
+import HeaderAfterLogin from "../header/header-after-login/HeaderAfterLogin";
+import HeaderAccount from "../header/hearder-account/HeaderAccount";
 
 const SearchPage = () => {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+
   return (
     <>
       <SideBar />
       <div className="main-search">
-        <HeaderSearchPage />
+        {isAuthenticated ? <HeaderAccount /> : <HeaderSearchPage />}
         <div className="search-soptify-playlist">
           <h2>Browse all</h2>
           <div className="list">
@@ -609,7 +615,7 @@ const SearchPage = () => {
             </a>
           </div>
         </div>
-        <FooterPreview/>
+        <FooterPreview />
       </div>
     </>
   );
