@@ -160,9 +160,12 @@ const HomePage = () => {
         <div className="main-container-homepage">
           {isAuthenticated ? <HeaderAfterLogin /> : <Header />}
           <div className={`spotify-playlists ${isAuthenticated ? "mt-5" : ""}`}>
-            <div className="genres-list d-flex">
-              <p>Select Genre:</p>
-              <select onChange={(e) => handleGenreChange(e.target.value)}>
+            <div className="genres-list">
+              <p className="select-genres">Select Genre:</p>
+              <select
+                className="select"
+                onChange={(e) => handleGenreChange(e.target.value)}
+              >
                 {spotifyAPI.genres.listOfGenresFromAPI.map((genre, index) => (
                   <option key={genre.id} value={index}>
                     {genre.name}
@@ -172,7 +175,7 @@ const HomePage = () => {
             </div>
 
             <div className="d-flex">
-              <h2>Playlist Hit</h2>
+              <h2>Playlist </h2>
               {!showAllPlaylists && (
                 <button
                   className="btn-display-more"
