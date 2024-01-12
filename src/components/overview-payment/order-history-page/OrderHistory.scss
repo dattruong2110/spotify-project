@@ -16,13 +16,17 @@
 .btn-back-page {
     width: 50px;
     height: 50px;
-    background-color: rgb(51, 50, 49);
+    background-color: rgb(87, 87, 87);
+    border: 1px solid ;
     border-radius: 50%;
     margin-bottom: 50px;
 
   }
 .main-content .btn-back-page:hover {
     background-color: rgb(55, 55, 55);
+    border: 1px solid  rgb(59, 59, 217);
+    scale: 1.1;
+    transition: 0.3s;
   }
 
 #root > div > div > div.title > h1{

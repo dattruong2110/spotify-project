@@ -1,0 +1,370 @@
+*{
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+svg{
+  fill: white;
+}
+.content {
+    margin-top: 50px;
+    margin-left: 300px;
+}
+
+.content .main-content{
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    background:#232323;
+
+}
+
+
+.btn-back-page {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(51, 50, 49);
+    border-radius: 50%;
+    margin-bottom: 50px;
+
+  }
+.main-content .btn-back-page:hover {
+    background-color: rgb(55, 55, 55);
+  }
+
+ #root > div > div > div.text-aera{
+    width: 500px;
+  }
+
+
+
+  #root > div > div > div.text-aera > h1{
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+
+  #root > div > div > div.text-aera > div{
+    margin: 0px;
+    padding: 0px;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  #root > div > div > div.icon > div.icon-title.container > h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0px 20px 0px;
+  }
+
+  #root > div > div > div.text-aera > div > p > a{
+    text-decoration: underline !important;
+    color: white;
+  }
+  #root > div > div > div.text-aera > div > p > a :hover{
+    color: rgb(95, 154, 101) ;
+  }
+  #root > div > div > div.icon > div:nth-child(3) {
+    border: 1px solid #727272;
+    border-radius: 6px;
+  }
+  #root > div > div > div.icon > div:nth-child(3) > ul{
+    width: 96%;
+  }
+
+  #root > div > div > div.icon{
+    width: 500px;
+  }
+
+  #root > div > div > div.icon > div.icon-title.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    margin: 0px;
+    padding: 0px;
+  }
+
+
+  #root > div > div > div.icon > div.form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    border: 1px solid rgb(151, 144, 144);
+    border-radius: 12px;
+    padding: 25px;
+
+
+  }
+  #root > div > div > div.icon > div.form.container{
+    margin-left: 0px;
+    padding-left: 0px;
+    width: 500px;
+  }
+
+  #root > div > div > div.icon > div.form.container > div.alt-input{
+    margin-left: 15px;
+  }
+
+
+  #root > div > div > div.icon > div.form.container > div > span{
+    color: #a7a7a7;
+    font-weight: bold;
+  }
+
+
+
+  #root > div > div > div.icon > div.form.container > button{
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+
+  }
+
+  #root > div > div > div.icon > div.form.container > button > p{
+    margin: 0px;
+    color: rgb(29, 172, 29);
+
+  }
+  #root > div > div > div.icon > div.form.container > button :hover{
+    scale: 1.1;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3){
+    border: 1px solid rgb(151, 144, 144)
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > p{
+    margin: 0px 0px 0px 15px;
+    padding-top: 15px;
+  }
+
+
+
+  #root > div > div > div.icon > div:nth-child(3) > ul{
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0px 0px 0px 15px;
+  
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div.title > h4{
+    margin: 20px 10px 20px 15px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > ul > li{
+    margin: 3px;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  #root > div > div > div.icon > div.form.container > div > svg{
+    fill:#a7a7a7 ;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div.input-card-number{
+    margin: 0px 0px 20px 15px;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div.input-card-number > p{
+    margin: 0px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div.input-card-number > div > input{
+    background-color: black;
+    color: #727272;
+    border: 1px solid #727272;
+    border-radius:8px ;
+    padding: 10px;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div.input-card-number > div > input[type=text]{
+    color: #727272;
+    width: 96%;
+  }
+  #root > div > div > div.icon > div:nth-child(3) > div > div.input-card-number > div > input[type=text]:hover{
+    color: white;
+    border: 1px solid white;
+    transition: 0.2s;
+  }
+
+  #expiry:hover{
+    color: white;
+    border: 1px solid white;
+    transition: 0.2s;
+  }
+  #numericInput:hover{
+    color: white;
+    border: 1px solid white;
+    transition: 0.2s;
+  }
+
+
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div:nth-child(3){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div:nth-child(3) > div.expiry-form > form > div{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div:nth-child(3) > div.security-form > div{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div:nth-child(3) > div.security-form > div > label{
+    display: flex;
+    align-items: start;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div.expiry-form > form > div > label{
+    font-weight: bold;
+    font-size: 12px;
+
+  }
+  #expiry{
+    width: 200px;
+    background-color: black;
+    color: #727272;
+    padding: 7px;
+    border: 1px solid #727272;
+    border-radius:6px ;
+
+  }
+  #root > div > div > div.icon > div:nth-child(3) > div > div:nth-child(3) > div.expiry-form > form > div > div{
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div:nth-child(3) > div.expiry-form > form > div:nth-child(2){
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #root > div > div > div.icon > div:nth-child(3) > div > div:nth-child(3) > div.expiry-form > form > div:nth-child(2) > i{
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background-color: #f15e6c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+
+  
+  #numericInput{
+    width: 200px;
+    background-color: black;
+    color: #727272;
+    padding: 7px;
+    border: 1px solid #727272;
+    border-radius:6px ;
+    }
+
+    #root > div > div > div.icon > div:nth-child(3) > div > div.security-form > div > label{
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    #root > div > div > div.icon > div:nth-child(3) > div > div.checkbox > div{
+      width: 96%;
+      display: flex;
+      flex-direction: row;
+      padding: 40px 0px 20px 15px;
+      align-items: flex-start;
+    }
+
+    #root > div > div > div.icon > div:nth-child(3) > div > div.checkbox > div > button{
+      border: none;
+      background-color: inherit;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: left;
+      margin-left: 8px;
+      
+    }
+
+    #root > div > div > div.icon > div:nth-child(3) > div > ul{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #root > div > div > div.icon > div:nth-child(3) > div > ul > li:nth-child(1) > button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      width: 170px;
+      height: 50px;
+      border: none;
+      background-color: rgb(2, 75, 2);
+      border-radius: 50px;
+      color: black;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 30px;
+      
+    }
+    
+    #root > div > div > div.icon > div:nth-child(3) > div > ul > li:nth-child(2) > button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      width: 170px;
+      height: 50px;
+      background-color: inherit;
+      border: none;
+      border-radius: 50px;
+      color: #727272;
+      font-weight: bold;
+      font-size: 18px;
+      
+    }
+    

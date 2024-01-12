@@ -19,6 +19,8 @@ import SupportPage from "../components/support-page/SupportPage";
 import SavedPaymentCards from "../components/overview-payment/saved-payment-cards-page/SavedPaymentCards";
 import OrderHistory from "../components/overview-payment/order-history-page/OrderHistory";
 import CreatePlayList from "../components/create-playlist-page/CreatePlayList"
+import RedeemPage from "../components/overview-payment/redeem-page/RedeemPage";
+import NotificationSettingPage from "../components/security and privacy/notifications-setting-page/NotificationSettingPage";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -41,10 +43,16 @@ const AppRoutes = () => {
       />
       <Route path="/account-manage-privacy" element={<AccountPrivacy />} />
       <Route path="/support-page" element={<SupportPage />} />
+
+
+
+
+
       <Route path="/create-playlist-page" element={<CreatePlayList />} />
       <Route path="/order-history-page" element={<OrderHistory/>} />
       <Route path="/saved-payment-cards-page" element={<SavedPaymentCards/>} />
-
+      <Route path="/redeem-page" element={<RedeemPage/>} />
+      <Route path="notifications-setting-page" element={<NotificationSettingPage/>} />
     </Routes> 
   );
 };
