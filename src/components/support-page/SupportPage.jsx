@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import "./SupportPage.scss";
+import React from "react";
 import { Container } from "react-bootstrap";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 import HeaderAccount from "../header/hearder-account/HeaderAccount";
+import "./SupportPage.scss";
 
 const SupportPage = () => {
   return (
@@ -164,7 +164,7 @@ const SupportPage = () => {
             </Container>
           </div>
         </div>
-        <FooterDefauft />
+        <FooterDefauft isSupportPage={true} />
       </div>
     </>
   );

@@ -23,6 +23,7 @@ import {
   updatePlaybackTime,
 } from "../../features/songSlice";
 import { Link, useNavigate } from "react-router-dom";
+import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 
 const HomePage = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -159,7 +160,7 @@ const HomePage = () => {
         <SideBar />
         <div className="main-container-homepage">
           {isAuthenticated ? <HeaderAfterLogin /> : <Header />}
-          <div className={`spotify-playlists ${isAuthenticated ? "mt-5" : ""}`}>
+          <div className="spotify-playlists mt-5">
             <div className="genres-list">
               <p className="select-genres">Select Genre:</p>
               <select
@@ -188,6 +189,8 @@ const HomePage = () => {
 
             <div className="list">{renderPlaylists()}</div>
           </div>
+
+          <FooterDefauft isHomePage={true} />
 
           {isAuthenticated ? (
             <FooterPlayMusic
