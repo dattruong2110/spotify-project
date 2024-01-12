@@ -116,6 +116,7 @@ const FooterPlayMusic = ({
     dispatch(setCurrentSong(newSong));
     audioRef.current.play();
     dispatch(setIsPlaying(true));
+    document.title = `${newSong.name} - Web Player: Music for everyone`;
   };
 
   const playPreviousSong = async () => {
@@ -130,6 +131,7 @@ const FooterPlayMusic = ({
     dispatch(setCurrentSong(newSong));
     audioRef.current.play();
     dispatch(setIsPlaying(true));
+    document.title = `${newSong.name} - Web Player: Music for everyone`;
   };
 
   const handleRepeatToggle = () => {
