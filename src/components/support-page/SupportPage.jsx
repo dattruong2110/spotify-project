@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 import HeaderAccount from "../header/hearder-account/HeaderAccount";
 import "./SupportPage.scss";
+import {
+  clearUser,
+  selectIsAuthenticated,
+  selectUser,
+  setUser,
+} from "../../features/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "../../configs/firebaseConfig";
 
 const SupportPage = () => {
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(setUser(user));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+
+    return () => unsubscribe();
+  }, [dispatch]);
+
   return (
     <>
       <div className="main-support">
@@ -20,10 +44,25 @@ const SupportPage = () => {
               <div className="log-in-support">
                 <span className="support-when-logging-in">
                   <span>
-                    <a href="/login" className="logging-in-support">
-                      Log in
-                    </a>
-                    for faster help
+                    {isAuthenticated ? (
+                      <>
+                        <span className="account__img">
+                          {user && user.photoURL && (
+                            <div className="d-flex align-items-center">
+                              <img src={user.photoURL} alt="image-account" />
+                              <span>Xin chào, {user.displayName}</span>
+                            </div>
+                          )}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <a href="/login" className="logging-in-support">
+                          Log in
+                        </a>
+                        for faster help
+                      </>
+                    )}
                   </span>
                 </span>
               </div>
