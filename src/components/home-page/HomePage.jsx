@@ -143,6 +143,16 @@ const HomePage = () => {
     ));
   };
 
+  const handleGenreChange = async (selectedGenreIndex) => {
+    if (spotifyAPI.genres.listOfGenresFromAPI[selectedGenreIndex]) {
+      const selectedGenreId =
+        spotifyAPI.genres.listOfGenresFromAPI[selectedGenreIndex].id;
+      await spotifyAPI.getPlaylistAndTracksByGenre(selectedGenreId);
+      setShowAllPlaylists(false);
+    }
+  };
+
+  console.log(spotifyAPI.genres);
   return (
     <>
       <body>
@@ -150,6 +160,17 @@ const HomePage = () => {
         <div className="main-container-homepage">
           {isAuthenticated ? <HeaderAfterLogin /> : <Header />}
           <div className={`spotify-playlists ${isAuthenticated ? "mt-5" : ""}`}>
+            <div className="genres-list d-flex">
+              <p>Select Genre:</p>
+              <select onChange={(e) => handleGenreChange(e.target.value)}>
+                {spotifyAPI.genres.listOfGenresFromAPI.map((genre, index) => (
+                  <option key={genre.id} value={index}>
+                    {genre.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="d-flex">
               <h2>Playlist Hit</h2>
               {!showAllPlaylists && (
@@ -161,6 +182,7 @@ const HomePage = () => {
                 </button>
               )}
             </div>
+
             <div className="list">{renderPlaylists()}</div>
           </div>
 
@@ -175,6 +197,7 @@ const HomePage = () => {
               audioRef={audioRef}
               currentSong={currentSong}
               onTimeUpdate={handleTimeUpdateInHomepage}
+              setCurrentTrackDuration={setCurrentTrackDuration}
             />
           ) : (
             <FooterPreview />
