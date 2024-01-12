@@ -260,7 +260,7 @@
   padding: 32px 40px;
 }
 
-.content-quick-help-support{
+.content-quick-help-support {
   margin-block: 0px;
   font-size: 1.5rem;
   font-weight: 700;
@@ -268,13 +268,13 @@
   color: $white-text-color;
 }
 
-.all-customer-support{
+.all-customer-support {
   box-sizing: border-box;
   padding-inline: 0px;
   margin-block: 0px;
 }
 
-.menu-customer-support{
+.menu-customer-support {
   display: list-item;
   list-style-type: none;
   box-sizing: border-box;
@@ -284,7 +284,7 @@
   color: $white-text-color;
 }
 
-.click-customer-support{
+.click-customer-support {
   display: flex;
   justify-content: space-between;
   padding: 20px 0px;
@@ -293,12 +293,12 @@
   color: #fff;
 }
 
-.span-menu-customer-support{
+.span-menu-customer-support {
   font-size: 1.125rem;
   color: $white-text-color;
 }
 
-.icon-arrow-support{
+.icon-arrow-support {
   display: flex;
   flex-shrink: 0;
   fill: currentColor;
@@ -306,7 +306,7 @@
   height: 24px;
 }
 
-.go-to-communtity{
+.go-to-communtity {
   background-color: #121212;
   max-width: 628px;
   margin: 0 auto;
@@ -314,11 +314,11 @@
 }
 
 .visit-our-community {
-padding: 56px 0px;
-text-align: center;
+  padding: 56px 0px;
+  text-align: center;
 }
 
-.content-visit-our-community{
+.content-visit-our-community {
   font-size: 3rem;
   margin-block: 0px;
   padding-block-end: 16px;
@@ -334,7 +334,7 @@ text-align: center;
   color: $white-text-color;
 }
 
-.go-to-community-btn{
+.go-to-community-btn {
   background-color: $green-btn-color;
   width: 40%;
   height: 50px;
@@ -344,9 +344,16 @@ text-align: center;
   font-weight: 700;
 }
 
-.go-to-community-btn:hover{
+.go-to-community-btn:hover {
   width: 42%;
   height: 52px;
   font-size: 1.05rem;
   font-weight: 700;
+}
+
+.account__img img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
