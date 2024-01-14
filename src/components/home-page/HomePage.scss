@@ -3,6 +3,28 @@
   margin-bottom: 100px;
 }
 
+.main-container-homepage .genres-list {
+  display: flex;
+}
+
+.main-container-homepage .genres-list .select-genres {
+  font-size: 20px;
+  padding-top: 5px;
+}
+
+.main-container-homepage .genres-list .select {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.main-container-homepage .genres-list .select:hover {
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
 .spotify-playlists {
   padding: 20px 40px;
 }
@@ -67,6 +89,7 @@
   top: -60px;
   padding: 18px;
   background-color: #1db954;
+  color: white;
   border-radius: 100%;
   opacity: 0;
 }

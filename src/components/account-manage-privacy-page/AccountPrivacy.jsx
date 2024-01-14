@@ -9,7 +9,7 @@ const AccountPrivacy = () => {
   const handleGoBackPage = () => {
     window.history.back();
   };
- 
+
   //ads
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);

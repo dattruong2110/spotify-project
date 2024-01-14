@@ -16,11 +16,20 @@ import AccountManagePlan from "../components/account-manage-plan/AccountManagePl
 import AccountManageEditProfile from "../components/account-manage-edit-profile/AccountManageEditProfile";
 import AccountPrivacy from "../components/account-manage-privacy-page/AccountPrivacy";
 import SupportPage from "../components/support-page/SupportPage";
+import PaymentHelp from "../components/support-page/payment-help/PaymentHelp";
+import AccountHelp from "../components/support-page/account-help/AccountHelp";
+import PlanHelp from "../components/support-page/plan-help/PlanHelp";
+import AppHelp from "../components/support-page/app-help/AppHelp";
+import DeviceHelp from "../components/support-page/device-help/DeviceHelp";
+import SafetyPrivacy from "../components/support-page/safety-privacy/SafetyPrivacy";
+import CreateProfile from "../components/sign-up/create-profile/CreateProfile";
+
 import SavedPaymentCards from "../components/overview-payment/saved-payment-cards-page/SavedPaymentCards";
 import OrderHistory from "../components/overview-payment/order-history-page/OrderHistory";
 import CreatePlayList from "../components/create-playlist-page/CreatePlayList"
 import RedeemPage from "../components/overview-payment/redeem-page/RedeemPage";
 import NotificationSettingPage from "../components/security and privacy/notifications-setting-page/NotificationSettingPage";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -43,17 +52,20 @@ const AppRoutes = () => {
       />
       <Route path="/account-manage-privacy" element={<AccountPrivacy />} />
       <Route path="/support-page" element={<SupportPage />} />
-
-
-
-
+      <Route path="/payment-help" element={<PaymentHelp />} />
+      <Route path="/account-help" element={<AccountHelp />} />
+      <Route path="/plan-help" element={<PlanHelp />} />
+      <Route path="/app-help" element={<AppHelp />} />
+      <Route path="/device-help" element={<DeviceHelp />} />
+      <Route path="/safety-privacy" element={<SafetyPrivacy />} />
+      <Route path="/create-profile" element={<CreateProfile />} />
 
       <Route path="/create-playlist-page" element={<CreatePlayList />} />
       <Route path="/order-history-page" element={<OrderHistory/>} />
       <Route path="/saved-payment-cards-page" element={<SavedPaymentCards/>} />
       <Route path="/redeem-page" element={<RedeemPage/>} />
       <Route path="notifications-setting-page" element={<NotificationSettingPage/>} />
-    </Routes> 
+    </Routes>
   );
 };
 

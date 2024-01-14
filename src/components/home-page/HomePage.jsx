@@ -23,6 +23,7 @@ import {
   updatePlaybackTime,
 } from "../../features/songSlice";
 import { Link, useNavigate } from "react-router-dom";
+import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
 
 const HomePage = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -143,15 +144,39 @@ const HomePage = () => {
     ));
   };
 
+  const handleGenreChange = async (selectedGenreIndex) => {
+    if (spotifyAPI.genres.listOfGenresFromAPI[selectedGenreIndex]) {
+      const selectedGenreId =
+        spotifyAPI.genres.listOfGenresFromAPI[selectedGenreIndex].id;
+      await spotifyAPI.getPlaylistAndTracksByGenre(selectedGenreId);
+      setShowAllPlaylists(false);
+    }
+  };
+
+  console.log(spotifyAPI.genres);
   return (
     <>
       <body>
         <SideBar />
         <div className="main-container-homepage">
           {isAuthenticated ? <HeaderAfterLogin /> : <Header />}
-          <div className={`spotify-playlists ${isAuthenticated ? "mt-5" : ""}`}>
+          <div className="spotify-playlists mt-5">
+            <div className="genres-list">
+              <p className="select-genres">Select Genre:</p>
+              <select
+                className="select"
+                onChange={(e) => handleGenreChange(e.target.value)}
+              >
+                {spotifyAPI.genres.listOfGenresFromAPI.map((genre, index) => (
+                  <option key={genre.id} value={index}>
+                    {genre.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="d-flex">
-              <h2>Playlist Hit</h2>
+              <h2>Playlist </h2>
               {!showAllPlaylists && (
                 <button
                   className="btn-display-more"
@@ -161,8 +186,11 @@ const HomePage = () => {
                 </button>
               )}
             </div>
+
             <div className="list">{renderPlaylists()}</div>
           </div>
+
+          <FooterDefauft isHomePage={true} />
 
           {isAuthenticated ? (
             <FooterPlayMusic

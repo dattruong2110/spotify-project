@@ -3,6 +3,12 @@ import "./CompactList.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { formatDuration, formatWeeksAgo } from "../list-song/ListSong";
 import { Button, Image, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCurrentlyPlaying,
+  setCurrentSongIndex,
+  setIsPlaying,
+} from "../../features/songSlice";
 
 const CompactList = ({
   index,
@@ -19,13 +25,20 @@ const CompactList = ({
   setShowLoginModal,
 }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const currentlyPlaying = useSelector(selectCurrentlyPlaying);
+  const isCurrentSongPlaying =
+    currentlyPlaying && currentlyPlaying.id === index;
 
   const playSong = (track) => {
     if (isAuthenticated) {
       if (isSongPlaying && isSongPlaying.id === track.id) {
         onPlayPause(null);
+        dispatch(setIsPlaying(false));
       } else {
         onPlayPause(track);
+        dispatch(setIsPlaying(track));
+        dispatch(setCurrentSongIndex(index));
       }
     } else {
       setShowLoginModal({ show: true, songInfo: { name, album } });
@@ -35,21 +48,23 @@ const CompactList = ({
   return (
     <>
       <tr
-        className={`list-table-row ${isSongPlaying ? "playing" : ""}`}
+        className="list-table-row"
         onClick={() => playSong({ id: index, name, previewUrl })}
       >
         <td className="border-0 list-table-description index-table">
-          <span className="index">{index}</span>
+          <span className="index">{index + 1}</span>
           {previewUrl && (
             <button
-              className={`play-button ${isSongPlaying ? "pause" : "play"}`}
+              className="play-button"
               onClick={(e) => {
                 e.stopPropagation();
-                playSong({ id: previewUrl, name, previewUrl });
+                playSong({ id: index, name, previewUrl });
               }}
             >
               <i
-                className={`fa-solid ${isSongPlaying ? "fa-pause" : "fa-play"}`}
+                className={`fa-solid ${
+                  isCurrentSongPlaying ? "fa-pause" : "fa-play"
+                }`}
               ></i>
             </button>
           )}

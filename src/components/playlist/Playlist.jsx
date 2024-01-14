@@ -10,11 +10,13 @@ import {
   selectCurrentSongIndex,
   selectCurrentlyPlaying,
   selectIsPlaying,
+  selectIsRepeating,
   setCurrentSong,
   setCurrentSongIndex,
   setCurrentTrackDuration,
   setCurrentlyPlaying,
   setIsPlaying,
+  setIsRepeating,
   togglePlaybackState,
   updatePlaybackTime,
 } from "../../features/songSlice";
@@ -61,6 +63,12 @@ const Playlist = () => {
   const currentSongIndex = useSelector(selectCurrentSongIndex);
   const [playlistDetail, setplaylistDetail] = useState(null);
   const { playlistId } = useParams();
+  const [indexPlaylist, setIndexPlaylist] = useState(null);
+  const [selectedGenreIndex, setSelectedGenreIndex] = useState(0);
+  const filteredTracks = tracks.listOfTracksFromAPI.filter(
+    (track) => track.track.preview_url
+  );
+  const isRepeating = useSelector(selectIsRepeating);
 
   useEffect(() => {
     let isMounted = true;
@@ -97,12 +105,16 @@ const Playlist = () => {
             listOfGenresFromAPI: genresResponse.data.categories.items,
           });
 
-          const categoryIds = genresResponse.data.categories.items.map(
-            (category) => category.id
-          );
-          const selectedCategoryId = categoryIds[0];
+          const selectedCategoryId =
+            genresResponse.data.categories.items[selectedGenreIndex]?.id ||
+            genresResponse.data.categories.items[0]?.id;
+
+          // const categoryIds = genresResponse.data.categories.items.map(
+          //   (category) => category.id
+          // );
+          // const selectedCategoryId = categoryIds[0];
           const playlistResponse = await axios(
-            `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=10`,
+            `https://api.spotify.com/v1/browse/categories/${selectedCategoryId}/playlists?limit=50`,
             {
               method: "GET",
               headers: { Authorization: "Bearer " + fetchedToken },
@@ -117,7 +129,7 @@ const Playlist = () => {
           // const playlistId = playlistResponse.data.playlists.items[0].id;
 
           const tracksResponse = await axios(
-            `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=10`,
+            `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=50`,
             {
               method: "GET",
               headers: {
@@ -131,6 +143,14 @@ const Playlist = () => {
             listOfTracksFromAPI: tracksResponse.data.items,
             tracks: tracksResponse.data.items,
           });
+
+          // Xác định index dựa trên playlistId
+          const playlistIndex = playlistResponse.data.playlists.items.findIndex(
+            (playlist) => playlist.id === playlistId
+          );
+          if (isMounted) {
+            setIndexPlaylist(playlistIndex);
+          }
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -143,6 +163,14 @@ const Playlist = () => {
       isMounted = false;
     };
   }, [spotify.ClientId, spotify.ClientSecret]);
+  console.log(indexPlaylist);
+  console.log(genres);
+  console.log(playlist);
+
+  useEffect(() => {
+    dispatch(setCurrentSong(tracks.listOfTracksFromAPI[0]));
+    dispatch(togglePlaybackState());
+  }, [dispatch, tracks.listOfTracksFromAPI]);
 
   useEffect(() => {
     dispatch(setCurrentSong(tracks.listOfTracksFromAPI[0]));
@@ -161,17 +189,20 @@ const Playlist = () => {
     }
   };
 
-  const playSong = (track, index) => {
+  const playSong = async (track, index) => {
     if (isAuthenticated) {
       if (currentlyPlaying && currentlyPlaying.id === track.id) {
         dispatch(setCurrentlyPlaying(null));
         dispatch(setCurrentSongIndex(null));
         audioRef.current.pause();
+        document.title = "Spotify - Web Player: Music for everyone";
       } else {
-        dispatch(setCurrentlyPlaying(track));
-        dispatch(setIsPlaying(true));
         audioRef.current.src = track.previewUrl;
+        dispatch(setIsPlaying(true));
+        dispatch(setCurrentlyPlaying(track));
         dispatch(setCurrentTrackDuration(track.duration_ms));
+        dispatch(setCurrentSongIndex(index));
+        document.title = `${track.name} - Web Player: Music for everyone`;
         audioRef.current.play();
       }
     } else {
@@ -186,106 +217,76 @@ const Playlist = () => {
     dispatch(setIsPlaying(false));
   };
 
-  const checkCanPlay = async (previewUrl) => {
-    return new Promise((resolve) => {
-      const audio = new Audio();
-      audio.src = previewUrl;
-
-      audio.addEventListener("canplaythrough", () => {
-        resolve(true);
-      });
-
-      audio.addEventListener("error", () => {
-        resolve(false);
-      });
-
-      audio.load();
-    });
-  };
-
-  const playSongPlaylist = async (track, index) => {
+  const playSongPlaylist = async (startIndex) => {
+    dispatch(setCurrentSongIndex(startIndex));
     if (isAuthenticated) {
-      if (!track || !track.previewUrl) {
-        console.error("Invalid song data:", track);
-        playNextSong();
-        return;
-      }
-
-      audioRef.current.src = track.previewUrl;
-
-      try {
-        await audioRef.current.load();
-        await audioRef.current.play();
-      } catch (error) {
-        console.error("Error playing song", error);
-        playNextSong();
-      }
-
-      if (currentlyPlaying && currentlyPlaying.id === track.id) {
-        dispatch(setCurrentlyPlaying(null));
-        dispatch(setCurrentSongIndex(null));
+      if (currentlyPlaying && isPlaying) {
         audioRef.current.pause();
+        dispatch(setIsPlaying(false));
       } else {
-        const canPlay = await checkCanPlay(track.previewUrl);
+        const playNext = async (index) => {
+          if (index < tracks.listOfTracksFromAPI.length) {
+            const track = tracks.listOfTracksFromAPI[index];
 
-        if (canPlay) {
-          dispatch(setCurrentlyPlaying(track));
-          dispatch(setCurrentSongIndex(index));
-          audioRef.current.src = track.previewUrl;
-          dispatch(setCurrentTrackDuration(track.duration_ms));
-          audioRef.current.play();
-        } else {
-          console.error(
-            "Failed to load because no supported source was found."
-          );
-          playNextSong();
-        }
+            if (track.track.preview_url) {
+              dispatch(setIsPlaying(true));
+              dispatch(setCurrentlyPlaying(track));
+              dispatch(setCurrentTrackDuration(track.track.duration_ms));
+              dispatch(setCurrentSongIndex(index));
+              audioRef.current.src = track.track.preview_url;
+              audioRef.current.play();
+              document.title = `${track.track.name} - Web Player: Music for everyone`;
+
+              await new Promise((resolve) => {
+                audioRef.current.addEventListener("ended", resolve, {
+                  once: true,
+                });
+              });
+
+              dispatch(setIsPlaying(false));
+              playNext(index + 1);
+            } else {
+              playNext(index + 1);
+            }
+          } else {
+            dispatch(setCurrentlyPlaying(null));
+            dispatch(setCurrentSongIndex(null));
+          }
+        };
+
+        playNext(startIndex);
       }
     } else {
       setShowLoginModal(true);
     }
   };
 
-  const playNextSong = () => {
-    if (
-      currentSongIndex !== null &&
-      currentSongIndex < tracks.listOfTracksFromAPI.length - 1
-    ) {
-      const nextSongIndex = currentSongIndex + 1;
-      const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
-      playSong(nextSong, nextSongIndex);
-    } else {
-      dispatch(setCurrentlyPlaying(null));
-      dispatch(setCurrentSongIndex(null));
-    }
-  };
+  // useEffect(() => {
+  //   const handleSongEnd = () => {
+  //     if (
+  //       currentSongIndex !== null &&
+  //       currentSongIndex < tracks.listOfTracksFromAPI.length - 1
+  //     ) {
+  //       const nextSongIndex = currentSongIndex + 1;
+  //       const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
 
-  useEffect(() => {
-    const handleSongEnd = () => {
-      if (
-        currentSongIndex !== null &&
-        currentSongIndex < tracks.listOfTracksFromAPI.length - 1
-      ) {
-        const nextSongIndex = currentSongIndex + 1;
-        const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
+  //       dispatch(setCurrentlyPlaying(nextSong));
+  //       dispatch(setCurrentSongIndex(nextSongIndex));
 
-        dispatch(setCurrentlyPlaying(nextSong));
-        dispatch(setCurrentSongIndex(nextSongIndex));
+  //       audioRef.current.src = nextSong.track.preview_url;
+  //       audioRef.current.play();
+  //     } else {
+  //       dispatch(setCurrentlyPlaying(null));
+  //       dispatch(setCurrentSongIndex(null));
+  //     }
+  //   };
 
-        audioRef.current.src = nextSong.track.preview_url;
-        audioRef.current.play();
-      } else {
-        dispatch(setCurrentlyPlaying(null));
-        dispatch(setCurrentSongIndex(null));
-      }
-    };
+  //   audioRef.current.addEventListener("ended", handleSongEnd);
 
-    audioRef.current.addEventListener("ended", handleSongEnd);
-
-    return () => {
-      audioRef.current.removeEventListener("ended", handleSongEnd);
-    };
-  }, [audioRef, currentSongIndex, tracks.listOfTracksFromAPI]);
+  //   return () => {
+  //     audioRef.current.removeEventListener("ended", handleSongEnd);
+  //   };
+  // }, [audioRef, currentSongIndex, tracks.listOfTracksFromAPI]);
 
   const handleTimeUpdate = (newTime) => {
     dispatch(updatePlaybackTime(newTime));
@@ -332,19 +333,25 @@ const Playlist = () => {
       <div className="playlist-container">
         {isAuthenticated ? (
           <HeaderAfterLogin
+            name={playlist?.listOfPlaylistFromAPI[indexPlaylist]?.name}
+            isPlaylistPage={true}
+            showPlayButton={showPlayButton}
+            playSongPlaylist={playSongPlaylist}
+          />
+        ) : (
+          <Header
+            name={playlist?.listOfPlaylistFromAPI[indexPlaylist]?.name}
             isPlaylistPage={true}
             showPlayButton={showPlayButton}
           />
-        ) : (
-          <Header isPlaylistPage={true} showPlayButton={showPlayButton} />
         )}
         <div className="playlist-main">
           <div className="playlist-main-content d-flex align-items-end">
             <div className="playlist-image-space">
               <Image
                 src={
-                  playlist.listOfPlaylistFromAPI[0]?.images[0]?.url ||
-                  "fallback_image_url"
+                  playlist.listOfPlaylistFromAPI[indexPlaylist]?.images[0]
+                    ?.url || "fallback_image_url"
                 }
                 className="playlist-image"
               />
@@ -352,10 +359,11 @@ const Playlist = () => {
             <div className="playlist-description">
               <span className="type">Playlist</span>
               <h1 className="playlist-title">
-                {playlist.listOfPlaylistFromAPI[0]?.name || "Fallback Title"}
+                {playlist.listOfPlaylistFromAPI[indexPlaylist]?.name ||
+                  "Fallback Title"}
               </h1>
               <span className="description-playlist">
-                {playlist.listOfPlaylistFromAPI[0]?.description ||
+                {playlist.listOfPlaylistFromAPI[indexPlaylist]?.description ||
                   "Fallback Description"}
               </span>
               <div className="playlist-infor d-flex align-items-center">
@@ -367,12 +375,14 @@ const Playlist = () => {
                   <Link className="playlist-artist-name">Spotify</Link>
                 </div>
                 <span className="likes">
-                  {playlist.listOfPlaylistFromAPI[0]?.followers?.total || 0}{" "}
+                  {playlist.listOfPlaylistFromAPI[indexPlaylist]?.followers
+                    ?.total || 0}{" "}
                   likes
                 </span>
                 <span className="songs-over-24-hr">
-                  {playlist.listOfPlaylistFromAPI[0]?.tracks?.total || 0} songs,{" "}
-                  , <span className="over-24-hr">over 24 hr</span>
+                  {playlist.listOfPlaylistFromAPI[indexPlaylist]?.tracks
+                    ?.total || 0}{" "}
+                  songs, , <span className="over-24-hr">over 24 hr</span>
                 </span>
               </div>
             </div>
@@ -382,9 +392,7 @@ const Playlist = () => {
               <div className="d-flex">
                 <Button
                   className="play-btn"
-                  onClick={() =>
-                    playSongPlaylist(tracks.listOfTracksFromAPI[0], 0)
-                  }
+                  onClick={() => playSongPlaylist(0)}
                 >
                   <i className="fa fa-play"></i>
                 </Button>
@@ -636,11 +644,11 @@ const Playlist = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {tracks.listOfTracksFromAPI.length > 0 ? (
-                      tracks?.listOfTracksFromAPI?.map((track, index) => (
+                    {filteredTracks.length > 0 ? (
+                      filteredTracks.map((track, index) => (
                         <ListSong
                           key={index}
-                          index={index + 1}
+                          index={index}
                           name={track.track.name}
                           album={track.track.album}
                           artists={track.track.artists}
@@ -655,6 +663,7 @@ const Playlist = () => {
                           isAuthenticated={isAuthenticated}
                           showLoginModal={showLoginModal}
                           setShowLoginModal={setShowLoginModal}
+                          setCurrentSongIndex={setCurrentSongIndex}
                         />
                       ))
                     ) : (
@@ -678,11 +687,11 @@ const Playlist = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {tracks.listOfTracksFromAPI.length > 0 ? (
-                      tracks?.listOfTracksFromAPI?.map((track, index) => (
+                    {filteredTracks.length > 0 ? (
+                      filteredTracks.map((track, index) => (
                         <CompactList
                           key={index}
-                          index={index + 1}
+                          index={index}
                           name={track.track.name}
                           album={track.track.album}
                           artists={track.track.artists}
@@ -708,7 +717,7 @@ const Playlist = () => {
             </div>
           </div>
           <footer className="playlist-footer">
-            <FooterDefauft />
+            <FooterDefauft isPlaylistPage={true} />
           </footer>
         </div>
       </div>
@@ -724,6 +733,7 @@ const Playlist = () => {
             currentSong={currentSong}
             audioRef={audioRef}
             playlist={playlist}
+            tracks={tracks.listOfTracksFromAPI}
             onTimeUpdate={handleTimeUpdate}
             setCurrentTrackDuration={setCurrentTrackDuration}
           />
