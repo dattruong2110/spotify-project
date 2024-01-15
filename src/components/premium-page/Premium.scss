@@ -1,0 +1,395 @@
+*{
+  list-style-type: none;
+  text-decoration: none !important; 
+}
+
+section {
+  border: none;
+  padding: 0px;
+  margin: 0px;
+}
+article{
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+//-----CSS Banner -----\\
+.main-content .intro .article{
+  height: 500px;
+}
+.main-content .about .article{
+  height: 530px;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-content .menu .article{
+  height: 1000px;
+}
+
+
+.main-content .intro .article .header{
+  background-color:#9c2fec;
+  height: 500px;
+  display: flex;
+  flex-grow:inherit;
+  justify-content:center;
+  align-items:center;
+  flex-wrap: row;
+}
+
+.main-content .intro .article .header .col .content h2{
+  line-height: 1.5;
+  margin: 15px 0px 0px;
+  padding: 0px;
+  width: 100%;
+  max-width: 100%;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.main-content .intro .article .header .button .purchase-btn span{
+  margin: 10px 25px 10px 15px;
+  padding:15px;
+  display:inline-block;
+  flex-wrap: wrap;
+  background-color: black;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+
+}
+.main-content .intro .article .header .button .list-plans span{
+  margin: 10px 2px 10px 10px;
+  padding: 10px;  
+  display:inline-block;
+  border: #efefef 3px solid;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+.main-content .intro .article .header .col{
+  max-width: 700px;
+  padding: 10px;
+
+}
+.main-content .intro .article .header .col .content{
+  display: flex;
+  flex-grow:inherit;
+  flex-direction: column;
+  max-width: 700px;
+
+}
+.main-content .intro .article .header .col footer{
+  max-width: 700px;
+  font-size: 11px;
+}
+
+.main-content .intro .article .header .col footer a{
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: underline;
+
+}
+
+.main-content .intro .article .header img{
+  display: flex;
+  flex-grow:inherit;
+  justify-content: center;
+  align-items: center;
+}
+//Hiệu ứng chuột ở section 0
+.main-content .intro .article .header .button .purchase-btn span:hover{
+  transform: scale(1.05);
+}
+.main-content .intro .article .header .button .list-plans span:hover{
+  transform: scale(1.05);
+  background-color: #531a7b;
+}
+//-----END CSS BANNER -----\\
+
+
+
+//-----CSS ABOUT-----\\ 
+.main-content .about .article .header {
+  background-color: white;
+  color: black;
+
+}
+.main-content .about .article .header h2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.main-content .about .article .exclusive-list {
+  display: flex;
+  flex-grow:inherit;
+  max-width: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content .about .article .exclusive-list li{
+  display: flex;
+  flex-grow:inherit;
+  flex-direction: column;
+  width: fit-content;
+  height: 250px;
+  padding: 10px 10px 0px 10px;
+}
+
+.main-content .about .article .exclusive-list img{
+  background-position: center top;
+  display: block;
+  margin: auto;
+  flex-grow: 1;
+}
+
+.main-content .about .article .exclusive-list li .slogan{
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 21px;
+  height: fit-content;
+}
+
+.main-content .about .article .exclusive-list li .description{
+  text-align: center;
+  line-height: 1.5;
+  font-size: 16px;
+}
+//-----END CSS ABOUT-----\\ 
+
+//-----CSS MENU-----\\
+.main-content .menu{
+  background-color: #efefef;
+  color: rgb(7, 5, 5);
+}
+
+.main-content .menu .article h2{
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: -1.28px;
+  line-height: 1;
+  text-align: center;
+  padding-top:30px; ;
+}
+
+.main-content .menu .article h3{
+  font-size: 16px;
+  font-weight: normal;
+  margin: 10px 0px;
+  text-align: center;
+}
+
+.main-content .menu .article .payment-list{
+  display: flex;
+  flex-grow:inherit;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  color:rgb(0, 0, 0);
+}
+
+.main-content .menu .article .payment-list .payment{
+  display: flex;
+  flex-grow:inherit;
+  flex-direction: row;
+}
+
+.main-content .menu .article .detail-menu{
+  display: flex;
+  flex-grow:inherit;
+  flex-direction: row;
+  justify-content: center;
+  margin: 30px;
+
+}
+
+//menu detail
+.main-content .menu .article .detail-menu{
+  display: flex;
+  flex-grow:inherit;
+  flex-direction: row;
+  margin-bottom: 100px;
+}
+
+.main-content .menu .article .detail-menu .plan{
+  padding: 20px 25px 30px 20px;
+  margin: 40px 16px 0px 0px;
+  background-color: rgb(255, 255, 255);
+  max-width: 400px;
+  width: auto;
+  border: black solid 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.main-content .menu .article .detail-menu .plan .slogan{
+  display: flex;
+  align-items: flex-start;
+}
+
+.main-content .menu .article .detail-menu .plan .description{
+  display: flex;
+  flex-grow:inherit;
+  flex-direction: column;
+  padding-left: 5px;
+}
+
+.main-content .menu .article .detail-menu .plan .description li{
+  display: flex;
+  flex-grow:inherit;
+  align-items: flex-start;
+}
+.main-content .menu .article .detail-menu .plan .description li svg{
+  width: 24px;
+  height: 24px;
+  border: none;
+}
+.main-content .menu .article .detail-menu .plan .description li p{
+  color: rgb(0, 0, 0);
+  line-height: 22px;
+  list-style: none;
+  margin: 3px;
+  padding: 3px
+}
+
+.main-content .menu .article .detail-menu .plan .row{
+  display: flex;
+  flex-grow:inherit;
+  align-items: flex-start;
+  height: 200px;
+}
+
+.main-content .menu .article #payOneTime{
+  background-color: rgb(255, 255, 255);
+  list-style-type: none;
+
+  display: inline-block;
+  align-items: flex-start;
+
+  font-size: 14px;
+  padding: 4px 8px;
+  font-weight: 900;
+
+  margin: 0px 4px 10px 0px;
+  margin-block: 0px 10px;
+  color: rgb(13, 114, 234);
+
+  border: 1px solid rgb(13, 114, 234);
+  border-radius: 4px;
+}
+
+.main-content .menu .article #payThreeMonth {
+  list-style-type: none;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 4px 8px;
+  display: inline-block;
+  font-weight: 900;
+  margin: 0px 4px 10px 0px;
+  margin-block: 0px 10px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(13, 114, 234);
+}
+.main-content .menu .article .detail-menu .plan h3{
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 24px;
+  margin: 0px 0px 5px;
+  padding: 0px;
+  text-align: left;
+}
+
+.main-content .menu .article .detail-menu .plan .text{
+  display: flex;
+  flex-grow:inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 0px;
+  margin: 0px;
+}
+
+//btn
+.main-content .menu .article .detail-menu .plan .button{
+  display: flex;
+  flex-grow:inherit;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-content .menu .article .detail-menu .plan .button p{
+  padding-bottom: 10px;
+  margin-bottom: 1px;
+}
+
+.main-content .menu .article .detail-menu .plan .button a{
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.main-content .menu .article .detail-menu .plan .button a span {
+  margin: 20px 25px 20px 15px;
+  padding: 15px;
+  display:block;
+  flex-wrap: wrap;
+  background-color: black;
+  border-radius: 700px;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.main-content .menu .article .detail-menu .plan .button a span:hover {
+  scale: 1.1;
+  transition: scale 0.5s ease;
+}
+.main-content .menu .article .detail-menu .plan .button p a{
+  color: #080505;
+
+}
+
+// Hiệu ứng con trỏ mở toolkit
+.main-content .menu .article .payment-list .another span{
+  position: relative;
+  display: inline-block;
+}
+
+.main-content .menu .article .payment-list .another span:hover::after{
+  content: attr(data-tooltip); /* Sử dụng thuộc tính data-tooltip để chứa nội dung tooltip */
+  display: block;
+  position: auto;
+  background-color: #fcfcfc;
+  color: #080505;
+  padding: 15px;
+  max-width: 70px;
+  border-radius: 10px;
+  bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+span li {
+  color: white;
+  text-decoration: none;
+  pointer-events: none; /* Ngăn sự kiện nhấp chuột được định hình bởi phần tử tooltip */
+}
+
+//-----CSS MENU-----\\

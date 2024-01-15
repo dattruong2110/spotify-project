@@ -1,0 +1,229 @@
+@font-face{
+  font-family: CircularSp;
+  src: url("https://encore.scdn.co/fonts/CircularSp-Book-4eaffdf96f4c6f984686e93d5d9cb325.woff2");
+}
+// \\
+
+.main-content-playlist{
+    margin-left: 300px;
+    background-color: rgb(9, 8, 8);
+    color: black;
+}
+
+body > div.main-content-playlist > div.main-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+// section.playlist-name\\
+
+body > div.main-content-playlist > div.main-view > section.playlist-name{
+
+    align-items: center;
+    width: 98%;
+    height: 330px;
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+    background-color: rgb(81, 77, 77);
+    background: linear-gradient(to top, rgb(17, 17, 17) 0%, rgb(67, 64, 64) 100%);
+    display: flex;
+    border-radius: 10px 10px 0px 0px ;
+}
+
+body > div.main-content-playlist > div.main-view > section.playlist-name > div.img.container{
+    width: 230px;
+    height: 230px;
+    margin: 0px 0px 0px 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: #282828;
+    color: #7f7f7f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 15px 15px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+
+
+body > div.main-content-playlist > div.main-view > section.playlist-name.container > div.text-area > ul > li.small-text{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+body > div.main-content-playlist > div.main-view > section.playlist-name.container > div.text-area > ul > li.name-playlist{
+    font-size: 60px;
+    font-weight: bold;
+}
+
+body > div.main-content-playlist > div.main-view > section.playlist-name.container > div.text-area > ul > li.name-playlist button{
+    background: rgba(255, 255, 255, 0);
+    border: 0px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+body > div.main-content-playlist > div.main-view > section.playlist-name.container > div.text-area > ul > li.description{
+    font-size: 0.875rem;
+    color: hsla(0,0%,100%,.7);
+}
+
+body > div.main-content-playlist > div.main-view > section.playlist-name.container > div.text-area > ul > li.profile > a{
+    color: white;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+body > div.main-content-playlist > div.main-view > section.playlist-name.container > div.text-area > ul > li.profile > a:hover{
+    text-decoration: underline !important;
+}
+
+// section.button-layer\\
+
+body > div.main-content-playlist > div.main-view > section.button-layer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    height: 150px;
+    width: 98%;
+    margin: 0px;
+    background: linear-gradient(to bottom, #212121, #181818);
+}
+
+
+/* MyButton.css */
+
+
+
+
+// body > div.main-content-playlist > div.main-view > section.button-layer > div.dropdown-left{
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     margin: 0;
+//     padding-bottom: 15px;
+//     background-color: #121212;
+// }
+
+
+body > div.main-content-playlist > div.main-view > section.button-layer > div.dropdown-left > div.btn {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    height: 50px;
+    width: 70px;
+    margin: 0px 15px 0px 0px;
+    
+    background-color: inherit;
+    color: hsla(0,0%,100%,.9);
+    font-family: CircularSp;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    cursor: default;
+    position: relative;
+    
+}
+
+body > div.main-content-playlist > div.main-view > section.button-layer > div.dropdown-left > div > button{
+    background-color: inherit;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+body > div.main-content-playlist > div.main-view > section.button-layer > div.dropdown-left > div.btn .option{
+    display: flex;
+    align-items: center ;
+    width: 96%;
+    height: 9.78%;
+    margin:10px;
+    border-radius: 2.5px;
+    
+}
+body > div.main-content-playlist > div.main-view > section.button-layer > div.dropdown-left > div.btn .option:hover{
+    background-color: #61666b80;
+    color: #1ed760;
+}
+body > div.main-content-playlist > div.main-view > section.button-layer > div.dropdown-left > div.btn svg{
+    fill: #9da0a8;
+    width: var(--encore-graphic-size-decorative-smaller,16px);
+    height: var(--encore-graphic-size-decorative-smaller,16px);
+    
+    margin-left: 12px;
+    margin-right: 11px;
+}
+
+
+body > div.main-content-playlist > div > div.thick-line{
+    width: 92%;
+    height: 1px;
+    padding: 0px;
+    margin: 0px;
+}
+
+//section.find-item\\
+
+body > div.main-content-playlist > div.main-view > section.find-item{
+    width: 98%;
+    height: 600px;
+    background: linear-gradient(to bottom, #181818, #000);
+
+}
+
+body > div.main-content-playlist > div.main-view > section.find-item h1{
+    color: #fff;
+    margin-bottom: 16px;
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+body > div.main-content-playlist > div > section.find-item > div.search-container{
+    flex-direction: row;
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+body > div.main-content-playlist > div > section.find-item > div.search-container .search-input {
+    padding: 8px;
+    padding-right: 30px; /* Đảm bảo không che khuất biểu tượng */
+    border-radius: 5px;
+    width: 300px;
+    color: white;
+    background-color: #2C2C2C;
+
+
+  }
+
+  body > div.main-content-playlist > div > section.find-item > div.search-container .search-input:focus{
+    padding-left: 25px;
+  }
+
+  body > div.main-content-playlist > div > section.find-item > div.search-container  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: -7px;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+  }
+
+
+
+  body > div.main-content-playlist > footer{
+    width: 98%;
+
+  }

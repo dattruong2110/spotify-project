@@ -1,0 +1,195 @@
+@import "../../global/global.scss";
+
+.homepage-afterlogin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: 340px;
+  z-index: 1;
+}
+
+.container-header-after-login {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 70px;
+  background-color: #121212;
+
+  .logo-spotify {
+    width: 132px;
+    height: 40px;
+    margin-right: auto;
+    svg {
+      background-color: #ffffff;
+    }
+  }
+
+  .header-menu {
+    .header-menu-left-bar a,
+    .header-menu-right-bar a {
+      background-color: #121212;
+      color: #ffffff;
+      padding: 25px 17px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.35px;
+
+      &:hover {
+        color: #1ed760;
+      }
+    }
+
+    .header-menu-separator {
+      margin-left: 17px;
+      margin-right: 10px;
+      height: 16px;
+      border-right: 1px solid #ffffff;
+    }
+
+    .header-menu-right-bar button {
+      background-color: #121212;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 14px 30px;
+      border: 0px;
+      border-radius: 40px;
+      cursor: pointer;
+
+      &:hover {
+        color: #1ed760;
+      }
+    }
+  }
+}
+
+.container-header-after-login .prev-next-buttons button {
+  color: #7a7a7a;
+  width: 34px;
+  height: 34px;
+  border-radius: 100%;
+  font-size: 18px;
+  border: 0px;
+  background-color: #090909;
+  left: 0;
+}
+
+.container-header-after-login .prev-next-buttons:active {
+  color: $background-color-base;
+}
+
+.container-header-after-login .prev-next-buttons {
+  font-size: 1.4rem;
+  padding: 0 5px;
+}
+
+.header-bar-after-login-playlist {
+  border-radius: 0;
+  position: fixed;
+  background-color: #121212;
+  max-width: 100%;
+  top: 0;
+  left: 269px;
+  right: 0;
+  margin-top: 0;
+}
+
+.header-bar-after-login-playlist .prev-next-buttons {
+  padding: 0;
+}
+
+.container-header-after-login .prev-next-buttons .play-btn {
+  border: none;
+  border-radius: 100%;
+  background-color: $green-btn-color;
+  color: $background-color-base;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.container-header-after-login .prev-next-buttons .play-btn:hover {
+  background-color: $green-hover-btn-color;
+  color: $background-color-base;
+}
+
+.container-header-after-login .prev-next-buttons .play-btn:active {
+  background-color: $green-hover-btn-color !important;
+  color: $background-color-base;
+}
+
+.container-header-after-login .prev-next-buttons .play-btn .fa-play {
+  font-size: 1.4rem;
+  padding: 6px 4px;
+}
+
+.container-header-after-login .prev-next-buttons .header-playlist-title {
+  width: 200px;
+  margin-top: 5px;
+  color: $white-text-color;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.container-header-after-login .container-account {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+
+  .account {
+    padding: 5px;
+    margin-bottom: 2px;
+    border-radius: 10px;
+    position: relative;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &__img {
+      img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    margin-top: 0px;
+    border: none;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #121212;
+    color: #ffffff;
+
+    .dropdown-item {
+      font-size: 14px;
+      padding: 8px 20px;
+      margin-bottom: 2px;
+
+      &:hover {
+        color: #1ed760;
+      }
+    }
+  }
+
+  .dropdown-toggle {
+    background-color: #ffffff;
+    color: #121212;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: black;
+    }
+  }
+}

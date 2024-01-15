@@ -1,0 +1,87 @@
+*{
+    list-style-type: none;
+    text-decoration: none !important; 
+  }
+  
+  section {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+  }
+  article{
+    border: none;
+    margin: 0px;
+    padding: 0px;
+  }
+
+// Css Banner
+
+.navbar-nav{
+    --rem: 16;
+    font-family: CircularSp,spotify-circular,Helvetica,Arial,sans-serif;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.5;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center; 
+    margin-left: auto;
+  }
+
+.navbar .collapse ul li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar .collapse ul li a{
+  color: white;
+  font-weight: 700;
+  margin-right: 25px;
+}
+
+.navbar .collapse ul li a:hover{
+  color:#1ed760 ;
+}
+
+.navbar .collapse ul li #dropdown-basic{
+  background-color: black;
+  border: none;
+  color: white;
+  font-weight: 700;
+  margin-right: 25px;
+}
+
+.navbar .collapse ul li .dropdown-menu .dropdown-item{
+  color: black;
+}
+.navbar .collapse ul li .dropdown-menu .dropdown-item:hover{
+  color: #1ed760 !important;
+}
+
+
+  .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    flex-direction: row;
+    justify-content: end;
+  }
+  
+
+  .navbar-nav .nav-item .nav-link img{
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: auto;
+  
+  }
+  .navbar-nav .nav-item .vertical-bar{
+    display: flex;
+    flex-grow:inherit;
+    top: 0;
+    font-size: 20px;
+    font-weight: 200;
+    min-height: 54px;
+    padding-top: 21px;
+    margin-right: 25px;
+  }
+  

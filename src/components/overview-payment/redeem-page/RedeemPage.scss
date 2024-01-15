@@ -1,0 +1,141 @@
+
+
+
+#root > div.content-redeem{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+#root > div.content-redeem > div.main-content-redeem{
+    color: black;
+    padding: 60px 5px 60px 5px;
+    width: 550px;
+}
+#root > div.content-redeem > div.main-content-redeem > div.title{
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+
+}
+
+#root > div.content-redeem > div.main-content-redeem  > div.title > h2{
+    font-weight: bold;
+    padding-bottom: 25px;
+
+}
+
+#root > div.content-redeem > div.main-content-redeem  > div.description{
+    padding-bottom: 16px;
+}
+
+#root > div.content-redeem > div.main-content-redeem .alert{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #FFF0F5;
+    margin: 12px 0px 12px 0px;
+    text-align: left;
+    border-radius: 3px;
+
+}
+
+#root > div.content-redeem > div.main-content-redeem .alert i{
+    font-size: 12px;
+    width: 25px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(205, 26, 43);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+
+#root > div.content-redeem > div.main-content-redeem .alert p{
+    padding: 0px;
+    margin: 0px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(205, 26, 43);
+    line-height: 1.5;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.input{
+    padding-bottom: 24px;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.input p{
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+#root > div.content-redeem > div.main-content-redeem > div.input > div.input-container > input{
+    width: 96%;
+    height: 50px;
+    border: #727272 1px solid;
+    border-radius: 4px;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.input > div.input-container > input:hover{
+    border: #000000 1px solid;
+    transition: 0.3s;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.input > div.input-container > input:focus{
+    border:3px solid black; /* Màu đường viền khi ô input được chọn */
+    padding-left: 10px;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.continue-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.continue-btn > button  {
+    border-radius: 200px;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: rgb(174, 253, 201);
+    color: #000000;
+    font-weight: bold;
+
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.continue-btn > button:hover{
+    scale: 1.05;
+    background-color: #2bae59;
+    transition: 0.2s;
+}
+
+
+#root > div.content-redeem > div.main-content-redeem > div.another-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.another-link a{
+    text-decoration: underline !important;
+    color: #000000;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.another-link a:hover{
+    color: #1ed760;
+}
+
+#root > div.content-redeem > div.main-content-redeem > div.another-link > a:nth-child(2){
+    font-size: 14px;
+}

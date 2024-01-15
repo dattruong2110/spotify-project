@@ -1,0 +1,101 @@
+@import "../global/global.scss";
+
+.container-account-content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.premium-in-page-account {
+  display: flex;
+  background: linear-gradient(to right, #6f5bd5, #ec06c1);
+  border-radius: 10px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  padding: 10px;
+}
+.premium-in-page-account img {
+  padding: 20px;
+  padding-left: 10px;
+  height: 200px;
+}
+.premium-in-page-account .premium-page-account-content span {
+  font-size: 30px;
+  font-weight: 700;
+}
+.premium-in-page-account .premium-page-account-content h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.premium-in-page-account .premium-page-account-content p {
+  font-size: 13px;
+  font-weight: 500;
+}
+.premium-in-page-account .premium-page-account-content a {
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  padding: 10px;
+}
+
+.navbar-container {
+  background-color: $background-color-base;
+  border-radius: 10px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  padding: 4px;
+}
+
+.navbar-container .title-navbar {
+  margin-left: 15px;
+  padding-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar-container .tab {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: #fff;
+  padding: 13px 15px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    opacity: 0.7;
+  }
+
+  i {
+    font-size: 1.5rem;
+    color: #a9a9a9;
+    text-align: center;
+
+    &#library-icon {
+      width: 26px;
+    }
+
+    &#arrow-icon {
+      margin-left: auto;
+    }
+  }
+
+  p {
+    margin: auto 0 auto 15px;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+}
+
+.container-account-content .navbar-container .tab a {
+  color: white;
+}

@@ -1,0 +1,345 @@
+@import "../global/global.scss";
+
+.playlist-artist-container .playlist-main-content {
+  padding: 0;
+  margin: 0;
+}
+
+.playlist-artist-container .playlist-image-background {
+  background-image: url("https://img.vietcetera.com/uploads/images/09-mar-2023/mck-feature.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 350px;
+  border-radius: 15px;
+}
+.playlist-artist-container .playlist-artist-description {
+  padding-top: 120px;
+  margin-left: 20px;
+  color: $white-text-color;
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+.playlist-artist-container .song-playlist {
+  padding: 24px;
+}
+.playlist-artist-container .play-react-option-list-song .play-btn {
+  border: none;
+  border-radius: 100%;
+  background-color: $green-btn-color;
+  color: $background-color-base;
+  width: 60px;
+  height: 60px;
+  margin-right: 24px;
+}
+.playlist-artist-container .play-react-option-list-song .play-btn:hover {
+  background-color: $green-hover-btn-color;
+  color: $background-color-base;
+}
+.playlist-artist-container .play-react-option-list-song .play-btn:active {
+  background-color: $green-hover-btn-color !important;
+  color: $white-text-color;
+}
+.playlist-artist-container .play-react-option-list-song .play-btn .fa-play {
+  font-size: 1.4rem;
+  padding: 14px 11px;
+}
+.playlist-artist-container .play-react-option-list-song .follow-artist {
+  border: 1px solid white;
+  border-radius: 100px;
+  background-color: #000000;
+  color: $base-color;
+  width: 100px;
+  height: 40px;
+  margin-top: 10px;
+  margin-right: 24px;
+}
+.playlist-artist-container .play-react-option-list-song .follow-artist:hover {
+  background-color: #393838;
+}
+.playlist-artist-container .play-react-option-list-song .follow-artist:active {
+  background-color: #393838 !important;
+}
+
+.playlist-artist-container .more-option .dropdown-toggle::after {
+  display: none;
+}
+.playlist-artist-container .more-option .option-icon {
+  color: $base-color;
+  font-size: 1.4rem;
+  padding: 12px;
+}
+.playlist-artist-container .more-option .option-icon:hover {
+  color: $white-text-color;
+}
+.playlist-artist-container .more-option .more-option-menu {
+  background-color: #242424;
+  padding: 4px;
+}
+.playlist-artist-container .more-option .more-option-menu-item {
+  color: $white-text-color;
+}
+.playlist-artist-container .more-option .more-option-menu-item:hover {
+  background-color: #3a3939;
+  color: $white-text-color;
+  border-radius: 4px;
+}
+.playlist-artist-container
+  .more-option
+  .more-option-menu-item
+  .more-option-menu-item-btn {
+  color: $white-text-color;
+  padding: 0;
+}
+.playlist-artist-container
+  .more-option
+  .more-option-menu-item
+  .more-option-menu-item-btn
+  .more-option-menu-item-icon {
+  margin-right: 12px;
+}
+.playlist-artist-container
+  .more-option
+  .more-option-menu-item
+  .more-option-menu-item-text {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.playlist-artist-container .more-option-menu-item-btn .search-folder {
+  width: 100%;
+  height: 20px;
+  border-radius: 4px;
+}
+.playlist-artist-container.more-option-menu-item .dropdown-end {
+  background-color: #242424;
+}
+
+.playlist-artist-container.popolar {
+  margin: 20px;
+}
+.playlist-artist-container.list-table-song {
+  margin-top: 20px;
+}
+.playlist-artist-container .song-playlist-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.playlist-artist-container {
+  margin-left: 300px;
+  background-color: #121212;
+  margin-bottom: 5px;
+}
+
+.playlist-artist-container .check-color {
+  color: blue;
+}
+
+.playlist-artist-container.type {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.playlist-artist-container .artist-name,
+.album-title {
+  margin: 0.08em 0px 0.12em;
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+.playlist-artist-container .album-infor {
+  margin-top: 8px;
+}
+
+.playlist-artist-container .album-artist-image {
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.playlist-artist-container .album-artist-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: $white-text-color;
+  text-decoration: none;
+}
+
+.playlist-artist-container .playlist-artist-name:hover,
+.playlist-artist-container .album-artist-name:hover {
+  text-decoration: underline;
+}
+
+.playlist-artist-container .likes,
+.songs-over-24-hr {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.playlist-artist-container .likes::before,
+.songs-over-24-hr::before {
+  content: "•";
+  margin: 0 4px;
+}
+
+.playlist-artist-container .over-24-hr {
+  color: $base-color;
+}
+
+.playlist-artist-container .list-song .table-description {
+  background-color: black;
+}
+
+.playlist-artist-container .link-album {
+  color: $base-color;
+  text-decoration: none;
+}
+
+.playlist-artist-container .link-album:hover {
+  color: $white-text-color;
+  text-decoration: underline;
+}
+
+.playlist-artist-container .link-song {
+  color: $white-text-color;
+  text-decoration: none;
+}
+
+.playlist-artist-container .link-song:hover {
+  text-decoration: underline;
+}
+
+.playlist-artist-container .link-artist {
+  color: $base-color;
+  text-decoration: none;
+}
+
+.playlist-artist-container .link-artist:hover {
+  color: $white-text-color;
+  text-decoration: underline;
+}
+
+.playlist-artist-container .container-artist-playlist {
+  margin-bottom: 10px;
+}
+
+.playlist-artist-container .spotify-playlist-artist {
+  padding: 20px 40px;
+}
+
+.playlist-artist-container .spotify-playlist-artist h2 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.playlist-artist-container .spotify-playlist-artist .list {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  width: 100%;
+}
+.playlist-artist-container .spotify-playlist-artist .list .item {
+  flex: 1;
+  min-width: 140px;
+  width: 180px;
+  height: 280px;
+  padding: 15px;
+  background-color: #181818;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all ease 0.4s;
+}
+.playlist-artist-container .spotify-playlist-artist .list .item:hover {
+  background-color: #252525;
+}
+.playlist-artist-container .spotify-playlist-artist .list .item img {
+  width: 100%;
+  height: 150px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.playlist-artist-container .spotify-playlist-artist .list .item .play {
+  position: relative;
+}
+.playlist-artist-container .spotify-playlist-artist .list .item .play .fa {
+  position: absolute;
+  right: 10px;
+  top: -60px;
+  padding: 18px;
+  background-color: #1db954;
+  border-radius: 100%;
+  opacity: 0;
+  transition: all ease 0.4s;
+}
+.playlist-artist-container
+  .spotify-playlist-artist
+  .list
+  .item:hover
+  .play
+  .fa {
+  opacity: 1;
+  transform: translateY(-20px);
+}
+.playlist-artist-container .spotify-playlist-artist .list .item h4 {
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.playlist-artist-container .spotify-playlist-artist .list .item p {
+  color: #989898;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.playlist-artist-container .spotify-playlist-artist hr {
+  margin: 70px 0px 0px;
+  border-color: #636363;
+}
+
+.playlist-artist-container .container-footer-artist-playlist {
+  background-image: url("https://img.vietcetera.com/uploads/images/09-mar-2023/mck-feature.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  margin-bottom: 60px;
+  width: 100%;
+  height: 430px;
+}
+
+.playlist-artist-container .container-footer-artist-playlist :hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.playlist-artist-container .content-footer-artist-playlist h2 {
+  padding-top: 5px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: #989898;
+}
+.playlist-artist-container .container-footer-artist-playlist p {
+  padding-top: 250px;
+  padding-left: 10px;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  color: #948d8d;
+  font-size: 15px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.playlist-artist-container .container-footer-artist-playlist:hover p {
+  display: block;
+  opacity: 1;
+}

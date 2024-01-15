@@ -1,0 +1,133 @@
+$background-color-base: #121212;
+$bold-text-color: #fff;
+$base-text-color: #a7a7a7;
+$card-color: #242424;
+$border-radius-oval: 9999px;
+$font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+.sidebar-after-login {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+}
+.sidebar-after-login .navigation-1 {
+  background-color: #121212;
+  border-radius: 10px;
+}
+.sidebar-after-login .navigation-1 ul {
+  list-style: none;
+  margin-top: 5px;
+}
+.sidebar-after-login .navigation-1 ul li {
+  padding: 10px 0px;
+}
+.sidebar-after-login .navigation-1 ul li a {
+  color: $base-text-color;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+}
+.sidebar-after-login .navigation-1 ul li a:hover,
+.sidebar-after-login .navigation-1 ul li a:active,
+.sidebar-after-login .navigation-1 ul li a:focus {
+  color: #ffffff;
+}
+.sidebar-after-login .navigation-1 ul li a:hover .fa,
+.sidebar-after-login .navigation-1 ul li a:active .fa,
+.sidebar-after-login .navigation-1 ul li a:focus .fa {
+  color: #b3b3b3;
+}
+.sidebar-after-login .navigation-1 ul li .fa {
+  font-size: 20px;
+  margin-right: 10px;
+}
+.sidebar-after-login .navigation-1 ul li a:hover .fa:hover,
+.sidebar-after-login .navigation-1 ul li a:hover .fa:active,
+.sidebar-after-login .navigation-1 ul li a:hover .fa:focus {
+  color: #ffffff;
+}
+
+.sidebar-after-login .navigation-2 {
+  background-color: #121212;
+  border-radius: 10px;
+  height: 100%;
+}
+.sidebar-after-login .navigation-2 ul {
+  list-style: none;
+}
+.sidebar-after-login .navigation-2 ul li {
+  padding: 10px 0px;
+}
+.sidebar-after-login .navigation-2 ul li a {
+  color: $base-text-color;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+}
+.sidebar-after-login .navigation-2 ul li a:hover,
+.sidebar-after-login .navigation-2 ul li a:active,
+.sidebar-after-login .navigation-2 ul li a:focus {
+  color: #ffffff;
+}
+.sidebar-after-login .navigation-2 ul li a:hover .fa,
+.sidebar-after-login .navigation-2 ul li a:active .fa,
+.sidebar-after-login .navigation-2 ul li a:focus .fa {
+  color: #b3b3b3;
+}
+.sidebar-after-login .navigation-2 ul li .fa {
+  font-size: 20px;
+  margin-right: 10px;
+}
+.sidebar-after-login .navigation-2 ul li a:hover .fa:hover,
+.sidebar-after-login .navigation-2 ul li a:hover .fa:active,
+.sidebar-after-login .navigation-2 ul li a:hover .fa:focus {
+  color: #ffffff;
+}
+
+.sidebar-after-login .plus-your-library {
+  margin-left: 80px;
+}
+.sidebar-after-login .arrow-your-library {
+  margin-left: 20px;
+}
+
+.sidebar-after-login .like-artists {
+  & {
+    padding-left: 25px;
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  .like-artist {
+    & {
+      background-color: #121212;
+      padding: 5px;
+      margin-bottom: 2px;
+      border-radius: 10px;
+    }
+
+    &:hover {
+      background: lighten(rgb(32, 32, 32), 6%);
+      text-decoration: none;
+    }
+
+    &__img {
+      img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+      }
+    }
+
+    &__name {
+      margin-left: 15px;
+      color: white;
+      font-size: 12px;
+    }
+  }
+}

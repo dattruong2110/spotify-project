@@ -1,0 +1,147 @@
+@import "../global/global.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+.container-header-defauft {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1170px;
+}
+
+header {
+  background-color: #000000;
+}
+header .container-header-defauft {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+header .container-header-defauft .header-logo {
+  width: 132px;
+  height: 40px;
+}
+header .container-header-defauft .header-logo svg {
+  background-color: #ffffff;
+}
+header .container-header-defauft .header-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header .container-header-defauft .header-menu-left-bar a {
+  color: #ffffff;
+}
+header .container-header-defauft .header-menu-right-bar a {
+  color: #d9dadc;
+}
+header .container-header-defauft .header-menu-left-bar a,
+header .container-header-defauft .header-menu-right-bar a {
+  padding: 25px 17px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.35px;
+}
+header .container-header-defauft .header-menu-left-bar a:hover,
+header .container-header-defauft .header-menu-right-bar a:hover {
+  color: #1ed760;
+}
+
+header .container-header-defauft .header-menu-right-bar button {
+  background-color: #d9dadc;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 30px;
+  border: 0px;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+header .container-header-defauft .header-menu-right-bar button:hover {
+  background-color: #f2f2f2;
+}
+header .container-header-defauft .header-menu-separator {
+  margin-left: 17px;
+  margin-right: 17px;
+  height: 16px;
+  border-right: 1px solid #ffffff;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 900px;
+  background-color: #3122bb;
+  background-image: url(https://www-growth.scdn.co/static/home/bursts.svg);
+  background-size: 170%;
+  background-position: 44% 7%;
+}
+main .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 45px;
+}
+main .container div .h1-landingpage {
+  width: 800px;
+  color: #1ed760;
+  font-family: "Poppins", sans-serif;
+  font-size: 140px;
+  line-height: 150px;
+  text-indent: -250px;
+  letter-spacing: -5px;
+  transform: translateX(156px);
+}
+main .container .p-landingpage {
+  color: #56d762;
+  font-size: 18px;
+}
+main .container .a-landingpage {
+  padding: 17px 32px;
+  position: relative;
+  color: #1a3893;
+  background-color: #1ed760;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 100px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.15s ease-in-out;
+}
+main .container .a-landingpage:before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -7px;
+  width: 104%;
+  height: 113%;
+  background-color: transparent;
+  border: 3px solid #ffffff;
+  border-radius: 100px;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+main .container .a-landingpage:hover {
+  transform: scale(1.03);
+}
+main .container .a-landingpage:active {
+  transform: scale(1);
+}
+main .container .a-landingpage:active:before {
+  opacity: 1;
+}
