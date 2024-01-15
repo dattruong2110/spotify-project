@@ -40,7 +40,7 @@ const SideBar = () => {
         <div class="navigation">
           <ul>
             <li>
-              <NavLink to="#">
+              <NavLink to="/create-playlist-page">
                 <span class="fa fas fa-plus-square"></span>
                 <span>Create Playlist</span>
               </NavLink>
