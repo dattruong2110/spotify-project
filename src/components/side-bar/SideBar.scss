@@ -39,7 +39,9 @@ $font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 .sidebar .navigation ul li a:focus .fa {
   color: #b3b3b3;
 }
-.sidebar .navigation ul li .fa {
+.sidebar .navigation ul li .fa,
+.sidebar .navigation ul li svg,
+.sidebar .navigation ul li img {
   font-size: 20px;
   margin-right: 10px;
 }
@@ -71,4 +73,7 @@ $font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .logo-spotify {
   margin-left: 25px;
+}
+.list-playlist-suggestion {
+  margin-left: 28px;
 }
