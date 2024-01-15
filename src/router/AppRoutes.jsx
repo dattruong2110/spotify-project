@@ -24,6 +24,12 @@ import DeviceHelp from "../components/support-page/device-help/DeviceHelp";
 import SafetyPrivacy from "../components/support-page/safety-privacy/SafetyPrivacy";
 import CreateProfile from "../components/sign-up/create-profile/CreateProfile";
 
+import SavedPaymentCards from "../components/overview-payment/saved-payment-cards-page/SavedPaymentCards";
+import OrderHistory from "../components/overview-payment/order-history-page/OrderHistory";
+import CreatePlayList from "../components/create-playlist-page/CreatePlayList"
+import RedeemPage from "../components/overview-payment/redeem-page/RedeemPage";
+import NotificationSettingPage from "../components/security and privacy/notifications-setting-page/NotificationSettingPage";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -53,6 +59,12 @@ const AppRoutes = () => {
       <Route path="/device-help" element={<DeviceHelp />} />
       <Route path="/safety-privacy" element={<SafetyPrivacy />} />
       <Route path="/create-profile" element={<CreateProfile />} />
+
+      <Route path="/create-playlist-page" element={<CreatePlayList />} />
+      <Route path="/order-history-page" element={<OrderHistory/>} />
+      <Route path="/saved-payment-cards-page" element={<SavedPaymentCards/>} />
+      <Route path="/redeem-page" element={<RedeemPage/>} />
+      <Route path="notifications-setting-page" element={<NotificationSettingPage/>} />
     </Routes>
   );
 };
