@@ -12,6 +12,7 @@
 
 .playlist-main-content {
   padding: 24px;
+  align-items: end;
 }
 
 .playlist-image-space {
@@ -194,4 +195,40 @@
 
 .playlist-footer {
   padding: 0 24px;
+}
+
+// Tablet interface
+@media only screen and (min-width: 660px) and (max-width: 830px) {
+  .playlist-title {
+    font-size: 2.6em !important;
+  }
+
+  .playlist-infor {
+    flex-wrap: wrap;
+  }
+
+  .list-table-head__tablet {
+    display: none;
+  }
+}
+
+// Mobile interface
+@media only screen and (max-width: 600px) {
+  .playlist-container {
+    margin-left: 0;
+  }
+
+  .playlist-main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .playlist-title {
+    font-size: 2.2em !important;
+  }
+
+  .list-table-head__mobile {
+    display: none;
+  }
 }

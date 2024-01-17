@@ -120,3 +120,25 @@
   font-size: 1.5rem;
   font-weight: 700;
 }
+
+// Tablet interface
+@media only screen and (min-width: 660px) and (max-width: 830px) {
+  .topbar {
+    left: 280px;
+  }
+
+  .header-menu-item {
+    display: none !important;
+  }
+}
+
+// Mobile interface
+@media only screen and (max-width: 600px) {
+  .topbar {
+    left: 0;
+  }
+
+  .header-menu-item {
+    display: none !important;
+  }
+}

@@ -124,7 +124,7 @@ body {
 .playlist-title,
 .album-title {
   margin: 0.08em 0px 0.12em;
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: 700;
 }
 
@@ -248,4 +248,22 @@ body {
   border-radius: $btn-border-radius;
   padding: 10px 20px;
   margin: 20px 0 0;
+}
+
+// Tablet interface
+@media only screen and (min-width: 660px) and (max-width: 830px) {
+  .list-song-table-description__tablet {
+    display: none;
+  }
+}
+
+// Mobile interface
+@media only screen and (max-width: 600px) {
+  .header-play-button {
+    display: none !important;
+  }
+
+  .list-song-table-description__mobile {
+    display: none;
+  }
 }

@@ -346,7 +346,7 @@ const Playlist = () => {
           />
         )}
         <div className="playlist-main">
-          <div className="playlist-main-content d-flex align-items-end">
+          <div className="playlist-main-content d-flex">
             <div className="playlist-image-space">
               <Image
                 src={
@@ -636,9 +636,13 @@ const Playlist = () => {
                     <tr>
                       <th className="list-table-head">#</th>
                       <th className="list-table-head">Title</th>
-                      <th className="list-table-head">Album</th>
-                      <th className="list-table-head">Date added</th>
-                      <th className="list-table-head">
+                      <th className="list-table-head list-table-head__tablet list-table-head__mobile">
+                        Album
+                      </th>
+                      <th className="list-table-head list-table-head__tablet list-table-head__mobile">
+                        Date added
+                      </th>
+                      <th className="list-table-head list-table-head__mobile">
                         <i className="fa-regular fa-clock"></i>
                       </th>
                     </tr>
@@ -678,10 +682,16 @@ const Playlist = () => {
                     <tr>
                       <th className="list-table-head">#</th>
                       <th className="list-table-head">Title</th>
-                      <th className="list-table-head">Artist</th>
-                      <th className="list-table-head">Album</th>
-                      <th className="list-table-head">Date added</th>
-                      <th className="list-table-head">
+                      <th className="list-table-head list-table-head__tablet list-table-head__mobile">
+                        Artist
+                      </th>
+                      <th className="list-table-head list-table-head__tablet list-table-head__mobile">
+                        Album
+                      </th>
+                      <th className="list-table-head list-table-head__tablet list-table-head__mobile">
+                        Date added
+                      </th>
+                      <th className="list-table-head list-table-head__mobile">
                         <i className="fa-regular fa-clock"></i>
                       </th>
                     </tr>

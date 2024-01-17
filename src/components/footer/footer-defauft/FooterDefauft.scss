@@ -171,3 +171,45 @@
   color: #919496;
   font-size: 12px;
 }
+
+// Tablet interface
+@media only screen and (min-width: 660px) and (max-width: 830px) {
+  .footer-menu-top-bar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-menu-top-bar-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-home-page .container,
+  .footer-playlist .container {
+    padding: 10px 0 0;
+  }
+
+  .footer-landingpage .container .footer-menu-top-bar-links {
+    gap: 20px;
+  }
+
+  .footer-menu-top-bar-socials {
+    margin-top: 10px;
+    margin-left: 32px;
+  }
+
+  .footer-landingpage .container .footer-menu-top-bar {
+    margin-bottom: 60px;
+  }
+
+  .footer-menu-bottom-bar {
+    flex-flow: column wrap;
+  }
+}
+
+// Mobile interface
+@media only screen and (max-width: 600px) {
+  .footer__mobile {
+    display: none;
+  }
+}
