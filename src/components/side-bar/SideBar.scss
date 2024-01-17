@@ -77,3 +77,10 @@ $font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 .list-playlist-suggestion {
   margin-left: 28px;
 }
+
+// Mobile interface
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    display: none !important;
+  }
+}

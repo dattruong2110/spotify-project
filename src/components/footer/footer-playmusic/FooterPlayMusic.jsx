@@ -188,7 +188,7 @@ const FooterPlayMusic = ({
 
   return (
     <div className="footer-play-music">
-      <div className="music-info d-flex">
+      <div className="music-info">
         {currentSong && (
           <>
             <img
@@ -278,7 +278,7 @@ const FooterPlayMusic = ({
           <div className="total-time">{formatTime(duration)}</div>
         </div>
       </div>
-      <div className="volume-control d-flex">
+      <div className="volume-control">
         <div className="volume-control-container d-flex align-items-center">
           <div className="tooltip-container" onClick={toggleMute}>
             <span role="img" aria-label={isMuted ? "Unmute" : "Mute"}>

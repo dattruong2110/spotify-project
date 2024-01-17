@@ -108,13 +108,13 @@ const ListSong = ({
             </NavLink>
           </div>
         </td>
-        <td className="border-0 list-table-description">
+        <td className="border-0 list-table-description list-song-table-description__tablet list-song-table-description__mobile">
           <NavLink className="link-album">{album.name}</NavLink>
         </td>
-        <td className="border-0 list-table-description">
+        <td className="border-0 list-table-description list-song-table-description__tablet list-song-table-description__mobile">
           {formatWeeksAgo(addedAt)}
         </td>
-        <td className="border-0 list-table-description">
+        <td className="border-0 list-table-description list-song-table-description__mobile">
           {formatDuration(duration)}
         </td>
       </tr>

@@ -193,3 +193,37 @@
     }
   }
 }
+
+// Tablet interface
+@media only screen and (min-width: 660px) and (max-width: 830px) {
+  .homepage-afterlogin {
+    margin-left: 280px;
+    width: 488px;
+  }
+
+  .header-bar-after-login-playlist {
+    width: 499px;
+    left: 269px;
+  }
+
+  .header-menu-left-bar,
+  .header-menu-separator {
+    display: none;
+  }
+}
+
+// Mobile interface
+@media only screen and (max-width: 600px) {
+  .homepage-afterlogin {
+    margin-left: 0;
+  }
+
+  .header-bar-after-login-playlist {
+    left: 0;
+  }
+
+  .header-menu-left-bar,
+  .header-menu-separator {
+    display: none;
+  }
+}
