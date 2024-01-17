@@ -145,3 +145,32 @@ main .container .a-landingpage:active {
 main .container .a-landingpage:active:before {
   opacity: 1;
 }
+
+// Tablet interface
+@media only screen and (min-width: 660px) and (max-width: 830px) {
+  main .container div .h1-landingpage {
+    color: $white-text-color;
+    font-size: 100px;
+    padding-left: 210px;
+    padding-right: 200px;
+  }
+
+  main .container .p-landingpage {
+    color: $white-text-color;
+  }
+}
+
+// Mobile interface
+@media only screen and (max-width: 600px) {
+  main .container div .h1-landingpage {
+    color: $white-text-color;
+    font-size: 50px;
+    padding-left: 300px;
+    padding-right: 200px;
+    margin-top: -170px;
+  }
+
+  main .container .p-landingpage {
+    color: $white-text-color;
+  }
+}

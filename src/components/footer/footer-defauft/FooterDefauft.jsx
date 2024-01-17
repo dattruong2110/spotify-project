@@ -10,7 +10,7 @@ const FooterDefauft = ({ isPlaylistPage, isSupportPage, isHomePage }) => {
           isPlaylistPage ? "footer-playlist" : "footer-landingpage"
         } ${isSupportPage ? "footer-support-page" : "footer-landingpage"} ${
           isHomePage ? "footer-home-page" : "footer-landingpage"
-        }`}
+        } footer__mobile`}
       >
         <div class="container">
           <div class="footer-menu-top-bar">

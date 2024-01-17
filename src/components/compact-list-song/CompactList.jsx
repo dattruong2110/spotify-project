@@ -74,14 +74,16 @@ const CompactList = ({
             <NavLink className="link-song">{name}</NavLink>
           </div>
         </td>
-        <td className="border-0 list-table-description">{artists[0].name}</td>
-        <td className="border-0 list-table-description">
+        <td className="border-0 list-table-description list-song-table-description__tablet list-song-table-description__mobile">
+          {artists[0].name}
+        </td>
+        <td className="border-0 list-table-description list-song-table-description__tablet list-song-table-description__mobile">
           <NavLink className="link-album">{album.name}</NavLink>
         </td>
-        <td className="border-0 list-table-description">
+        <td className="border-0 list-table-description list-song-table-description__tablet list-song-table-description__mobile">
           {formatWeeksAgo(addedAt)}
         </td>
-        <td className="border-0 list-table-description">
+        <td className="border-0 list-table-description list-song-table-description__mobile">
           {formatDuration(duration)}
         </td>
       </tr>

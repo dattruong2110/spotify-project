@@ -70,7 +70,7 @@ const HeaderAfterLogin = ({
                 ></button>
               </div>
               {showPlayButton && (
-                <div className="d-flex">
+                <div className="header-play-button d-flex">
                   <Button
                     className="play-btn"
                     onClick={() => playSongPlaylist(0)}

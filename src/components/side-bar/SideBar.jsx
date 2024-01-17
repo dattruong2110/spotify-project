@@ -81,50 +81,18 @@ const SideBar = () => {
             </li>
             <li className="list-playlist-suggestion">
               <NavLink
-                to="/playlist/37i9dQZF1DXcBWIGoYBM5M"
+                to="/playlist/37i9dQZF1DWYLMi9ZNZUaz"
                 className="d-flex align-items-center"
               >
                 <span>
                   <img
-                    src="https://i.scdn.co/image/ab67706f00000003b81fa84dfd95340eeeaacd04"
+                    src="https://i.scdn.co/image/ab67706f000000031200bb7811edb121a06937b3"
                     alt="playlist-suggestion"
                     width={15}
                     height={15}
                   />
                 </span>
-                <span>Today’s Top Hits</span>
-              </NavLink>
-            </li>
-            <li className="list-playlist-suggestion">
-              <NavLink
-                to="/playlist/37i9dQZEVXbLdGSmz6xilI"
-                className="d-flex align-items-center"
-              >
-                <span>
-                  <img
-                    src="https://charts-images.scdn.co/assets/locale_en/regional/daily/region_vn_large.jpg"
-                    alt="playlist-suggestion"
-                    width={15}
-                    height={15}
-                  />
-                </span>
-                <span>Top 50 - Vietnam</span>
-              </NavLink>
-            </li>
-            <li className="list-playlist-suggestion">
-              <NavLink
-                to="/playlist/37i9dQZEVXbL1G1MbPav3j"
-                className="d-flex align-items-center"
-              >
-                <span>
-                  <img
-                    src="https://charts-images.scdn.co/assets/locale_en/viral/daily/region_vn_large.jpg"
-                    alt="playlist-suggestion"
-                    width={15}
-                    height={15}
-                  />
-                </span>
-                <span>Viral 50 - Vietnam</span>
+                <span>Hip-hop Việt</span>
               </NavLink>
             </li>
           </ul>

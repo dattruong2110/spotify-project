@@ -16,7 +16,7 @@ const Header = ({ isPlaylistPage, showPlayButton, name }) => {
               <button type="button" class="fa fas fa-chevron-right"></button>
             </div>
             {showPlayButton && (
-              <div className="d-flex">
+              <div className="header-play-button d-flex">
                 <Button className="play-btn">
                   <i className="fa fa-play"></i>
                 </Button>
@@ -27,16 +27,16 @@ const Header = ({ isPlaylistPage, showPlayButton, name }) => {
 
           <div class="navbar">
             <ul>
-              <li>
+              <li className="header-menu-item">
                 <NavLink to="/premium-page">Premium</NavLink>
               </li>
-              <li>
+              <li className="header-menu-item">
                 <NavLink to="/support-page">Support</NavLink>
               </li>
-              <li>
+              <li className="header-menu-item">
                 <NavLink to="/download-page">Download</NavLink>
               </li>
-              <li class="divider">|</li>
+              <li class="divider header-menu-item">|</li>
               <li>
                 <NavLink to="/signup">Sign Up</NavLink>
               </li>
