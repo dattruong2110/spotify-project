@@ -23,6 +23,7 @@ const CompactList = ({
   isAuthenticated,
   showLoginModal,
   setShowLoginModal,
+  setCurrentSongIndex,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -71,7 +72,13 @@ const CompactList = ({
         </td>
         <td className="list-song-table-description border-0">
           <div className="song-artist-name d-grid">
-            <NavLink className="link-song">{name}</NavLink>
+            <NavLink
+              className={`link-song ${
+                isCurrentSongPlaying ? "song-active" : ""
+              }`}
+            >
+              {name}
+            </NavLink>
           </div>
         </td>
         <td className="border-0 list-table-description list-song-table-description__tablet list-song-table-description__mobile">
