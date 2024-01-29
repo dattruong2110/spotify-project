@@ -82,7 +82,6 @@
 }
 
 .container-header-after-login .prev-next-buttons {
-  font-size: 1.4rem;
   padding: 0 5px;
 }
 
@@ -192,6 +191,17 @@
       background-color: black;
     }
   }
+}
+
+.header-bar-after-login-search-page {
+  border-radius: 0;
+  position: fixed;
+  background-color: #121212;
+  max-width: 100%;
+  top: 0;
+  left: 285px;
+  right: 0;
+  margin-top: 0;
 }
 
 // Tablet interface

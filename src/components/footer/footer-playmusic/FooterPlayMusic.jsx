@@ -19,6 +19,7 @@ const FooterPlayMusic = ({
   currentSong,
   audioRef,
   playlist,
+  searchTrack,
   tracks,
   onTimeUpdate,
 }) => {
@@ -78,6 +79,15 @@ const FooterPlayMusic = ({
   }, [currentSongIndex, dispatch, playlist, audioRef]);
 
   useEffect(() => {
+    if (searchTrack && searchTrack.length > 0) {
+      const newSong = searchTrack[currentSongIndex];
+      audioRef.current.src = newSong.url;
+      dispatch(setCurrentSong(newSong));
+      dispatch(setIsPlaying(true));
+    }
+  }, [currentSongIndex, currentlyPlaying, dispatch, searchTrack, audioRef]);
+
+  useEffect(() => {
     const handleSongEnd = () => {
       if (isRepeating) {
         audioRef.current.currentTime = 0;
@@ -106,32 +116,65 @@ const FooterPlayMusic = ({
   };
 
   const playNextSong = async () => {
-    const filteredSongs = tracks.filter((song) => song.track.preview_url);
-    const newIndex = (currentSongIndex + 1) % filteredSongs.length;
+    if (searchTrack && "listOfTracksFromAPI" in searchTrack) {
+      const filteredSongs = searchTrack.listOfTracksFromAPI.filter(
+        (song) => song.preview_url
+      );
+      const newIndex = (currentSongIndex + 1) % filteredSongs.length;
 
-    dispatch(setCurrentSongIndex(newIndex));
-    const newSong = filteredSongs[newIndex].track;
+      dispatch(setCurrentSongIndex(newIndex));
+      const newSong = filteredSongs[newIndex];
 
-    audioRef.current.src = newSong.preview_url;
-    dispatch(setCurrentSong(newSong));
-    audioRef.current.play();
-    dispatch(setIsPlaying(true));
-    document.title = `${newSong.name} - Web Player: Music for everyone`;
+      audioRef.current.src = newSong.preview_url;
+      dispatch(setCurrentSong(newSong));
+      audioRef.current.play();
+      dispatch(setIsPlaying(true));
+      document.title = `${newSong.name} - Web Player: Music for everyone`;
+    } else {
+      const filteredSongs = tracks.filter((song) => song.track.preview_url);
+      const newIndex = (currentSongIndex + 1) % filteredSongs.length;
+
+      dispatch(setCurrentSongIndex(newIndex));
+      const newSong = filteredSongs[newIndex].track;
+
+      audioRef.current.src = newSong.preview_url;
+      dispatch(setCurrentSong(newSong));
+      audioRef.current.play();
+      dispatch(setIsPlaying(true));
+      document.title = `${newSong.name} - Web Player: Music for everyone`;
+    }
   };
 
   const playPreviousSong = async () => {
-    const filteredSongs = tracks.filter((song) => song.track.preview_url);
-    const newIndex =
-      (currentSongIndex - 1 + filteredSongs.length) % filteredSongs.length;
+    if (searchTrack && "listOfTracksFromAPI" in searchTrack) {
+      const filteredSongs = searchTrack.listOfTracksFromAPI.filter(
+        (song) => song.preview_url
+      );
+      const newIndex =
+        (currentSongIndex - 1 + filteredSongs.length) % filteredSongs.length;
 
-    dispatch(setCurrentSongIndex(newIndex));
-    const newSong = filteredSongs[newIndex].track;
+      dispatch(setCurrentSongIndex(newIndex));
+      const newSong = filteredSongs[newIndex];
 
-    audioRef.current.src = newSong.preview_url;
-    dispatch(setCurrentSong(newSong));
-    audioRef.current.play();
-    dispatch(setIsPlaying(true));
-    document.title = `${newSong.name} - Web Player: Music for everyone`;
+      audioRef.current.src = newSong.preview_url;
+      dispatch(setCurrentSong(newSong));
+      audioRef.current.play();
+      dispatch(setIsPlaying(true));
+      document.title = `${newSong.name} - Web Player: Music for everyone`;
+    } else {
+      const filteredSongs = tracks.filter((song) => song.track.preview_url);
+      const newIndex =
+        (currentSongIndex - 1 + filteredSongs.length) % filteredSongs.length;
+
+      dispatch(setCurrentSongIndex(newIndex));
+      const newSong = filteredSongs[newIndex].track;
+
+      audioRef.current.src = newSong.preview_url;
+      dispatch(setCurrentSong(newSong));
+      audioRef.current.play();
+      dispatch(setIsPlaying(true));
+      document.title = `${newSong.name} - Web Player: Music for everyone`;
+    }
   };
 
   const handleRepeatToggle = () => {

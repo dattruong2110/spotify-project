@@ -2,14 +2,19 @@ import React from "react";
 import "./header.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import Search from "../search-page/search/Search";
 
-const Header = ({ isPlaylistPage, showPlayButton, name }) => {
+const Header = ({ isPlaylistPage, showPlayButton, name, isSearchPage }) => {
   const navigate = useNavigate();
 
   return (
     <>
       <header>
-        <div class={`topbar ${isPlaylistPage ? "header-bar-playlist" : ""}`}>
+        <div
+          class={`topbar ${isPlaylistPage ? "header-bar-playlist" : ""} ${
+            isSearchPage ? "header-bar-search-page" : ""
+          }`}
+        >
           <div class="prev-next-buttons d-flex">
             <div className="d-flex">
               <button type="button" class="fa fas fa-chevron-left"></button>
@@ -23,6 +28,7 @@ const Header = ({ isPlaylistPage, showPlayButton, name }) => {
                 <span className="header-playlist-title">{name}</span>
               </div>
             )}
+            {isSearchPage && <Search />}
           </div>
 
           <div class="navbar">

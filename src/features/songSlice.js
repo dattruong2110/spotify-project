@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  isLoading: false,
   isPlaying: false,
   isRepeating: false,
   currentSong: null,
@@ -10,12 +11,17 @@ const initialState = {
   playBackState: false,
   playbackTime: 0,
   playMode: 0,
+  searchTerm: "",
+  searchResults: [],
 };
 
 const songSlice = createSlice({
   name: "song",
   initialState,
   reducers: {
+    setIsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
     setIsPlaying: (state, action) => {
       state.isPlaying = action.payload;
     },
@@ -29,7 +35,6 @@ const songSlice = createSlice({
       state.currentlyPlaying = action.payload;
     },
     setCurrentSongIndex: (state, action) => {
-      console.log("Current Song Index Payload:", action.payload);
       state.currentSongIndex = action.payload;
     },
     setCurrentTrackDuration: (state, action) => {
@@ -37,6 +42,12 @@ const songSlice = createSlice({
     },
     setPlayMode: (state, action) => {
       state.playMode = action.payload;
+    },
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
+    setSearchResults: (state, action) => {
+      state.searchResults = action.payload;
     },
     togglePlaybackState: (state) => {
       state.playBackState = !state.playBackState;
@@ -48,6 +59,7 @@ const songSlice = createSlice({
 });
 
 export const {
+  setIsLoading,
   setIsPlaying,
   setIsRepeating,
   setCurrentSong,
@@ -55,9 +67,12 @@ export const {
   setCurrentSongIndex,
   setCurrentTrackDuration,
   setPlayMode,
+  setSearchTerm,
+  setSearchResults,
   togglePlaybackState,
   updatePlaybackTime,
 } = songSlice.actions;
+export const selectIsLoading = (state) => state.song.isLoading;
 export const selectIsPlaying = (state) => state.song.isPlaying;
 export const selectIsRepeating = (state) => state.song.isRepeating;
 export const selectCurrentSong = (state) => state.song.currentSong;
@@ -68,4 +83,6 @@ export const selectCurrentTrackDuration = (state) =>
 export const selectPlayBackState = (state) => state.song.playBackState;
 export const selectPlaybackTime = (state) => state.song.playbackTime;
 export const selectPlayMode = (state) => state.song.playMode;
+export const selectSearchTerm = (state) => state.song.searchTerm;
+export const selectSearchResults = (state) => state.song.searchResults;
 export default songSlice.reducer;

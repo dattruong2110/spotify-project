@@ -169,9 +169,6 @@ const Playlist = () => {
       isMounted = false;
     };
   }, [spotify.ClientId, spotify.ClientSecret]);
-  console.log(indexPlaylist);
-  console.log(genres);
-  console.log(playlist);
 
   useEffect(() => {
     dispatch(setCurrentSong(tracks.listOfTracksFromAPI[0]));
