@@ -6,12 +6,14 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser, selectUser, setUser } from "../../../features/authSlice";
 import { auth } from "../../../configs/firebaseConfig";
+import Search from "../../search-page/search/Search";
 
 const HeaderAfterLogin = ({
   isPlaylistPage,
   showPlayButton,
   name,
   playSongPlaylist,
+  isSearchPage,
 }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -53,7 +55,7 @@ const HeaderAfterLogin = ({
         <div
           className={`container-header-after-login ${
             isPlaylistPage ? "header-bar-after-login-playlist" : ""
-          }`}
+          } ${isSearchPage ? "header-bar-after-login-search-page" : ""}`}
         >
           <div className="header-menu d-flex justify-content-between align-items-center">
             <div className="prev-next-buttons d-flex align-items-center">
@@ -80,6 +82,7 @@ const HeaderAfterLogin = ({
                   <span className="header-playlist-title">{name}</span>
                 </div>
               )}
+              {isSearchPage && <Search />}
             </div>
 
             <div className="d-flex align-items-center">
