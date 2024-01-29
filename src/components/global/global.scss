@@ -215,6 +215,7 @@ body {
 .link-song {
   color: $white-text-color;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .link-song:hover {
@@ -228,6 +229,7 @@ body {
 .link-artist {
   color: $base-color;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .link-artist:hover {
@@ -265,5 +267,20 @@ body {
 
   .list-song-table-description__mobile {
     display: none;
+  }
+
+  .song-artist-name {
+    width: 270px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .link-song,
+  .link-artist {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

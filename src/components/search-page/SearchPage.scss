@@ -71,6 +71,7 @@
 }
 
 .main-search {
+  margin-top: 60px;
   margin-left: 245px;
   margin-bottom: 100px;
 }
@@ -751,7 +752,7 @@
   padding-bottom: 100%;
 }
 
-.item-funk-disco{
+.item-funk-disco {
   border: none;
   background-color: rgb(230, 30, 50);
   border-radius: 8px;
@@ -760,7 +761,7 @@
   width: 187px;
 }
 
-.item-league-of-legends{
+.item-league-of-legends {
   border: none;
   background-color: rgb(20, 138, 8);
   border-radius: 8px;
@@ -769,7 +770,7 @@
   width: 187px;
 }
 
-.item-spotify-singles{
+.item-spotify-singles {
   border: none;
   background-color: rgb(119, 119, 119);
   border-radius: 8px;
@@ -778,7 +779,7 @@
   width: 187px;
 }
 
-.item-summer{
+.item-summer {
   border: none;
   background-color: rgb(39, 133, 106);
   border-radius: 8px;
@@ -787,8 +788,8 @@
   width: 187px;
 }
 
-.item-tastemakers{
-   border: none;
+.item-tastemakers {
+  border: none;
   background-color: rgb(232, 17, 91);
   border-radius: 8px;
   overflow: hidden;
@@ -817,4 +818,19 @@
   overflow-wrap: break-word;
   padding: 16px;
   position: absolute;
+}
+
+.play-button-search-page {
+  position: absolute;
+  margin-top: 3px;
+  margin-left: 15px;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $white-text-color;
+}
+
+.list-song-table-description:hover .play-button-search-page {
+  display: block;
 }
