@@ -2,7 +2,12 @@ import React from "react";
 import "../footer-defauft/FooterDefauft.scss";
 import { NavLink } from "react-router-dom";
 
-const FooterDefauft = ({ isPlaylistPage, isSupportPage, isHomePage }) => {
+const FooterDefauft = ({
+  isPlaylistPage,
+  isSupportPage,
+  isHomePage,
+  isSearchPage,
+}) => {
   return (
     <>
       <footer
@@ -10,6 +15,8 @@ const FooterDefauft = ({ isPlaylistPage, isSupportPage, isHomePage }) => {
           isPlaylistPage ? "footer-playlist" : "footer-landingpage"
         } ${isSupportPage ? "footer-support-page" : "footer-landingpage"} ${
           isHomePage ? "footer-home-page" : "footer-landingpage"
+        } ${
+          isSearchPage ? "footer-playlist" : "footer-landingpage"
         } footer__mobile`}
       >
         <div class="container">

@@ -58,10 +58,35 @@
   .music-info {
     display: flex;
     flex: 0.5;
+
+    .footer-song-image {
+      width: 56px;
+      height: 56px;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .song-details {
+      display: flex;
+      align-items: center;
+
+      .artist-names,
+      .song-name {
+        display: -webkit-box;
+        max-width: 260px;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
   }
 
   .controls {
     flex: 1;
+
+    .repeat-icon-active svg {
+      fill: $green-hover-btn-color;
+    }
   }
 
   .volume-control {
