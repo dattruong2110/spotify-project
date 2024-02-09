@@ -233,17 +233,32 @@ const FooterPlayMusic = ({
     <div className="footer-play-music">
       <div className="music-info">
         {currentSong && (
-          <>
+          <div className="d-flex align-items-center">
             <img
               src={currentSong ? currentSong.image : null}
               alt={`${currentSong.name} - ${currentSong.artist}`}
-              className={`${currentSong.image ? "d-block" : "d-none"}`}
+              className={`${
+                currentSong.image ? "d-block" : "d-none"
+              } footer-song-image`}
             />
-            <div className="song-details">
-              <span>{currentSong ? currentSong.name : ""}</span>
-              <span>{currentSong ? currentSong.artist : ""}</span>
+            <div className="song-details d-grid">
+              <span className="song-name">
+                {currentSong ? currentSong.name : ""}
+              </span>
+              <span className="artist-names">
+                {currentSong &&
+                currentSong.artists &&
+                currentSong.artists.length > 0
+                  ? currentSong.artists.map((artist, index) => (
+                      <span key={index} className="artist-name">
+                        {artist.name}
+                        {index < currentSong.artists.length - 1 && ", "}
+                      </span>
+                    ))
+                  : ""}
+              </span>
             </div>
-          </>
+          </div>
         )}
       </div>
       <div className="controls">
@@ -274,7 +289,7 @@ const FooterPlayMusic = ({
           </button>
           <button className="control-button" onClick={handleRepeatToggle}>
             {isRepeating ? (
-              <span>
+              <span className="repeat-icon-active">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
