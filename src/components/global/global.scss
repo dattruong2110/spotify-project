@@ -5,7 +5,6 @@ $green-btn-color: #1fdf64;
 $green-hover-btn-color: #12eb61;
 $table-background-color-base: #101010;
 $btn-border-radius: 500px;
-$green-hover-btn-color: #12eb61;
 
 body {
   background-color: #000;
@@ -179,7 +178,8 @@ body {
 }
 
 .list-table-description,
-.list-song-table-description {
+.list-song-table-description,
+.list-album-table-description {
   background-color: $table-background-color-base !important;
 }
 
@@ -205,6 +205,11 @@ body {
 .link-album {
   color: $base-color;
   text-decoration: none;
+  display: -webkit-box;
+  max-width: 400px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .link-album:hover {
@@ -216,6 +221,11 @@ body {
   color: $white-text-color;
   text-decoration: none;
   cursor: pointer;
+  display: -webkit-box;
+  max-width: 400px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .link-song:hover {

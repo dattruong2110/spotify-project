@@ -27,6 +27,7 @@ export const formatDuration = (milliseconds) => {
 const ListSong = ({
   index,
   name,
+  image,
   album,
   artists,
   addedAt,
@@ -64,7 +65,9 @@ const ListSong = ({
     <>
       <tr
         className="list-table-row"
-        onClick={() => playSong({ id: index, name, previewUrl })}
+        onClick={() =>
+          playSong({ id: index, name, image, previewUrl, artists })
+        }
       >
         <td className="border-0 list-table-description index-table">
           <span className="index">{index + 1}</span>
@@ -73,7 +76,7 @@ const ListSong = ({
               className="play-button"
               onClick={(e) => {
                 e.stopPropagation();
-                playSong({ id: index, name, previewUrl });
+                playSong({ id: index, name, image, previewUrl, artists });
               }}
             >
               <i
@@ -108,7 +111,7 @@ const ListSong = ({
             </NavLink>
           </div>
         </td>
-        <td className="border-0 list-table-description list-song-table-description__tablet list-song-table-description__mobile">
+        <td className="border-0 list-album-table-description list-song-table-description__tablet list-song-table-description__mobile">
           <NavLink className="link-album">{album.name}</NavLink>
         </td>
         <td className="border-0 list-table-description list-song-table-description__tablet list-song-table-description__mobile">

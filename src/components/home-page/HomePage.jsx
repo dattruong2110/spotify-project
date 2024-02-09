@@ -92,7 +92,7 @@ const HomePage = () => {
     setShowAllPlaylists(true);
   };
 
-  const playSong = (track, index) => {
+  const playSong = (track) => {
     if (isAuthenticated) {
       if (currentlyPlaying && currentlyPlaying.id === track.id) {
         dispatch(setCurrentlyPlaying(null));

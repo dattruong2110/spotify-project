@@ -152,6 +152,7 @@ const Playlist = () => {
           const playlistIndex = playlistResponse.data.playlists.items.findIndex(
             (playlist) => playlist.id === playlistId
           );
+
           if (isMounted) {
             setIndexPlaylist(playlistIndex);
           }
@@ -264,33 +265,6 @@ const Playlist = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const handleSongEnd = () => {
-  //     if (
-  //       currentSongIndex !== null &&
-  //       currentSongIndex < tracks.listOfTracksFromAPI.length - 1
-  //     ) {
-  //       const nextSongIndex = currentSongIndex + 1;
-  //       const nextSong = tracks.listOfTracksFromAPI[nextSongIndex];
-
-  //       dispatch(setCurrentlyPlaying(nextSong));
-  //       dispatch(setCurrentSongIndex(nextSongIndex));
-
-  //       audioRef.current.src = nextSong.track.preview_url;
-  //       audioRef.current.play();
-  //     } else {
-  //       dispatch(setCurrentlyPlaying(null));
-  //       dispatch(setCurrentSongIndex(null));
-  //     }
-  //   };
-
-  //   audioRef.current.addEventListener("ended", handleSongEnd);
-
-  //   return () => {
-  //     audioRef.current.removeEventListener("ended", handleSongEnd);
-  //   };
-  // }, [audioRef, currentSongIndex, tracks.listOfTracksFromAPI]);
-
   const handleTimeUpdate = (newTime) => {
     dispatch(updatePlaybackTime(newTime));
 
@@ -329,6 +303,22 @@ const Playlist = () => {
       dispatch(setUser(user));
     }
   }, [dispatch]);
+
+  const getImageUrl = (track) => {
+    const defaultImageUrl = "fallback_image_url";
+
+    if (
+      track &&
+      track.track &&
+      track.track.album &&
+      track.track.album.images &&
+      track.track.album.images.length > 0
+    ) {
+      return track.track.album.images[0].url || defaultImageUrl;
+    }
+
+    return defaultImageUrl;
+  };
 
   return (
     <div className="playlist-page">
@@ -667,6 +657,7 @@ const Playlist = () => {
                               key={index}
                               index={index}
                               name={track.track.name}
+                              image={getImageUrl(track)}
                               album={track.track.album}
                               artists={track.track.artists}
                               addedAt={track.added_at}

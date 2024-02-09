@@ -174,9 +174,9 @@ const SearchPage = () => {
       return <p>No genres or playlists available.</p>;
     }
 
-    const allItemsToRender = [...allGenres, ...allPlaylists];
+    // const allItemsToRender = [...allGenres, ...allPlaylists];
 
-    return allItemsToRender.map((item, index) => (
+    return allPlaylists.map((item, index) => (
       <Link
         to={`/playlist/${item.id}`}
         className="item-music"
