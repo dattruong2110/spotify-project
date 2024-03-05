@@ -127,6 +127,7 @@ const FooterPlayMusic = ({
 
       audioRef.current.src = newSong.preview_url;
       dispatch(setCurrentSong(newSong));
+      dispatch(setCurrentlyPlaying(newSong));
       audioRef.current.play();
       dispatch(setIsPlaying(true));
       document.title = `${newSong.name} - Web Player: Music for everyone`;
@@ -139,6 +140,7 @@ const FooterPlayMusic = ({
 
       audioRef.current.src = newSong.preview_url;
       dispatch(setCurrentSong(newSong));
+      dispatch(setCurrentlyPlaying(newSong));
       audioRef.current.play();
       dispatch(setIsPlaying(true));
       document.title = `${newSong.name} - Web Player: Music for everyone`;
@@ -158,6 +160,7 @@ const FooterPlayMusic = ({
 
       audioRef.current.src = newSong.preview_url;
       dispatch(setCurrentSong(newSong));
+      dispatch(setCurrentlyPlaying(newSong));
       audioRef.current.play();
       dispatch(setIsPlaying(true));
       document.title = `${newSong.name} - Web Player: Music for everyone`;
@@ -171,6 +174,7 @@ const FooterPlayMusic = ({
 
       audioRef.current.src = newSong.preview_url;
       dispatch(setCurrentSong(newSong));
+      dispatch(setCurrentlyPlaying(newSong));
       audioRef.current.play();
       dispatch(setIsPlaying(true));
       document.title = `${newSong.name} - Web Player: Music for everyone`;
@@ -235,10 +239,27 @@ const FooterPlayMusic = ({
         {currentSong && (
           <div className="d-flex align-items-center">
             <img
-              src={currentSong ? currentSong.image : null}
-              alt={`${currentSong.name} - ${currentSong.artist}`}
+              src={
+                currentSong &&
+                currentSong.album &&
+                currentSong.album.images &&
+                Array.isArray(currentSong.album.images) &&
+                currentSong.album.images.length > 0
+                  ? currentSong.album.images[0]?.url || ""
+                  : currentSong.image || ""
+              }
+              alt={`${currentSong?.name || ""} - ${
+                (currentSong?.artists && currentSong.artists[0]?.name) || ""
+              }`}
               className={`${
-                currentSong.image ? "d-block" : "d-none"
+                (currentSong &&
+                  currentSong.album &&
+                  currentSong.album.images &&
+                  Array.isArray(currentSong.album.images) &&
+                  currentSong.album.images.length > 0) ||
+                currentSong.image
+                  ? "d-block"
+                  : "d-none"
               } footer-song-image`}
             />
             <div className="song-details d-grid">

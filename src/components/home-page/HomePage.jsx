@@ -12,18 +12,21 @@ import {
   selectCurrentSong,
   selectCurrentSongIndex,
   selectCurrentlyPlaying,
+  selectIsLoading,
   selectIsPlaying,
   selectPlaybackTime,
   setCurrentSong,
   setCurrentSongIndex,
   setCurrentTrackDuration,
   setCurrentlyPlaying,
+  setIsLoading,
   setIsPlaying,
   togglePlaybackState,
   updatePlaybackTime,
 } from "../../features/songSlice";
 import { Link, useNavigate } from "react-router-dom";
 import FooterDefauft from "../footer/footer-defauft/FooterDefauft";
+import { Spinner } from "react-bootstrap";
 
 const HomePage = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -35,6 +38,7 @@ const HomePage = () => {
   const currentlyPlaying = useSelector(selectCurrentlyPlaying);
   const currentSongIndex = useSelector(selectCurrentSongIndex);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const isLoading = useSelector(selectIsLoading);
   const navigate = useNavigate();
 
   const handlePlaylistClick = (playlistId) => {
@@ -44,9 +48,12 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        dispatch(setIsLoading(true));
         await spotifyAPI.getSpotifyToken();
       } catch (error) {
         console.error("Error fetching Spotify token:", error);
+      } finally {
+        dispatch(setIsLoading(false));
       }
     };
 
@@ -56,9 +63,12 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        dispatch(setIsLoading(true));
         await spotifyAPI.getGenres();
       } catch (error) {
         console.error("Error fetching genres:", error);
+      } finally {
+        dispatch(setIsLoading(false));
       }
     };
 
@@ -68,9 +78,12 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        dispatch(setIsLoading(true));
         await spotifyAPI.getPlaylistAndTracks();
       } catch (error) {
         console.error("Error fetching playlist and tracks:", error);
+      } finally {
+        dispatch(setIsLoading(false));
       }
     };
 
@@ -131,16 +144,26 @@ const HomePage = () => {
       : allPlaylists.slice(0, 7);
 
     return playlistsToRender.map((playlist) => (
-      <div className="item" key={playlist.id}>
-        <Link className="" to={`/playlist/${playlist.id}`}>
-          <img src={playlist.images[0].url} alt={playlist.name} />
-          <div className="play">
-            <span className="fa fa-play"></span>
+      <>
+        {isLoading ? (
+          <div className="spinner-container">
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
           </div>
-          <h4>{playlist.name}</h4>
-          <p>{playlist.description}</p>
-        </Link>
-      </div>
+        ) : (
+          <div className="item" key={playlist.id}>
+            <Link className="" to={`/playlist/${playlist.id}`}>
+              <img src={playlist.images[0].url} alt={playlist.name} />
+              <div className="play">
+                <span className="fa fa-play"></span>
+              </div>
+              <h4>{playlist.name}</h4>
+              <p>{playlist.description}</p>
+            </Link>
+          </div>
+        )}
+      </>
     ));
   };
 
