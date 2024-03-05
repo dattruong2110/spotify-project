@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Credentials } from "../constants/Credentials";
 import { useParams } from "react-router-dom";
 
@@ -23,6 +23,12 @@ const SpotifyAPI = () => {
   const { playlistId } = useParams();
   const [selectedGenreId, setSelectedGenreId] = useState("");
   const [indexGenres, setIndexGenres] = useState(null);
+
+  useEffect(() => {
+    getGenres();
+    getPlaylistAndTracks();
+    getPlaylistAndTracksByGenre();
+  }, [token]);
 
   const getSpotifyToken = async () => {
     try {
