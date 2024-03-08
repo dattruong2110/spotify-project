@@ -2,10 +2,11 @@ import React from "react";
 import "./CompactList.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { formatDuration, formatWeeksAgo } from "../list-song/ListSong";
-import { Button, Image, Modal } from "react-bootstrap";
+import { Button, Image, Modal, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectCurrentlyPlaying,
+  selectIsLoading,
   setCurrentSongIndex,
   setIsPlaying,
 } from "../../features/songSlice";
@@ -28,6 +29,7 @@ const CompactList = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentlyPlaying = useSelector(selectCurrentlyPlaying);
+  const isLoading = useSelector(selectIsLoading);
   const isCurrentSongPlaying =
     currentlyPlaying && currentlyPlaying.id === index;
 
@@ -94,14 +96,20 @@ const CompactList = ({
           {formatDuration(duration)}
         </td>
       </tr>
-      {showLoginModal && (
-        <Modal
-          show={showLoginModal.show}
-          onHide={() => setShowLoginModal(false)}
-          centered
-        >
-          <Modal.Body>
-            <div className="d-flex align-items-center">
+      {isLoading ? (
+        <div className="spinner-container">
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      ) : (
+        showLoginModal && (
+          <Modal
+            show={showLoginModal.show}
+            onHide={() => setShowLoginModal(false)}
+            centered
+          >
+            <div className="modal-body-custom d-flex align-items-center">
               <div className="left-modal">
                 <Image
                   className="modal-song-playlist-image"
@@ -128,16 +136,16 @@ const CompactList = ({
                 </span>
               </div>
             </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => setShowLoginModal(false)}
-            >
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onClick={() => setShowLoginModal(false)}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        )
       )}
     </>
   );
