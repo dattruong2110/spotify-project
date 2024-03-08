@@ -247,6 +247,11 @@ body {
   text-decoration: underline;
 }
 
+.modal-body-custom {
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
 .modal-song-playlist-image {
   max-width: 200px;
   margin-right: 20px;
